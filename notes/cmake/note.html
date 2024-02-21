@@ -1,0 +1,1085 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>CMake</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="ae0cdbad-b4cb-4958-b3b6-0e1534fe1d12" class="page sans"><header><img class="page-cover-image" src="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/27lmqtrmq2uy.png" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E4%25B8%258B%25E8%25BD%25BD.png"/></div><h1 class="page-title">CMake</h1><p class="page-description"></p></header><div class="page-body"><figure id="b778480a-8520-4e6e-9bce-6e136835e235"><div class="source">https://github.com/ttroy50/cmake-examples</div></figure><figure id="c6a70ed7-214c-4908-8cf2-da515d76c91d"><a href="https://www.bookstack.cn/read/CMake-Cookbook/README.md" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Introduction - 《CMake菜谱（CMake Cookbook中文版）》 - 书栈网 · BookStack</div><div class="bookmark-description">CMake Cookbook本书概述本书作者本书评审本书相关 使用CMake软件对项目模块，进行构建、测试和打包。</div></div><div class="bookmark-href"><img src="https://www.bookstack.cn/favicon.ico" class="icon bookmark-icon"/>https://www.bookstack.cn/read/CMake-Cookbook/README.md</div></div></a></figure><figure id="cda9a67a-4b2c-4305-931b-561b5ab2b236"><a href="https://cmake.org/cmake/help/latest/guide/tutorial/index.html" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">CMake Tutorial — CMake 3.28.1 Documentation</div><div class="bookmark-description">The CMake tutorial provides a step-by-step guide that covers common build
+system issues that CMake helps address. Seeing how various topics all
+work together in an example project can be very helpful.</div></div><div class="bookmark-href"><img src="https://cmake.org/cmake/help/latest/_static/cmake-favicon.ico" class="icon bookmark-icon"/>https://cmake.org/cmake/help/latest/guide/tutorial/index.html</div></div></a></figure><hr id="ffd138c4-7dd1-4c2a-b991-7c5a433eda1f"/><p id="0eae4c55-ce7b-49da-87ec-6538cc9aa63f" class="block-color-pink_background"><mark class="highlight-pink"><em><strong>Table of contents</strong></em></mark></p><nav id="f91319f4-645f-4315-8a45-75f8cfe165c2" class="block-color-pink table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0ec45881-71be-48df-84fa-2f0285e6d33c">Basics</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e4915e1e-21bc-479f-9d8a-9e0a019b585f">CMakeLists.txt：Basic Starting Point</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#506fc7f0-e905-4071-83c9-344a27d51eeb">cmake_minimum_required()</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9c354ec6-b508-45b1-974a-61be0ce10541">project()、子项目、顶层项目</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8ac17cdb-ff21-4f02-953e-6405499f919d">add_excutable()</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f38333fa-3d67-4750-b81c-118f20c43885">预定义变量、特殊变量、set指令</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#555e7c35-7e43-4fd1-a20c-d0ba1a1ccca9">设置C++标准、设置clang编译器、设置<mark class="highlight-default">AddressSanitizer、设置默认构建模式</mark></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#1dd73bd9-4687-4b27-9711-2ce53511547f">CMakeLists.txt：Adding a Library</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ff31db18-40a3-4caf-be20-54c2ace42aec">add_library()</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#72574ef0-0c43-4765-8b24-22dfc505e567">target_include_directories()、target_link_libraries()</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ef698460-b4ae-4439-8457-0473abd5d1c6">add_subdirectory()</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e8f86fd6-1351-46aa-801e-055743f88551">cmake：构建makefile、生成可执行文件</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9dffb620-5f31-413f-b75f-8c8f6ee699c4">一个常见的cmake pipeline</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4688fa2a-198e-48ed-b47e-3408ab450014">使用cmake的<strong>-D选项来设置CMakeLists.txt中的变量</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#43584f7d-1f43-43f7-b059-93c1a491f716">-DCMAKE_BUILD_TYPE选项（变量）</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1c27f4e3-0c50-4f67-95f3-c36f2792e017">cmake的-G选项</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9a79caba-eefb-465a-bed7-fc264129941d">引入第三方库</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#069655c6-dd0b-440f-8d5a-0f269d21e972">find_package()：使用第三方库</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e69c6eb5-1d44-403c-ad52-1181b9271705">IMPORTED：使用一个已经编译好的静态/动态库</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#108b4bdc-6ea3-46f8-bd9d-60c3805d4ab9">配置c_cpp_properties.json：使用第三方库时VScode可能会找不到对应的头文件，导致IntelliSense爆红</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4add5c9a-af23-4fc5-9233-1368581ff886">使用target别名来避免命名冲突（尤其是有子项目时）</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5b1dce41-b716-4300-9faf-f3bc3a62dd27">在代码中使用CMake中的变量</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e91b9d27-679f-4117-93a4-9cb6f0fa3b00">VScode中的CMake插件</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#55111b45-184d-4613-9217-74f7dfe5e8f0">CMake install</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#61391f95-5125-4bf4-adb6-eb195847d184">Cases</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d2742ad0-1295-4b29-9ec0-02f017cda7d9">case1：无子项目</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9e6fe44f-2e09-4fd4-a6c8-3ed1bb678400">case2：有子项目，构建的主体代码放在主项目中</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6b59c0b4-35ae-48ae-a399-43d3c76bd973">case3：有子项目，构建的主体代码也放在一个子项目里</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#593f140a-56ba-47e8-b712-856baf2bfe7a"><strong>CMAKE_TOOLCHAIN_FILE变量</strong></a></div></nav><hr id="a85de091-4111-473e-a2e0-e79a9e0ab44e"/><h2 id="0ec45881-71be-48df-84fa-2f0285e6d33c" class="block-color-orange_background">Basics</h2><ul id="ccfc0508-97c2-4c1a-868a-d5157cecbcbd" class="bulleted-list"><li style="list-style-type:disc">CMake 是一个非常强大的<span style="border-bottom:0.05em solid"><strong>跨平台自动化构建系统</strong></span>，主要用于<span style="border-bottom:0.05em solid"><strong>管理软件构建的过程</strong></span>。它<strong>不直接构建软件</strong>，而是<mark class="highlight-purple"><span style="border-bottom:0.05em solid"><strong>控制生成标准的构建文件（如 Makefile，Ninja ）</strong></span></mark>，这些文件随后被编译系统使用来实际编译和构建应用程序（所以CMake使用来生成构建文件的工具，也就是一个meta-build工具）<blockquote id="4b78d245-4f0a-4401-b9af-378d4fc4a067" class="block-color-gray_background">Ninja是一个更现代的构建工具，Ninja的构建速度通常远超传统构建系统（Makefile）</blockquote></li></ul><ul id="91aff9f0-5bc6-4e7d-993b-fe137bcea9ca" class="bulleted-list"><li style="list-style-type:disc">CMake 的主要特点如下：<ol type="1" id="4e6d94b7-837f-43e3-9bbc-23a4f47ab064" class="numbered-list" start="1"><li><strong>跨平台和编译器独立性</strong>：CMake 可以在多种操作系统上运行，如 Windows、macOS 和各种 UNIX/Linux 发行版。它支持多种编译器，包括 GCC、Clang 和 MSVC。</li></ol><ol type="1" id="0c4622c8-e390-4098-96e5-7d92557c6975" class="numbered-list" start="2"><li><strong>配置脚本</strong>：CMake <mark class="highlight-red"><strong>使用名为 </strong></mark><mark class="highlight-red"><code><strong>CMakeLists.txt</strong></code></mark><mark class="highlight-red"><strong> 的脚本文件来指定如何构建软件</strong></mark>。这些脚本包含一系列命令，用于指定项目文件、库依赖、编译选项等。</li></ol><ol type="1" id="93e8a143-8c55-4360-b89a-cf8a0f7dfeaf" class="numbered-list" start="3"><li><strong>Out-of-source 构建</strong>：CMake 支持在源代码之外的目录进行构建，这有助于保持源代码目录的清洁，不会被构建生成的文件污染。</li></ol><ol type="1" id="93a39bdd-b85b-409b-8276-4c3a913768a1" class="numbered-list" start="4"><li><strong>查找库和程序</strong>：CMake提供了一系列命令来查找依赖的库和程序，确保构建过程的可移植性和灵活性。</li></ol><ol type="1" id="9fd83c76-4c33-405a-9c99-326acac9b690" class="numbered-list" start="5"><li><strong>生成器</strong>：CMake支持多种生成器，可以生成对应不同编译环境的构建文件。例如，它可以生成 Unix Makefiles、Ninja 文件，或者是 Visual Studio、Xcode 的项目文件。</li></ol><ol type="1" id="1970d69f-4268-4ce3-9e9e-af028ba6b10e" class="numbered-list" start="6"><li><strong>测试和打包</strong>：<span style="border-bottom:0.05em solid"><strong>CMake 还包含了测试（通过 CTest）和打包（通过 CPack）的支持</strong></span>，这使得在不同平台上测试和分发软件更加容易。<blockquote id="8c459037-afb9-4f38-b693-abbe9b34f0e4" class="block-color-gray_background">CPack：它允许开发者从已有的 CMake 项目中方便地创建各种格式的二进制和源代码分发包。<span style="border-bottom:0.05em solid"><strong>CPack 可以生成多种不同平台和操作系统的二进制分发包</strong></span>，例如<ol type="1" id="dd777228-ac74-45c7-8bf6-689cb487636a" class="numbered-list" start="1"><li><strong>DEB</strong>：用于 Debian、Ubuntu 等基于 Debian 的 Linux 发行版。</li></ol><ol type="1" id="2f399786-42dc-41ba-995a-f9723c317694" class="numbered-list" start="2"><li><strong>RPM</strong>：用于 Fedora、Red Hat、SUSE 等基于 RPM 的 Linux 发行版。</li></ol><ol type="1" id="855c9679-2b7a-4225-a0ea-ab7bfa8ac999" class="numbered-list" start="3"><li><strong>NSIS</strong>：用于生成 Windows 安装程序。</li></ol><ol type="1" id="905bf952-3174-424f-815c-0770079d0fd5" class="numbered-list" start="4"><li><strong>Drag &amp; Drop</strong>：用于 macOS 的应用程序捆绑包。</li></ol><ol type="1" id="dab0a6a6-5496-4446-a2e4-51b1f8703b3d" class="numbered-list" start="5"><li><strong>TGZ, ZIP 等压缩格式</strong>：用于生成通用的源代码或二进制分发。</li></ol></blockquote></li></ol><ol type="1" id="b21fbb10-cb66-437a-be50-1803c2337a97" class="numbered-list" start="7"><li><strong>模块化和可重用性</strong>：CMake 脚本可以很容易地组织成模块，以便在不同的项目之间重用。这对于大型项目或有多个相关项目的情况特别有用。</li></ol></li></ul><ul id="13388e8e-ac93-4d6e-8154-423d59c976e2" class="bulleted-list"><li style="list-style-type:disc">因此，使用CMake的关键就是编写<mark class="highlight-red"><code><strong>CMakeLists.txt</strong></code></mark><mark class="highlight-default">，所以掌握CMake的关键就是掌握</mark><mark class="highlight-red"><code><strong>CMakeLists.txt</strong></code></mark><mark class="highlight-default">的语法，接下来就会逐步介绍</mark><code><mark class="highlight-red"><strong>CMakeLists.txt</strong></mark></code><mark class="highlight-default">中常用的一些指令</mark></li></ul><h2 id="e4915e1e-21bc-479f-9d8a-9e0a019b585f" class="block-color-orange_background">CMakeLists.txt：Basic Starting Point</h2><h3 id="506fc7f0-e905-4071-83c9-344a27d51eeb" class="block-color-blue_background">cmake_minimum_required()</h3><ul id="d82db40b-1747-4f66-8863-cd3ac56616ff" class="bulleted-list"><li style="list-style-type:disc"><a href="https://cmake.org/cmake/help/latest/command/cmake_minimum_required.html#command:cmake_minimum_required"><code><strong>cmake_minimum_required()</strong></code></a><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="499cbe0a-7e3d-4f62-ba1a-6111c44b4271" class="code"><code class="language-C++">cmake_minimum_required(VERSION 3.10)</code></pre><ul id="09079d2a-e687-4e74-924c-d0051f4a1769" class="bulleted-list"><li style="list-style-type:circle">设置cmake的最低版本要求</li></ul><ul id="18f5c957-a5a1-488d-a964-5224b2d59d54" class="bulleted-list"><li style="list-style-type:circle">每个CMakeLists.txt的第1行必须是这个</li></ul></li></ul><h3 id="9c354ec6-b508-45b1-974a-61be0ce10541" class="block-color-blue_background">project()、子项目、顶层项目</h3><ul id="84d16f15-6500-4ad2-b915-2df2abf6462d" class="bulleted-list"><li style="list-style-type:disc"><a href="https://cmake.org/cmake/help/latest/command/project.html#command:project"><code><strong>project()</strong></code></a><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="537ab664-cfc4-432c-93a9-b51c7adf6ea0" class="code"><code class="language-C++">project(project_name VERSION 0.1.0 LANGUAGES C CXX)</code></pre><ul id="4bcb3f6f-f868-45e0-83e8-65aae761ab96" class="bulleted-list"><li style="list-style-type:circle">设置项目信息（如项目名、版本、home page url、所用的编程语言）</li></ul><ul id="ff9cf5a9-1317-4e0d-ada2-c11973bf945d" class="bulleted-list"><li style="list-style-type:circle">设置了project后，可以使得对某些<a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html">预定义变量</a>的引用更简单（尤其是通过<a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html">add_subdirectories</a>设置了多个项目）<blockquote id="ca0d991d-5a2f-4049-b1f5-0389c52582e9" class="block-color-gray_background">例如<code>PROJECT_NAME</code>会自动设置成当前项目的名字</blockquote></li></ul><ul id="aefced77-c067-41c3-a2c7-19ef3180f248" class="bulleted-list"><li style="list-style-type:circle"><strong>一旦 </strong><strong><code>project()</code></strong><strong> 命令被调用，CMake就会根据很多特殊变量来初始化项目</strong>（如编译器的选择）因此：<ul id="c3e743da-741c-4a2c-b4fd-5b973c1148d3" class="bulleted-list"><li style="list-style-type:square"><mark class="highlight-red"><strong>用于初始化项目的特殊变量必须在project()之前进行设置</strong></mark>（如CMAKE_C_COMPILER等）</li></ul><ul id="5b771ad6-99b5-40f5-807c-4857b5969a3c" class="bulleted-list"><li style="list-style-type:square">有些特殊变量的设置依赖于项目初始化之后，因此这些特殊变量的设置应该放在project()之后</li></ul></li></ul></li></ul><ul id="e5debb39-e966-4122-a5a4-fa8fb1b2f410" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><span style="border-bottom:0.05em solid"><strong>子项目</strong></span></mark>：假如<span style="border-bottom:0.05em solid"><mark class="highlight-purple"><strong>通过</strong></mark></span><span style="border-bottom:0.05em solid"><mark class="highlight-purple"><strong><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html"><code>add_subdirectories</code></a></strong></mark></span><span style="border-bottom:0.05em solid"><mark class="highlight-purple"><strong>添加了子目录中的一个CMakeLists.txt</strong></mark></span>，然后这个子目录中的CMakeLists.txt中<strong>也设置了</strong><code><strong>project()</strong></code>，那么这个子目录上的CMakeLists.txt就是一个<mark class="highlight-red"><span style="border-bottom:0.05em solid"><strong>子项目</strong></span></mark><ul id="a9b63e17-44b1-46db-8a80-d95cd1d90741" class="bulleted-list"><li style="list-style-type:circle">相对应的，最顶层的CMakeLists.txt就是<mark class="highlight-red"><span style="border-bottom:0.05em solid"><strong>顶层项目</strong></span></mark></li></ul><ul id="702cc3dd-2f88-44cd-8391-6eabac746b69" class="bulleted-list"><li style="list-style-type:circle"><strong><span style="border-bottom:0.05em solid"><em>good practice</em></span></strong>：<mark class="highlight-purple"><span style="border-bottom:0.05em solid"><strong>给子目录的CMakeLists.txt设置project，可以使项目更容易维护</strong></span></mark></li></ul></li></ul><ul id="fbc7d1cb-0847-4f79-83f2-d41291afd5bd" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-purple"><span style="border-bottom:0.05em solid"><strong>当创建一个project后，CMake会自动创建很多变量，从而可以很方便地对项目以及子项目进行引用，例如：</strong></span></mark><figure id="49fb0b56-25ad-4b5a-8d37-59891f5c8d21" class="image" style="text-align:center"><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E6%2588%25AA%25E5%25B1%258F2024-01-22_15.29.46.png"><img style="width:576px" src="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E6%2588%25AA%25E5%25B1%258F2024-01-22_15.29.46.png"/></a></figure><ul id="3523d7eb-c2c6-4c0b-965b-b1e2a8f46214" class="bulleted-list"><li style="list-style-type:circle">通过{project_name}_SOURCE_DIR可以直接引用到<a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html">子项目</a>对应的目录<ul id="bdbcf781-a1c4-478c-a357-caf50d1d1704" class="bulleted-list"><li style="list-style-type:square">例如sublibrary1_SOURCE_DIR、sublibrary1_SOURCE_DIR</li></ul></li></ul><ul id="dcfed7ff-3939-4d29-9baf-52519ff95972" class="bulleted-list"><li style="list-style-type:circle">通过{project_name}_BINARY_DIR可以直接引用到<a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html">子项目</a>对应的构建目录</li></ul></li></ul><ul id="da231c54-35cb-4082-be54-51112882dc38" class="bulleted-list"><li style="list-style-type:disc">project的名字未必就一定是可执行文件的名字：有时候会专门为某一个包建一个CMakeLists，所以这个时候project的name就可以是这个包的名字<ul id="4132b1ac-dc49-4cc1-a3cd-b60ff5e48ca8" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-red"><strong>也可以给这个包通过add_excutable()来创建一个可执行文件（通常用于debug）</strong></mark></li></ul></li></ul><h3 id="8ac17cdb-ff21-4f02-953e-6405499f919d" class="block-color-blue_background">add_excutable()</h3><ul id="7d7b7652-aa7a-4bfd-b245-385c3f6a861f" class="bulleted-list"><li style="list-style-type:disc"><a href="https://cmake.org/cmake/help/latest/command/add_executable.html#command:add_executable"><code><strong>add_executable()</strong></code></a>：用于根据源文件生成可执行文件（这里的源文件一般就是用于构建成可执行文件的main.cpp）<figure id="104973fb-5efc-4d10-961a-a7c0fa3d91ee" class="image"><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E6%2588%25AA%25E5%25B1%258F2024-01-20_16.26.58.png"><img style="width:528px" src="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E6%2588%25AA%25E5%25B1%258F2024-01-20_16.26.58.png"/></a></figure><ul id="cb138918-16dc-44a5-9071-fc49a7bf6fc5" class="bulleted-list"><li style="list-style-type:circle">⚠️：这里的&lt;source&gt;必须是<span style="border-bottom:0.05em solid"><strong>源文件</strong></span>（比如.cpp之类的，.h以及.a，.so这样的东西不叫源文件）</li></ul><ul id="ff82910f-694d-41bb-9c6b-1fa8a12790a7" class="bulleted-list"><li style="list-style-type:circle">例如<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="7e9fa06b-1d22-43a9-9255-8a3d2edf0c2b" class="code"><code class="language-C++">cmake_minimum_required(VERSION 3.5)
+project (hello_cmake)
+add_executable(hello_cmake 
+    ./main.cpp  # 相对于CMakeLists.txt所在的目录
+)  
+
+# 或 add_executable(${PROJECT_NAME} ./main.cpp)</code></pre></li></ul></li></ul><h3 id="f38333fa-3d67-4750-b81c-118f20c43885" class="block-color-blue_background">预定义变量、特殊变量、set指令</h3><ul id="4c596c42-cb33-4746-998e-02d75b7aa4d8" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-purple"><span style="border-bottom:0.05em solid"><strong>当创建一个project后，CMake会自动创建很多变量，从而可以很方便地对项目以及</strong></span></mark><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html"><mark class="highlight-purple"><span style="border-bottom:0.05em solid"><strong>子项目</strong></span></mark></a><mark class="highlight-purple"><span style="border-bottom:0.05em solid"><strong>进行引用：</strong></span></mark><figure id="16b27d0f-0fa0-4982-b478-a7bf79a86517" class="image" style="text-align:center"><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E6%2588%25AA%25E5%25B1%258F2024-01-22_15.29.46.png"><img style="width:576px" src="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E6%2588%25AA%25E5%25B1%258F2024-01-22_15.29.46.png"/></a></figure><ul id="65178028-1ab3-492b-9e7a-c95365980fdb" class="bulleted-list"><li style="list-style-type:circle">通过{project_name}_SOURCE_DIR可以直接引用到<a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html">子项目</a>对应的目录<ul id="c945ce95-c489-4560-a44b-36e13d467b7b" class="bulleted-list"><li style="list-style-type:square">例如sublibrary1_SOURCE_DIR、sublibrary1_SOURCE_DIR</li></ul></li></ul><ul id="af4b71ce-47eb-4377-a756-24946a5d2415" class="bulleted-list"><li style="list-style-type:circle">通过{project_name}_BINARY_DIR可以直接引用到<a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html">子项目</a>对应的构建目录</li></ul></li></ul><ul id="16b611d0-d5a1-488b-bc85-8f7fd9d1f8a4" class="bulleted-list"><li style="list-style-type:disc"><code><strong>PROJECT_BINARY_DIR</strong></code>、<code><strong>CMAKE_BINARY_DIR</strong></code><blockquote id="0a843969-2e8e-4a05-b4a6-2dfd324fcb9c" class="block-color-gray_background">对于一些头文件模版（.h.in），cmake构建后会在对应的构建目录中生成对应的.h文件，所以在这种情况下，假如源文件中include了一个由头文件模版生成的头文件，就需要在对应的CMakeLists.txt中通过使用<code>PROJECT_BINARY_DIR</code>或<code>CMAKE_BINARY_DIR</code>变量来导入对应的头文件</blockquote><ul id="e7e508a8-990d-4b1d-ab65-85d0e12904d7" class="bulleted-list"><li style="list-style-type:circle">假设项目结构如下：<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="7fc1c3e7-ec49-4688-a924-7114d2627ba0" class="code"><code class="language-C++">MyProject/
+│   CMakeLists.txt          # 顶层项目的 CMakeLists.txt
+├───build/                  # 构建目录
+└───SubProject/
+    │   CMakeLists.txt      # 子项目的 CMakeLists.txt</code></pre><p id="2702479c-bcd0-482e-80c7-7fb718dae696" class="">当在 MyProject/build/ 目录中运行 <code>cmake ..</code> 时</p><ul id="539858d9-6ccb-468e-b002-eb1558103124" class="bulleted-list"><li style="list-style-type:square">在 <em><span style="border-bottom:0.05em solid"><strong>MyProject/CMakeLists.txt </strong></span></em>中：<code><strong>CMAKE_BINARY_DIR</strong></code> 和 <code><strong>PROJECT_BINARY_DIR</strong></code> 在 MyProject/CMakeLists.txt 中都会指向 MyProject/build/</li></ul><ul id="f64983d2-b828-464b-8190-fb14101dc794" class="bulleted-list"><li style="list-style-type:square">在 <span style="border-bottom:0.05em solid"><em><strong>SubProject/CMakeLists.txt</strong></em></span> 中：如果通过 <code>add_subdirectory(SubProject)</code> 添加了<a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html">子项目</a>，<code><strong>PROJECT_BINARY_DIR</strong></code> 将<mark class="highlight-purple"><strong>指向 MyProject/build/SubProject/</strong></mark><br/><br/><code><strong>CMAKE_BINARY_DIR</strong></code> 仍然指向 <code>MyProject/build/</code>，因为它<span style="border-bottom:0.05em solid"><strong>始终指向最顶层</strong></span>的构建目录。<blockquote id="fe7cf976-2682-4518-88b9-bf13f26d150b" class="block-color-gray_background">⚠️：<mark class="highlight-purple"><span style="border-bottom:0.05em solid"><strong>SubProject 的构建文件会被放在 MyProject/build/SubProject/</strong></span></mark></blockquote></li></ul></li></ul></li></ul><ul id="86d8fd42-6f03-4816-a79e-97e3abd87138" class="bulleted-list"><li style="list-style-type:disc"><code><strong>PROJECT_SOURCE_DIR</strong></code>、<code><strong>CMAKE_SOURCE_DIR</strong></code>：<ul id="17a28551-0f86-4c2a-916a-eee26e967c53" class="bulleted-list"><li style="list-style-type:circle"><code>PROJECT_SOURCE_DIR</code>：指向包含当前 CMakeLists.txt 文件的<strong><span style="border-bottom:0.05em solid">最近的</span></strong>项目（使用了project() 进行命名）的根目录。</li></ul><ul id="97f5e4a0-563e-4dd2-8f78-74b0309436b1" class="bulleted-list"><li style="list-style-type:circle"><code>CMAKE_SOURCE_DIR</code>：永远指向<span style="border-bottom:0.05em solid"><strong>最顶层的</strong></span>CMakeLists.txt所在的目录（无论是否是一个<a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html">子项目</a>或子目录）</li></ul></li></ul><ul id="aadfe9d9-2543-4398-9eec-9fa1655cc85b" class="bulleted-list"><li style="list-style-type:disc"><code><strong>CMAKE_CURRENT_SOURCE_DIR</strong></code>：永远指向<span style="border-bottom:0.05em solid"><strong>当前的CMakeList.txt所在的目录</strong></span>（无论这个CMakeList.txt是不是一个<a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html">子项目</a>）</li></ul><ul id="e6992a76-c490-42f2-a665-830d4b6d2a3c" class="bulleted-list"><li style="list-style-type:disc"><strong><code>CMAKE_CURRENT_BINARY_DIR</code></strong>：永远指向<span style="border-bottom:0.05em solid"><strong>当前的构建目录</strong></span></li></ul><ul id="d99bd418-71eb-46fd-8a74-13620691e527" class="bulleted-list"><li style="list-style-type:disc"><a href="https://cmake.org/cmake/help/latest/command/set.html#command:set"><code><strong>set()</strong></code></a>：设置CMakeLists.txt中的普通变量/ 特殊变量/ 环境变量</li></ul><ul id="79fb878f-b258-4d98-bf02-259d35f920c5" class="bulleted-list"><li style="list-style-type:disc"><strong>一旦 </strong><strong><code>project()</code></strong><strong> 命令被调用，CMake就会根据很多特殊变量来初始化项目</strong>（如编译器的选择）因此：<ul id="24facb5e-dfd5-42da-9b48-9284eb4bbcc2" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-red"><strong>用于初始化项目的特殊变量必须在project()之前进行set()设置<br/><br/></strong></mark>（如CMAKE_C_COMPILER等）</li></ul><ul id="dcf60234-5a21-4f41-b81f-92c02cfbfb17" class="bulleted-list"><li style="list-style-type:circle">有些特殊变量的设置依赖于项目初始化之后，因此这些特殊变量的设置应该放在project()之后进行set()设置</li></ul></li></ul><ul id="d569a0c1-fb9a-4f89-bb4c-8468dc16c5b5" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid"><mark class="highlight-purple"><strong>CMake中的大多数特殊变量都以CMAKE_开头</strong></mark></span>，因此在命名自己的变量时不要用CMAKE_开头</li></ul><h3 id="555e7c35-7e43-4fd1-a20c-d0ba1a1ccca9" class="block-color-blue_background">设置C++标准、设置clang编译器、设置<mark class="highlight-default">AddressSanitizer、设置默认构建模式</mark></h3><blockquote id="af5d5e8f-34e0-44b4-970e-1d0190ca7caa" class="block-color-gray_background">clang的错误信息对用户来说更加友好，因此<span style="border-bottom:0.05em solid"><mark class="highlight-red"><strong>建议在调试代码的时候使用clang/ clang++编译器</strong></mark></span>，即在CMakeLists.txt中加入：<p id="6fb00fc5-02a0-424a-b29c-71b9fb3119b3" class=""><code>set(CMAKE_C_COMPILER &quot;clang&quot;)<br/> set(CMAKE_CXX_COMPILER &quot;clang++&quot;)<br/></code><br/><br/></p><p id="24f5d78e-da83-4ce0-a4ea-792db6d192be" class=""><mark class="highlight-default">CMake项目中，</mark><mark class="highlight-red"><strong>在</strong></mark><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html"><mark class="highlight-red"><strong>构建模式为Debug</strong></mark></a><mark class="highlight-red"><strong>时添加AddressSanitizer</strong></mark><mark class="highlight-default">，可以有效地检测和调试内存相关的错误，提高代码的稳定性和质量。<br/>⚠️：<br/></mark>使用 AddressSanitizer 时，可能需要确保您的系统有对应的库支持。在一些系统中，可能需要安装额外的库（例如，在某些 Linux 发行版中，可能需要安装 <code><strong>libasan</strong></code>）<br/>⚠️：AddressSanitizer 会增加程序的内存使用和减慢运行速度，因此通常<br/><mark class="highlight-purple"><strong>只在调试阶段使用</strong></mark>。在发布或生产构建中，一定要禁用 AddressSanitizer 以避免性能影响。<br/><br/>设置完后，当出现内存错误引用时（很隐蔽的有时候会检测不出来），运行程序会出现报错（如果是debug，则debug的时候会卡住，然后<br/><span style="border-bottom:0.05em solid"><strong>debug console里</strong></span>会出现Sanitizer的输出信息）<br/><br/><br/><mark class="highlight-red"><strong>改完后记得</strong></mark><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html"><mark class="highlight-red"><strong>清空缓存</strong></mark></a></p></blockquote><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="0c9cced2-8ea1-444c-ba07-2166d432020c" class="code"><code class="language-C++">
+# ========================    预先进行设置的配置    ======================== #
+
+cmake_minimum_required(VERSION 3.10) # 设置CMake最低版本要求
+
+set(CMAKE_C_COMPILER &quot;clang&quot;)  
+set(CMAKE_CXX_COMPILER &quot;clang++&quot;)
+
+# 使用vcpkg来管理第三方包
+set(CMAKE_TOOLCHAIN_FILE 
+    &quot;${CMAKE_CURRENT_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake&quot;
+    CACHE STRING &quot;Vcpkg toolchain file&quot;
+)
+
+# 使用project初始化项目时，CMake会使用到VERSION，CMAK_{C,CXX}_COMPLIER，CMAKE_TOOLCHAIN_FILE
+#+等变量，因此这些变量必须要project初始化前进行设置
+
+
+# ===========================    主体代码部分    ========================== #
+
+# 初始化项目并设置语言
+project(project_name LANGUAGES C CXX)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# debug模式下启用AddressSanitizer
+if (CMAKE_BUILD_TYPE STREQUAL &quot;Debug&quot;)
+    add_compile_options(-fsanitize=address)
+    add_link_options(-fsanitize=address)
+endif()
+
+# 在没有指定构建模式时，指定为Release模式(不会生成调试信息)
+if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+  message(&quot;Setting build type to &#x27;RelWithDebInfo&#x27; as none was specified.&quot;)
+  set(CMAKE_BUILD_TYPE Release CACHE STRING &quot;Choose the type of build.&quot; FORCE)
+  # Set the possible values of build type for cmake-gui
+  set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS &quot;Debug&quot; &quot;Release&quot;
+    &quot;MinSizeRel&quot; &quot;RelWithDebInfo&quot;)
+endif()
+
+...</code></pre><ul id="7e2e02ef-8b8c-4cfa-87ae-9724e28609bb" class="bulleted-list"><li style="list-style-type:disc">一些注意点：<ul id="47daa639-c09c-4141-8f26-fad091424bff" class="bulleted-list"><li style="list-style-type:circle"><span style="border-bottom:0.05em solid"><strong>CMAKE_开头的都是全局变量</strong></span>，所以在顶层项目中设置了以后，会<strong>自动影响到</strong><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html"><strong>子项目</strong></a><strong>中的CMakeLists.txt里</strong>。<ul id="95796469-4df9-449c-80af-9b07f8952a34" class="bulleted-list"><li style="list-style-type:square">所以<mark class="highlight-red"><span style="border-bottom:0.05em solid"><strong>如果是在顶层项目中</strong></span></mark><mark class="highlight-red"><span style="border-bottom:0.05em solid"><strong><code>cmake</code></strong></span></mark><mark class="highlight-red"><span style="border-bottom:0.05em solid"><strong>顶层CMakeLists.txt</strong></span></mark>，那么<a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html">子项目</a>中的CMakeLists.txt中，这些变量可以不进行设置</li></ul><ul id="d4e61b95-02bc-4c39-bb7f-16ad60ef14b7" class="bulleted-list"><li style="list-style-type:square">也可以在<a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html">子项目</a>的CMakeLists.txt中显式地指定，从而定制<a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html">子项目</a>的行为</li></ul></li></ul><ul id="5584d060-48d1-45c4-8840-3dc38b91e4f5" class="bulleted-list"><li style="list-style-type:circle"><strong>一旦 </strong><strong><code>project()</code></strong><strong> 命令被调用，CMake 就会根据很多特殊变量来初始化项目</strong>（如编译器的选择），因此这些<mark class="highlight-red"><strong>用于初始化项目的特殊变量必须在project()之前进行设置</strong></mark>（如CMAKE_C_COMPILER、CMAKE_TOOLCHAIN_FILE等）</li></ul><ul id="d48b1bab-929a-48d0-9af6-4ba80d6cc8bc" class="bulleted-list"><li style="list-style-type:circle">cmake_minimum_required(VERSION 3.10)会在一开始就检查cmake版本，所以也不需要在<a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html">子项目</a>中重复设置</li></ul><ul id="78e18eff-9f50-40a1-866f-aab82befd92c" class="bulleted-list"><li style="list-style-type:circle">add_compile_options和add_link_options<span style="border-bottom:0.05em solid"><strong>设置了之后会在之后所有的target中进行应用</strong></span><ul id="2e35546f-39bd-4a09-bec0-33ba0d848339" class="bulleted-list"><li style="list-style-type:square"><mark class="highlight-red"><strong>所以如果是在顶层项目中cmake</strong></mark>，那么<a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html"><span style="border-bottom:0.05em solid"><strong>子项目</strong></span></a><span style="border-bottom:0.05em solid"><strong>中也可以不进行设置</strong></span></li></ul></li></ul></li></ul><ul id="776e11a2-ea50-4a3f-9778-3c5ce7375108" class="bulleted-list"><li style="list-style-type:disc"><code>CMAKE_CXX_STANDARD</code>：设置CXX的标准<ul id="af04f173-7316-455c-a0d6-596cfde66ced" class="bulleted-list"><li style="list-style-type:circle"><code>CMAKE_CXX_STANDARD_REQUIRED</code>：通常与CMAKE_CXX_STANDARD，要求必须设置</li></ul></li></ul><ul id="249573c5-bbae-41bf-a187-f3ba00aad827" class="bulleted-list"><li style="list-style-type:disc"><code>CMAKE_C_COMPILER</code>： 编译C代码所用的编译器（linux上默认gcc）</li></ul><ul id="f82bb827-d625-4aaf-a2d0-6a5fa0687ac7" class="bulleted-list"><li style="list-style-type:disc"><code>CMAKE_CXX_COMPILER</code> ： 编译C++代码所用的编译器（linux上默认g++）</li></ul><ul id="eff8c07e-2ef8-43f0-81d4-2ce1c4872739" class="bulleted-list"><li style="list-style-type:disc"><code>CMAKE_LINKER</code>： 链接C代码所用的连接器（linux上默认ld）</li></ul><ul id="97914b72-4c7c-4036-8708-e76cb0160e5c" class="bulleted-list"><li style="list-style-type:disc"><strong><code>add_compile_options</code></strong>与<strong><code>add_link_options</code></strong>：添加编译和链接选项<ul id="f4215cff-7044-4a1b-a5d7-634deb18cf97" class="bulleted-list"><li style="list-style-type:circle">最常见的例子就是<mark class="highlight-red"><strong>在</strong></mark><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html"><mark class="highlight-red"><strong>构建模式为Debug</strong></mark></a><mark class="highlight-red"><strong>时添加AddressSanitizer</strong></mark></li></ul></li></ul><h2 id="1dd73bd9-4687-4b27-9711-2ce53511547f" class="block-color-orange_background">CMakeLists.txt：Adding a Library</h2><h3 id="ff31db18-40a3-4caf-be20-54c2ace42aec" class="block-color-blue_background">add_library()</h3><ul id="b845447a-b65e-45f3-8393-f41b2714d403" class="bulleted-list"><li style="list-style-type:disc"><a href="https://cmake.org/cmake/help/latest/command/add_library.html#command:add_library"><code><strong>add_library()</strong></code></a>：用于从指定的源文件中创建一个库（无论是静态库还是动态库）。这个命令告诉 CMake 如何编译和链接库文件。（<mark class="highlight-purple"><strong>源文件的路径使用的是相对路径，相对于CMakeLists.txt所在的目录</strong></mark><mark class="highlight-default">，</mark>即前面默认加了<a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html">CMAKE_CURRENT_SOURCE_DIR</a>）<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="da34ce15-f2b3-4ac8-95b1-7f3b08ea725d" class="code"><code class="language-Plain Text">add_library(&lt;name&gt; [STATIC | SHARED | MODULE | INTERFACE]
+            [EXCLUDE_FROM_ALL]
+            [&lt;source&gt;...])</code></pre><ul id="429b7ebf-e7df-4ca1-9b31-10d5564e6046" class="bulleted-list"><li style="list-style-type:circle">创建静态链接库：add_library(my_static_lib STATIC source1.cpp source2.cpp)</li></ul><ul id="d97391b7-d394-496b-941f-b898069b08b2" class="bulleted-list"><li style="list-style-type:circle">创建动态链接库：add_library(my_shared_lib SHARED source1.cpp source2.cpp)</li></ul><ul id="4a0b53de-1bbd-4e2f-ad09-13bd823eb4fa" class="bulleted-list"><li style="list-style-type:circle">⚠️：这里的&lt;source&gt;必须是<span style="border-bottom:0.05em solid"><strong>源文件</strong></span>（比如.cpp之类的，.h以及.a，.so这样的东西不叫源文件）</li></ul></li></ul><ul id="4ae5bcbd-80ec-4ffd-85be-588ae4818745" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-purple"><span style="border-bottom:0.05em solid"><strong>仅有头文件组成的library</strong></span></mark>：对于这种<span style="border-bottom:0.05em solid"><strong>没有源文件的library</strong></span>，通常会在后面使用<mark class="highlight-default"><strong>INTERFACE</strong></mark>进行修饰，<span style="border-bottom:0.05em solid"><strong>表示它不需要进行编译</strong></span><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="70c32425-1fc6-4b9b-beba-a7a8b2574487" class="code"><code class="language-C++">project(sublibrary)
+
+add_library(${PROJECT_NAME} INTERFACE)
+add_library(${PROJECT_NAME}::lib ALIAS 
+    ${PROJECT_NAME}
+)
+
+target_include_directories(${PROJECT_NAME} INTERFACE
+    ./include
+)</code></pre><ul id="465a7a75-870a-4deb-b0b8-54a6a24fdff6" class="bulleted-list"><li style="list-style-type:circle">在这种情况下，通常使用<a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html"><code>target_include_directories()</code></a>来导入头文件时，<a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html">也会设置</a><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html"><strong>INTERFACE</strong></a><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html">级别</a></li></ul></li></ul><ul id="e99b4d5f-2c3b-4f61-b1cc-92c857fa6d5d" class="bulleted-list"><li style="list-style-type:disc">假如这个library还有外部依赖的静态库或动态库，则还要通过<code><strong>target_link_libraries()</strong></code>来把这些外部依赖链接到这个library target里<ul id="fc19bec7-5fe1-4205-9eaf-6bbdacad9238" class="bulleted-list"><li style="list-style-type:circle">假如源文件已经提供了这个library所需要的全部实现，就不需要<code><strong>target_link_libraries()</strong></code>这一步</li></ul></li></ul><h3 id="72574ef0-0c43-4765-8b24-22dfc505e567" class="block-color-blue_background">target_include_directories()、target_link_libraries()</h3><ul id="603685c3-ae69-4d3b-b67a-670e6db80589" class="bulleted-list"><li style="list-style-type:disc"><code><strong>target_include_directories()</strong></code>：给一个目标所用到的.cpp源文件添加一个include时可能要用到的目录（与<code>add_library()</code>一样也是<span style="border-bottom:0.05em solid"><strong>相对于</strong></span><strong><code>CMakeLists.txt</code></strong><span style="border-bottom:0.05em solid"><strong>所在的目录</strong></span>，即前面默认加了<a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html">CMAKE_CURRENT_SOURCE_DIR</a>）。<br/><br/><span style="border-bottom:0.05em solid"><strong>相当于给gcc编译器指定了-I选项：-I /directory/path</strong></span><blockquote id="c981348c-6014-4753-a570-cc131c235267" class="block-color-gray_background">这里的目标指的是<code>add_library()</code>中定义的静态 /动态库，或者是<code>add_executable()</code>中定义的可执行文件</blockquote><ul id="092ca4fe-4d73-471b-890b-a477113eac53" class="bulleted-list"><li style="list-style-type:circle">语法：<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="49d3ed5e-2e9c-4950-b560-c218e7b1ae48" class="code"><code class="language-C++">target_include_directories(&lt;target&gt;
+    [BEFORE]
+    [SYSTEM] [AFTER]
+    [PUBLIC|PRIVATE|INTERFACE]
+    &lt;items&gt;...
+)</code></pre></li></ul><ul id="7263bf7c-44cb-461b-8c2a-18390d851816" class="bulleted-list"><li style="list-style-type:circle">可以通过参数<code><strong>PUBLIC</strong></code>, <code><strong>PRIVATE</strong></code>, <code><strong>INTERFACE</strong></code>指定包含目录的范围：<ul id="d02bde3b-ab03-4134-8715-3ab1a4c1eff5" class="bulleted-list"><li style="list-style-type:square"><strong><code>PUBLIC</code></strong> ：意味着包含目录既用于编译目标自身，也<mark class="highlight-red"><span style="border-bottom:0.05em solid"><strong>会传递(populate)给链接了该目标的其他目标</strong></span></mark>；</li></ul><ul id="903cb043-37eb-4ef5-aef3-f54d5f129c84" class="bulleted-list"><li style="list-style-type:square"><strong><code>PRIVATE</code></strong> 意味着包含目录<mark class="highlight-purple"><span style="border-bottom:0.05em solid"><strong>仅用于编译目标自身</strong></span></mark>（通常用于一个可执行文件目标）；<blockquote id="f98a9645-52fd-4583-a82c-7cff91553cd4" class="block-color-gray_background">默认<code>PRIVATE</code></blockquote></li></ul><ul id="a0170730-d4f8-41ef-b757-70c1dbd57671" class="bulleted-list"><li style="list-style-type:square"><strong><code>INTERFACE</code></strong> 意味着包含目录<mark class="highlight-purple"><strong>不用于编译目标自身</strong></mark>，<mark class="highlight-purple"><strong>但会传递(populate)</strong></mark>给链接了该目标的其他目标。<mark class="highlight-purple"><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html"><span style="border-bottom:0.05em solid"><strong>常用于只有头文件的library</strong></span></a></mark>（对于这种library只需要负责向上传递即可）<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="661b0027-446b-412c-976d-f7777c0c637e" class="code"><code class="language-C++">add_library(${PROJECT_NAME} INTERFACE)
+target_include_directories(${PROJECT_NAME} INTERFACE
+    ${PROJECT_SOURCE_DIR}/include
+)</code></pre></li></ul></li></ul><ul id="abff5136-db6f-4ee4-bb90-27f879e43d30" class="bulleted-list"><li style="list-style-type:circle"><code><strong>&lt;items&gt;</strong></code>: 要添加的包含目录。</li></ul></li></ul><ul id="133aac46-a111-4c49-b207-c5812c806899" class="bulleted-list"><li style="list-style-type:disc"><code><strong>target_link_libraries()</strong></code> ：用于指定目标需要链接的库。它可以指定库文件的路径，也可以是由其他项目生成的目标。<blockquote id="d36ebac7-15dd-47f1-bfdd-3efe7588d562" class="block-color-gray_background">与<code>target_include_directories()</code>一样，这里的目标指的是<code>add_library()</code>中定义的静态 /动态库，或者是<code>add_executable()</code>中定义的可执行文件</blockquote><ul id="6ca1cbc2-c550-4976-8620-f2a4282864d0" class="bulleted-list"><li style="list-style-type:circle">语法<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f720d6c4-18a4-4c00-a991-a6125b439164" class="code"><code class="language-C++">target_link_libraries(&lt;target&gt;
+    &lt;PRIVATE|PUBLIC|INTERFACE&gt; &lt;item&gt;...
+    [&lt;PRIVATE|PUBLIC|INTERFACE&gt; &lt;item&gt;...]...
+)</code></pre></li></ul><ul id="de92c88a-6b13-431c-b10d-bb1b03c518ee" class="bulleted-list"><li style="list-style-type:circle">参数<code><strong>PUBLIC</strong></code>, <code><strong>PRIVATE</strong></code>, <code><strong>INTERFACE</strong></code>指定库的链接范围。含义与 <code>target_include_directories()</code> 中类似，<mark class="highlight-red"><strong>当指定为</strong></mark><mark class="highlight-red"><strong><code>PUBLIC</code></strong></mark><mark class="highlight-red"><strong>时，如果链接了这个库的target还会同时链接被这个库链接的其它库，并populate相关的依赖（如头文件）</strong></mark>。例如：<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c69ec771-db28-4a21-9c3b-d2a66efd1256" class="code"><code class="language-C++">add_library(libA SHARED libA.cpp)
+add_library(libB SHARED libB.cpp)
+target_link_libraries(libB PUBLIC libA)
+
+add_executable(app main.cpp)
+target_link_libraries(app PRIVATE libB)</code></pre><p id="be0cf6d9-8aac-4f5b-82ad-9da3281fbb3e" class="">在这个例子中：</p><ul id="e4523345-3620-4b9f-a90e-5018775c33f1" class="bulleted-list"><li style="list-style-type:square"><code>libB</code> 通过 <code>PUBLIC</code> 关键字链接到 <code>libA</code>。</li></ul><ul id="40ebec07-e051-4f25-9f01-39a91a0be843" class="bulleted-list"><li style="list-style-type:square"><code>app</code> 链接到 <code>libB</code>（通过 <code>PRIVATE</code> 关键字）。</li></ul><p id="89e7432a-fbe5-4e3b-b8bf-0a0d27e0465b" class="">结果是：</p><ul id="2382f0fe-ad27-431e-858e-424e50a479ad" class="bulleted-list"><li style="list-style-type:square"><code>app</code> 会直接链接 <code>libB</code>，<span style="border-bottom:0.05em solid"><strong>并间接链接 </strong></span><code><strong>libA</strong></code>。<br/>换句话说，即使 <br/><code>app</code> 直接链接的是 <code>libB</code>，它也会因 <code>libB</code> 的 <code>PUBLIC</code> 链接接收到 <code>libA</code> 的相关设置<br/>⚠️：<br/><mark class="highlight-default">这个相关配置</mark><strong><mark class="highlight-default">还包括了include path</mark></strong><mark class="highlight-default">，即</mark><strong><mark class="highlight-purple"><span style="border-bottom:0.05em solid">还包括了</span></mark></strong><strong><mark class="highlight-purple"><em><span style="border-bottom:0.05em solid">target_include_directories(libA, …)</span></em></mark></strong><mark class="highlight-default">中的东西。</mark></li></ul></li></ul></li></ul><h3 id="ef698460-b4ae-4439-8457-0473abd5d1c6" class="block-color-blue_background">add_subdirectory()</h3><ul id="29217543-55f7-4396-b2cc-7a41d7451ae5" class="bulleted-list"><li style="list-style-type:disc"><a href="https://cmake.org/cmake/help/latest/command/add_subdirectory.html#command:add_subdirectory"><code><strong>add_subdirectory()</strong></code></a>：用于向当前项目添加子目录（使用的是相对于当前<code><strong>CMakeLists.txt</strong></code>所在目录的<span style="border-bottom:0.05em solid"><strong>相对路径</strong></span>，即前面默认加了<a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html">CMAKE_CURRENT_SOURCE_DIR</a>）。<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="93be1fb1-a016-4343-91b1-3eb8ba942c45" class="code"><code class="language-Plain Text">add_subdirectory(source_dir [binary_dir] [EXCLUDE_FROM_ALL])</code></pre><blockquote id="df26a624-bc21-4f6d-b765-737f95480ff4" class="block-color-gray_background">这个命令常用于大型项目：当上级目录的某个目标<code>target</code>由某个子目录中的<code>CMakeLists.txt</code>及其源文件构建出时，就可以通过<code>add_subdirectory</code>来把这个依赖包含到上级目录的<code>CMakeLists.txt</code>中，从而可以达到拆分<code>CMakeLists.txt</code>，使得项目结构更加清晰的目的。<br/><br/><br/><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html">一个例子</a></blockquote><ul id="66cbf4ba-bf6a-4f8d-8e00-4f2a1b283e46" class="bulleted-list"><li style="list-style-type:circle"><code><strong>source_dir</strong></code> ：要添加的子目录的相对或绝对路径。这个目录通过会包含它自己的 <code><strong>CMakeLists.txt</strong></code> 文件。</li></ul><ul id="259be764-7711-4286-83b9-d79372ee9b34" class="bulleted-list"><li style="list-style-type:circle"><code><strong>binary_dir</strong></code> ：用于存放生成的二进制和中间文件的放置位置。如果不指定，CMake 会使用一个默认的目录。</li></ul><ul id="46e53bcd-7c55-40a0-ac55-e84fc4e3f8d0" class="bulleted-list"><li style="list-style-type:circle"><code><strong>EXCLUDE_FROM_ALL</strong></code> ：一个可选参数。如果设置，这个<a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html">子项目</a>不会在父项目的ALL构建中被包含，除非特别指定。</li></ul></li></ul><ul id="d28e40de-c7fc-4007-87c8-1884107d5229" class="bulleted-list"><li style="list-style-type:disc"><del>子目录的CMakeLists.txt中可以不设置</del><del><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html">project()</a></del>，<span style="border-bottom:0.05em solid"><strong>但一般建议设置，这样会使得项目更好维护</strong></span><ul id="c6597ac3-061f-4a08-81d8-c8c8b28fea34" class="bulleted-list"><li style="list-style-type:circle">当设置时，这个子目录的CMakeLists.txt就是一个<a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html"><span style="border-bottom:0.05em solid"><strong>子项目</strong></span></a>：将在子目录的<strong><code>CMakeLists.txt</code></strong>中创建一个新的项目作用域。这将对一些变量的值产生影响，例如 <code><strong>PROJECT_NAME</strong></code>、<code><strong>PROJECT_SOURCE_DIR</strong></code> 、<code><strong>PROJECT_BINARY_DIR</strong></code>等。</li></ul></li></ul><h2 id="e8f86fd6-1351-46aa-801e-055743f88551" class="block-color-orange_background">cmake：构建makefile、生成可执行文件</h2><ul id="ac43a1b1-ff76-4e7b-bfb5-a75c5566b00b" class="bulleted-list"><li style="list-style-type:disc"><a href="https://cmake.org/cmake/help/latest/manual/cmake.1.html#manual:cmake(1)"><code><strong>cmake</strong></code></a>：根据CMakeLists.txt来根据构建系统生成对应的构建文件（如Makefile）<blockquote id="bba0735b-0636-4126-817e-c6e5c31a0889" class="block-color-gray_background">在 <strong>Linux</strong> 和 <strong>Unix-like</strong> 系统上，CMake 默认使用 <strong>Makefiles</strong>。</blockquote></li></ul><h3 id="9dffb620-5f31-413f-b75f-8c8f6ee699c4" class="block-color-blue_background">一个常见的cmake pipeline</h3><ol type="1" id="bc00255f-4d65-4ea9-85b6-5832cec16b16" class="numbered-list" start="1"><li>在CMakeLists.txt同目录下<mark class="highlight-red"><strong>创建一个build目录</strong></mark><ul id="330a6d19-e6f3-407a-a671-f7d3f8260863" class="bulleted-list"><li style="list-style-type:disc">good practice <strong><span style="border-bottom:0.05em solid"><em>(Out-of-Source Build)</em></span></strong>：<mark class="highlight-purple"><strong>通常会创建一个build目录，然后在build目录内执行cmake生成构建文件</strong></mark>(例如makefile)，然后再使用<code><strong>cmake --build</strong></code>在当前目录中生成二进制目标文件</li></ul></li></ol><ol type="1" id="e5fa28b0-a899-4f58-ac8d-a0bc3605fd70" class="numbered-list" start="2"><li><em><strong><code>cmake ..</code></strong></em>：生成makefile（或其他的）等构建文件<ul id="0b97d6e7-e8d2-4aba-a7ae-515fef530129" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-purple"><strong>修改了CMakeLists.txt后，最好把build目录中的内容删了再重新</strong></mark><mark class="highlight-purple"><strong><em><code>cmake ..</code></em></strong></mark>，因为build目录中可能还有上一次cmake后时保留的缓存文件（<em><code>CMakeCache.txt</code></em>），会导致cmake仍然使用旧的一些配置信息（比如一些变量的设置）</li></ul><ul id="ea580407-9e02-4d46-b10d-fc17139fecfe" class="bulleted-list"><li style="list-style-type:disc">如果是<strong>在CMakeLists.txt中修改了一些变量</strong>，建议在cmake时<mark class="highlight-purple"><strong>使用-U选项</strong></mark>，即：<br/><br/><strong><em><code>cmake -U * ..</code></em></strong><br/>表示在配置项目之前，从CMake的缓存中移除所有已定义的变量。<br/></li></ul><ul id="6017d833-d7f5-4665-b2d3-c933b463df70" class="bulleted-list"><li style="list-style-type:disc">或者直接使用<em><code>cmake -E remove_directory &lt;directory&gt;</code></em>命令，它提供了一个平台无关的方式来删除指定的目录及其包含的所有文件和子目录。<ul id="f66348d4-6cf0-4cec-8d20-5948d61712f4" class="bulleted-list"><li style="list-style-type:circle">但有时候build目录里会有一些重要的文件，此时删整个build目录可能会导致一些麻烦，</li></ul></li></ul></li></ol><ol type="1" id="369f62ff-ee23-4681-9a13-1823f275f835" class="numbered-list" start="3"><li><em><strong><code>cmake --build . </code></strong></em>：生成可执行文件<ul id="8e91e553-3505-467c-afac-d75c02991df3" class="bulleted-list"><li style="list-style-type:disc"><code><strong>cmake --build</strong></code> 是一个<strong>跨平台的命令</strong>，根据之前CMake生成的构建文件来来编译和链接代码</li></ul><ul id="001d8443-2d4b-4b73-90d5-44c454085db2" class="block-color-default bulleted-list"><li style="list-style-type:disc">使用 <code><strong>cmake --build</strong></code> 的好处是它提供了一个统一的接口来构建你的项目，无论你在哪个平台上或使用哪个具体的构建工具。这意味着你不需要直接调用 <code><strong>make</strong></code>, <code><strong>ninja</strong></code>, <code><strong>msbuild</strong></code> 等工具，而是让 CMake 根据你的项目配置自动选择正确的工具和命令。</li></ul></li></ol><h3 id="4688fa2a-198e-48ed-b47e-3408ab450014" class="block-color-blue_background">使用cmake的<strong>-D选项来设置CMakeLists.txt中的变量</strong></h3><ul id="c8247df7-111b-4d9c-a987-7d1c02728832" class="bulleted-list"><li style="list-style-type:disc"><strong><em><code>-D&lt;VARIABLE_NAME&gt;=&lt;VALUE&gt;</code></em></strong>：camke允许通过-D选项来设置CMakeLists.txt中的变量（使用-D选项时<span style="border-bottom:0.05em solid"><mark class="highlight-purple"><strong>后面不跟空格</strong></mark></span>，这是CMake的一种预定，可以使参数解析更容易）</li></ul><h3 id="43584f7d-1f43-43f7-b059-93c1a491f716" class="block-color-blue_background">-DCMAKE_BUILD_TYPE选项（变量）</h3><ul id="d909c632-332a-410c-9646-017197a03563" class="bulleted-list"><li style="list-style-type:disc"><strong><code>CMAKE_BUILD_TYPE</code></strong>选项（-DCMAKE_BUILD_TYPE）：CMake在生成构建文件时<span style="border-bottom:0.05em solid"><strong>允许指定不同的构建类型</strong></span>（通过<code>-DCMAKE_BUILD_TYPE</code>选项），这些构建类型通过预定义的编译器标志来优化生成的可执行文件或库文件。以下是 CMake 提供的几种主要构建类型及其含义：<ul id="92a0bc85-88a4-4865-9c4d-8a65dc6870ba" class="bulleted-list"><li style="list-style-type:circle"><em><span style="border-bottom:0.05em solid"><strong>Release</strong></span></em>:<ul id="d12c9dbb-ffbc-4359-bb44-12787b8d4dfa" class="bulleted-list"><li style="list-style-type:square">目的：用于发布版本，优先考虑性能。</li></ul><ul id="95dcee9b-5fef-4f42-8755-db911dd2e421" class="bulleted-list"><li style="list-style-type:square">标志：<code><strong>-O3 -DNDEBUG</strong></code><blockquote id="79ed7731-4c38-41cb-a788-b8eae13c6ddb" class="block-color-gray_background"><code><strong>O3</strong></code>：这是编译器的一个优化等级，表示编译器会尽可能地优化代码，以提高执行速度。这可能包括增加代码大小和编译时间。<p id="cddc6d10-217d-4d3a-9c12-aaf8f83ca686" class=""><code><strong>DNDEBUG</strong></code>：定义此宏会禁用 <code><strong>assert</strong></code> 语句。在发布版本中通常不包含断言。</p></blockquote></li></ul><ul id="2e066710-a331-4cc7-a1fb-f29a94fef4b1" class="bulleted-list"><li style="list-style-type:square">例如：<code>cmake .. -DCMAKE_BUILD_TYPE=Release</code></li></ul></li></ul><ul id="a04a03d5-c4fb-4309-ac51-ed204ff3b9da" class="bulleted-list"><li style="list-style-type:circle"><em><span style="border-bottom:0.05em solid"><strong>Debug</strong></span></em>：<ul id="b06cc469-74d4-46d0-8af6-ffdcc0f0726c" class="bulleted-list"><li style="list-style-type:square">目的：用于调试，便于开发者找到和修复错误。</li></ul><ul id="47454909-b1de-4b17-bfe6-d7d3561799e7" class="bulleted-list"><li style="list-style-type:square">标志：<code><strong>-g</strong></code><blockquote id="22aa5de6-4e00-4c5b-a03e-e4e33636531a" class="block-color-gray_background"><code><strong>-g</strong></code>：这个标志告诉编译器包含调试信息，这样在调试时可以获得更多的关于代码的信息，如变量的值、代码的执行路径等。</blockquote></li></ul><ul id="caf54352-8b1b-48af-953a-3391fbd8cdb9" class="bulleted-list"><li style="list-style-type:square">例如：<code>cmake .. -DCMAKE_BUILD_TYPE=Debug</code></li></ul></li></ul><ul id="127d5bc9-fa04-4822-b5fb-ed84c7bdb937" class="bulleted-list"><li style="list-style-type:circle"><strong>MinSizeRel：</strong><ul id="0bdc3faa-f1b5-4670-93fc-6e43824770b0" class="bulleted-list"><li style="list-style-type:square">目的：用于生成尽可能小的二进制文件（<strong>常用于嵌入式系统</strong>）</li></ul><ul id="968c6c7c-6df8-4ff7-9333-31e55ace0e59" class="bulleted-list"><li style="list-style-type:square">标志：<code><strong>-Os -DNDEBUG</strong></code><blockquote id="652c9d7a-3884-4dbb-b39b-0eee6d00cb4f" class="block-color-gray_background"><code><strong>-Os</strong></code>：这个标志告诉编译器在优化时优先考虑减少代码大小。<br/><br/><code><strong>-DNDEBUG</strong></code>：同上，禁用断言。</blockquote></li></ul><ul id="86174d23-9b4e-4412-a0e6-0ff354c78e4e" class="bulleted-list"><li style="list-style-type:square">例如：<code>cmake .. -DCMAKE_BUILD_TYPE=MinSizeRel</code></li></ul></li></ul><ul id="9c578c2f-211f-4516-9c28-2d0d729fb993" class="bulleted-list"><li style="list-style-type:circle"><strong>RelWithDebInfo</strong><ul id="9ce78868-6a71-498a-807e-ac46d7bc8638" class="bulleted-list"><li style="list-style-type:square">目的：在保持较高优化级别的同时，包含调试信息。</li></ul><ul id="88423209-ebed-4d0d-b6e9-e1c06a5f148f" class="bulleted-list"><li style="list-style-type:square">标志：<code><strong>-O2 -g -DNDEBUG</strong></code></li></ul><ul id="317735cb-8ce5-4ec0-b830-d9e7e0cc212e" class="bulleted-list"><li style="list-style-type:square">例如：<code>cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo</code></li></ul></li></ul></li></ul><ul id="d0fcc2e4-724b-41bd-9675-638e0c733e6c" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-purple"><strong>不指定cmake的</strong></mark><mark class="highlight-purple"><strong><code>-DCMAKE_BUILD_TYPE</code></strong></mark><mark class="highlight-purple"><strong>时，cmake的makefile中</strong></mark><span style="border-bottom:0.05em solid"><mark class="highlight-purple"><strong>不会使用任何编译选项</strong></mark></span>，<mark class="highlight-red"><span style="border-bottom:0.05em solid"><strong>因此一定要在cmake时指定</strong></span></mark><mark class="highlight-red"><strong><code>-DCMAKE_BUILD_TYPE</code></strong></mark><ul id="587ea4ca-8b15-4689-a415-8507cc387c31" class="bulleted-list"><li style="list-style-type:circle">如果老忘记，可以在CMakeLists中加入这段指令，会默认把<code>-DCMAKE_BUILD_TYPE</code>设置成RelWithDebInfo<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="3a7cf502-5063-425f-bbff-0be0dcae7468" class="code"><code class="language-C++">if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+  message(&quot;Setting build type to &#x27;RelWithDebInfo&#x27; as none was specified.&quot;)
+  set(CMAKE_BUILD_TYPE RelWithDebInfo CACHE STRING &quot;Choose the type of build.&quot; FORCE)
+  # Set the possible values of build type for cmake-gui
+  set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS &quot;Debug&quot; &quot;Release&quot;
+    &quot;MinSizeRel&quot; &quot;RelWithDebInfo&quot;)
+endif()</code></pre></li></ul><p id="e54ab839-288d-4a85-a9cf-ee9c159a67ff" class="">如果老忘记，可以在CMakeLists中加入这段指令，会默认把<code>-DCMAKE_BUILD_TYPE</code>设置成RelWithDebInfo</p></li></ul><h3 id="1c27f4e3-0c50-4f67-95f3-c36f2792e017" class="block-color-blue_background">cmake的-G选项</h3><ul id="fcf7091a-6f7e-4cef-8b3d-3884be38621e" class="bulleted-list"><li style="list-style-type:disc"><strong><code>-G</code></strong>选项：用于指定生成器（Makefile、<a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html">Ninja</a>、Visual Studio（用于Windows平台）等）<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="41ca8df0-8304-4e1a-a766-8d6eb8f5e533" class="code"><code class="language-C++">cmake -G &quot;Ninja&quot; /path/to/source</code></pre><ul id="d52f34e7-7c03-4864-8811-180a25c229c9" class="bulleted-list"><li style="list-style-type:circle">默认是&quot;Unix Makefiles”，即Makefile</li></ul><ul id="085cbd1b-ceb8-4f0c-ab7f-6e6aece2d1b2" class="bulleted-list"><li style="list-style-type:circle">建议使用Ninja，因为Ninja构建的速度非常快</li></ul><ul id="4ef0cf9f-c3d6-4ca1-90f8-5730f4ab89ec" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-purple"><strong>使用</strong></mark><mark class="highlight-purple"><strong><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html">VScode的CMake插件</a></strong></mark><mark class="highlight-purple"><strong>进行debug和build时，默认会指定-G Ninja</strong></mark></li></ul></li></ul><h2 id="9a79caba-eefb-465a-bed7-fc264129941d" class="block-color-orange_background">引入第三方库</h2><p id="845028a1-ea98-412b-9828-6a6c184e6487" class=""><a href="https://www.notion.so/vcpkg-f9868127ea094e869ba40ca9561a9b98?pvs=21"><img class="icon" src="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E4%25B8%258B%25E8%25BD%25BD.jpeg"/>vcpkg</a> </p><blockquote id="85f2f060-4ddd-4014-961c-10df29b25eaa" class="block-color-gray_background">推荐使用<em><strong><a href="https://www.notion.so/vcpkg-f9868127ea094e869ba40ca9561a9b98?pvs=21">vcpkg</a></strong></em>来管理和下载CPP项目的第三方依赖；<br/><br/>vcpkg还可以集成到CMake里面<br/></blockquote><h3 id="069655c6-dd0b-440f-8d5a-0f269d21e972" class="block-color-blue_background">find_package()：使用第三方库</h3><ul id="63bc0927-95e0-45e8-887c-27f26decce26" class="bulleted-list"><li style="list-style-type:disc"><code><strong>find_package()</strong></code>：当使用 <code><strong>find_package()</strong></code> 寻找一个第三方库时，CMake 会在默认指定的目录中<span style="border-bottom:0.05em solid"><strong>查找相应的</strong></span> <span style="border-bottom:0.05em solid"><strong>&quot;</strong></span><span style="border-bottom:0.05em solid"><mark class="highlight-purple"><strong>FindXXX.cmake</strong></mark></span><span style="border-bottom:0.05em solid"><strong>&quot; 文件</strong></span>，<span style="border-bottom:0.05em solid"><em>该文件包含了寻找和配置该库所需的指令和逻辑</em></span>。<br/>具体的使用方法和参数依赖于具体的模块，通常在模块文件内部有详细的文档说明。<br/><blockquote id="55d40c9d-3e32-40af-847e-cd4456996d5f" class="block-color-gray_background">以Linux为例，CMake默认的查找路径包括了：<br/><br/><code>/usr/local/lib</code> 、 <code>/usr/local/include</code>、<code>/usr/lib</code> 、 <code>/usr/include</code>、<strong><br/><br/></strong><code>/usr/lib64</code>、<code>/lib</code> 、 <code>/lib64</code></blockquote><p id="6fb93c76-8a5c-4316-8aa1-7beb6b247d4d" class="">如果第三方没有安装在这些路径下，则在find_package()需要通过<code><strong>PATHS</strong></code>来添加额外的查找路径</p></li></ul><ul id="f6127041-158d-424c-b347-fc2cfaf5b836" class="bulleted-list"><li style="list-style-type:disc">case<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e94e503b-7c05-44e3-98a8-60b8792d27f2" class="code"><code class="language-C++">cmake_minimum_required(VERSION 3.10)
+
+# Set the project name
+project (third_party_include)
+
+
+# find a boost install with the libraries filesystem and system
+find_package(Boost 1.66 
+    REQUIRED 
+    COMPONENTS filesystem system 
+    PATHS &quot;/path/one&quot; &quot;/path/two&quot;
+)
+
+# check if boost was found
+if(Boost_FOUND)
+    message (&quot;boost found&quot;)
+else()
+    message (FATAL_ERROR &quot;Cannot find Boost&quot;)
+endif()
+
+# Add an executable
+add_executable(third_party_include main.cpp)
+
+# link against the boost libraries
+target_link_libraries(third_party_include
+    PRIVATE
+    Boost::filesystem  # Boost会引入很多别名便于引用，其中Boost::filesystem就是其中一个
+) 
+
+# 使用第三方包引入的同名target，可以在链接时直接间接引入第三方的各种依赖（比如头文件和其它的library）
+#+例如这里的同名target：Boost::filesystem，链接了以后会自动populate Boost::boost和Boost::system的依赖
+#+假如这个第三方库没有引入同名target，那么就需要自己手动引入依赖
+#+即：根据第三方库find到后引入的一些变量（这些变量会在FindXXX.cmake中记录），来导入依赖
+#+例如：
+
+# Include the boost headers
+target_include_directories( third_party_include
+    PRIVATE 
+    ${Boost_INCLUDE_DIRS}
+)
+
+# link against the boost libraries
+target_link_libraries( third_party_include
+    PRIVATE
+    ${Boost_SYSTEM_LIBRARY}
+    ${Boost_FILESYSTEM_LIBRARY}
+)</code></pre><ul id="ce5d4a20-35c2-4b97-8485-d6f6c33df0d7" class="bulleted-list"><li style="list-style-type:circle">REQUIRED：如果找不到，报错</li></ul><ul id="d7bd4466-b22a-4bab-9c67-8b44c9e58b5d" class="bulleted-list"><li style="list-style-type:circle">COMPONENTS filesystem system ：指定了项目所需的 Boost 库组件。在这个例子中，它需要 Boost 文件系统（<code>filesystem</code>）和系统（<code>system</code>）组件。</li></ul><ul id="3539fa83-56db-4455-9a9c-e3bcbc7bb6c3" class="bulleted-list"><li style="list-style-type:circle">PATHS：添加了额外的搜索路径</li></ul></li></ul><ul id="f91e4eb8-b672-40c4-8580-192e2a260bb0" class="bulleted-list"><li style="list-style-type:disc">当找到某个第三方包后，<mark class="highlight-purple"><span style="border-bottom:0.05em solid"><strong>通常会导入一些这个包特定的变量</strong></span></mark>，这些变量可以帮助用户找到library, header, or executable files。这些信息通常会在<code>FindXXX.cmake</code> 文件中有写出。<ul id="0baae25e-d11a-4293-93ca-66c5e62ef5ff" class="bulleted-list"><li style="list-style-type:circle">例如导入Boost后，会有一个Boost_FOUND变量被设置为True，用户可以根据这个变量来判断是否成功导入了Boost包</li></ul></li></ul><ul id="efef9120-adbe-4ce0-b517-c84f30cb82b8" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><span style="border-bottom:0.05em solid"><strong>现在大多数的CMake包都会导入同名target</strong></span></mark>，以便用户populate这些包的include directories 和linked libraries（从而更方便使用）<blockquote id="38f9a6f8-1741-4dc0-b76b-5c0f7c65ac4c" class="block-color-gray_background">例如Boost包在find到后，会引入很多个前缀为Boost::的target，例如<p id="78b8a49d-5221-4e60-b4b6-4fbfe004bdb7" class=""><code>Boost::boost</code> for header only libraries</p><p id="296fc138-1881-4474-a42d-384569cd4f09" class=""><code>Boost::system</code> for the boost system library.</p><p id="fbc631d4-dba8-45b5-94d3-d603cb2234a6" class=""><code>Boost::filesystem</code> for filesystem library.<br/><br/>As with your own targets, these targets include their dependencies, so linking against <br/><code>Boost::filesystem</code> will automatically add <code>Boost::boost</code> and <code>Boost::system</code> dependencies.</p></blockquote></li></ul><h3 id="e69c6eb5-1d44-403c-ad52-1181b9271705" class="block-color-blue_background">IMPORTED：使用一个已经编译好的静态/动态库</h3><ul id="902e61ec-9e10-46aa-bf03-1a59b3546a28" class="bulleted-list"><li style="list-style-type:disc">IMPORTED是一个属性，可以在add_library中加入这个属性，表示这是一个需要导入的library</li></ul><ul id="8a19cf9e-29f0-47b6-9447-917b88f38be6" class="bulleted-list"><li style="list-style-type:disc"><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html">一个case</a></li></ul><ul id="e27fa9cc-f8eb-4046-b531-5c19bf019de4" class="bulleted-list"><li style="list-style-type:disc">改写<code>find_package()</code><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e8e643c4-d2c6-4b3b-b4d8-355f2211279b" class="code"><code class="language-C++">cmake_minimum_required(VERSION 3.5)
+
+# Set the project name
+project (imported_targets)
+
+# Add the Boost filesystem and system libraries as imported targets
+add_library(boost_filesystem STATIC IMPORTED)
+set_target_properties(boost_filesystem PROPERTIES
+    IMPORTED_LOCATION &quot;/path/to/boost_filesystem.a&quot; # 替换为实际路径（编译好的静态库）
+)
+
+add_library(boost_system STATIC IMPORTED)
+set_target_properties(boost_system PROPERTIES
+    IMPORTED_LOCATION &quot;/path/to/boost_system.a&quot; # 替换为实际路径（编译好的静态库）
+)
+
+# Add an executable
+add_executable(imported_targets main.cpp)
+
+# Link against the imported Boost libraries
+target_link_libraries(imported_targets
+    PRIVATE
+        boost_filesystem
+        boost_system
+)  # 链接boost_filesystem和boost_system时，同样会获得他们populate出来的一些依赖</code></pre></li></ul><h3 id="108b4bdc-6ea3-46f8-bd9d-60c3805d4ab9" class="block-color-blue_background">配置c_cpp_properties.json：使用第三方库时VScode可能会找不到对应的头文件，导致IntelliSense爆红</h3><figure id="e5ca8f7f-021b-4733-9a02-e94d1b5abe74" class="image"><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E6%2588%25AA%25E5%25B1%258F2024-02-14_22.24.50.png"><img style="width:624px" src="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E6%2588%25AA%25E5%25B1%258F2024-02-14_22.24.50.png"/></a></figure><p id="949b6e47-a3a8-4114-80ee-2f309c6ae05c" class="">此时需要点击Quick Fix，手动添加第三方库的include path：在macOS下即${workspaceFolder}/vcpkg/installed/arm64-osx/include</p><figure id="877a049a-0a2a-4bbd-9be0-8ff66a0ee2cd" class="image"><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E6%2588%25AA%25E5%25B1%258F2024-02-14_22.25.14.png"><img style="width:576px" src="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E6%2588%25AA%25E5%25B1%258F2024-02-14_22.25.14.png"/></a></figure><p id="77090bd9-b42d-48e4-b402-5e57df37b4cc" class="">添加完后会出来一个<strong><em><code>c_cpp_properties.json</code></em></strong>，里面就会有对应的信息</p><figure id="dee34a14-667e-486d-a6ab-f347ac603425" class="image"><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E6%2588%25AA%25E5%25B1%258F2024-02-14_22.26.38.png"><img style="width:576px" src="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E6%2588%25AA%25E5%25B1%258F2024-02-14_22.26.38.png"/></a><figcaption>可以看到，出了includePath，还可以配置cpp的标准，因此如果IntelliSense无法识别一些C++20提供的特性时（如ranges和concept），就应该修改c_cpp_properties.json中的cppStandard</figcaption></figure><h2 id="4add5c9a-af23-4fc5-9233-1368581ff886" class="block-color-orange_background">使用target别名来避免命名冲突（尤其是有子项目时）</h2><ul id="c00da0ed-4812-46b0-90d9-f05f16b9357b" class="bulleted-list"><li style="list-style-type:disc">使用别名可以<mark class="highlight-purple"><span style="border-bottom:0.05em solid"><strong>有效避免命名冲突</strong></span></mark><ul id="278d11a5-3ddf-4fe1-ab61-ffa6a9eeadd3" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-red"><strong>特别是当一个CMake项目有多个</strong></mark><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html"><mark class="highlight-red"><strong>子项目</strong></mark></a><mark class="highlight-red"><strong>时，应当在每个CMakeLists中都使用别名</strong></mark></li></ul><ul id="bbe143ea-e9cd-46ed-9bae-c63fb66ecfe2" class="bulleted-list"><li style="list-style-type:circle">比如可以使用当前CMakeLists.txt所在的目录名作为一个前缀来进行别名<ul id="f40aeaa1-48b0-4ab9-be07-533accd2bf81" class="bulleted-list"><li style="list-style-type:square">例如这样的格式：<code>dir_name::target_name</code></li></ul></li></ul></li></ul><ul id="873460ba-8808-4b32-b0d6-7096ceaa6006" class="bulleted-list"><li style="list-style-type:disc">add_library中使用target别名（<strong><code>ALIAS</code></strong>关键字）<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c2a8337e-578c-4755-8aab-99b022d68133" class="code"><code class="language-Python"># 对于 ProjectA
+add_library(ProjectA_MyLib ...)
+add_library(subdir1::ProjectA_MyLib ALIAS ProjectA_MyLib)
+
+# 对于 ProjectB
+add_library(ProjectB_MyLib ...)
+add_library(subdir2::ProjectB_MyLib ALIAS ProjectB_MyLib)
+
+# 之后可以直接使用别名后的target，即subdir1::ProjectA_MyLib和subdir2::ProjectB_MyLib</code></pre></li></ul><ul id="3f31178b-0126-4ce3-a48a-d2d9bfcc521d" class="bulleted-list"><li style="list-style-type:disc">add_executable中使用target别名（<strong><code>ALIAS</code></strong>关键字）<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="08541bb5-182b-41af-8e51-13064e63f453" class="code"><code class="language-C++"># 添加一个可执行文件
+add_executable(MyApp main.cpp)
+
+# 为这个可执行文件创建一个别名
+add_executable(subdir::MyApp ALIAS MyApp)
+
+# 之后可以直接使用别名后的target，即subdir::MyApp</code></pre></li></ul><h2 id="5b1dce41-b716-4300-9faf-f3bc3a62dd27" class="block-color-orange_background">在代码中使用CMake中的变量</h2><figure id="ebd63a1a-81a8-4566-aa6b-92cbf840f37e"><a href="https://github.com/ttroy50/cmake-examples/tree/master/03-code-generation/configure-files" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title"></div></div><div class="bookmark-href">https://github.com/ttroy50/cmake-examples/tree/master/03-code-generation/configure-files</div></div></a></figure><ul id="77392a6f-85f5-46ac-b20e-2192862efece" class="bulleted-list"><li style="list-style-type:disc">有时候可能会需要在代码中使用CMake中的变量（比如想令一个变量为CMake时源代码的目录路径，或者是CMake的版本）；此时就可以<strong>创建一个</strong><mark class="highlight-red"><span style="border-bottom:0.05em solid"><strong>.h.in</strong></span></mark><strong>文件</strong>，在这个文件里面定义这个变量，这个变量赋值时需要遵循以下格式中的一种：<ul id="177c9965-66a2-4c82-ac42-839d1b14e04a" class="bulleted-list"><li style="list-style-type:circle">“<strong>${VARIABLE}</strong>”<ul id="94361ca2-40fe-4a6e-ae5e-e7bb71027e35" class="bulleted-list"><li style="list-style-type:square">例如<code>const char* ver = &quot;${cf_example_VERSION}&quot;;</code>（这里的cf_example_VERSION可以是在CMakeLists.txt中set的一个变量）</li></ul></li></ul><ul id="0a1b62cf-c767-486b-a2d2-7c6bde1befa9" class="bulleted-list"><li style="list-style-type:circle">“<strong>@VARIABLE@</strong>”<ul id="d4fa6a7e-85a9-4f8d-b8fd-9872772300ad" class="bulleted-list"><li style="list-style-type:square">例如<code>const char* path = &quot;@CMAKE_SOURCE_DIR@&quot;;</code></li></ul></li></ul></li></ul><ul id="8f556d02-1460-4077-b738-cfb3800fa3d0" class="bulleted-list"><li style="list-style-type:disc">在源代码（一个.h.in文件）中定义好之后，在CMakeLists.txt中使用<strong><em><code>configure_file</code></em></strong>指令把这个文件添加进来，这样在就会<strong>在cmake后</strong><span style="border-bottom:0.05em solid"><mark class="highlight-purple"><strong>在构建目录中生成对应的.h文件</strong></mark></span>，所以<strong>只需要在最后把这个构建目录</strong><strong><code>target_include_directories</code></strong><strong>进来即可</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="963e7867-1b68-4a2d-b48e-26500ab023f8" class="code"><code class="language-C++">
+...
+
+configure_file(ver.h.in ${CMAKE_BINARY_DIR}/ver.h)
+configure_file(path.h.in ${CMAKE_BINARY_DIR}/path.h @ONLY)
+# 表示读入ver.h.in和path.h.in中，然后把输出放到CMAKE_BINARY_DIR下，并改为.h文件
+
+add_executable(cf_example
+    main.cpp
+)
+
+target_include_directories( cf_example
+    PUBLIC
+    ${CMAKE_BINARY_DIR}
+)</code></pre><ul id="bd9f3e41-2fdc-4b18-82c2-f0ac9cc21945" class="bulleted-list"><li style="list-style-type:circle">当不在configure_file中指定<code><strong>@ONLY</strong></code>时，会替换.h.in中所有的“<strong>${VARIABLE}</strong>”和<strong>@VARIABLE@</strong>”；当指定时，就只会替换<strong>@VARIABLE@</strong>”</li></ul><ul id="b1042c4e-3944-42ae-b3f5-b82d808ed7b5" class="bulleted-list"><li style="list-style-type:circle">⚠️：这里用的是顶层的构建目录<a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html">CMAKE_BINARY_DIR</a>（因为生成的.h文件是在顶层的CMake构建目录中产生）</li></ul></li></ul><h2 id="e91b9d27-679f-4117-93a4-9cb6f0fa3b00" class="block-color-orange_background">VScode中的CMake插件</h2><figure id="85d2cd7b-81d0-40af-9c05-42832b2da32c" class="image"><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E6%2588%25AA%25E5%25B1%258F2024-01-21_23.20.23.png"><img style="width:240px" src="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E6%2588%25AA%25E5%25B1%258F2024-01-21_23.20.23.png"/></a></figure><ul id="3aef475c-c9ff-401d-bfb4-abeb0975d357" class="bulleted-list"><li style="list-style-type:disc">在Configure中可以指定编译器，或者在CMakeLists.txt中指定CMAKE_C_COMPILER和CMAKE_CXX_COMPILER</li></ul><figure id="fb088449-ba10-4325-a239-e0a5eb1e606c" class="image" style="text-align:center"><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E6%2588%25AA%25E5%25B1%258F2024-01-21_23.34.24.png"><img style="width:384px" src="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E6%2588%25AA%25E5%25B1%258F2024-01-21_23.34.24.png"/></a><figcaption>在macOS上即使指定了编译器为gcc，最后还是会使用clang，因为macOS的gcc实际上指向的是clang</figcaption></figure><ul id="265e278c-ce4c-4582-9839-3fe99f57c258" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid"><strong>提供了Build的快捷键</strong></span>：command+shift+P后搜索<strong><code>cmake:build</code></strong>，会自动执行以下几步<figure id="283792d1-cf6b-4bb6-bf92-e36ef73c8de6" class="image"><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E6%2588%25AA%25E5%25B1%258F2024-01-21_23.24.59.png"><img style="width:480px" src="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E6%2588%25AA%25E5%25B1%258F2024-01-21_23.24.59.png"/></a></figure><ol type="1" id="c68221ce-bcc5-4dd6-81e0-98368379288d" class="numbered-list" start="1"><li>自动在项目根目录中<span style="border-bottom:0.05em solid"><strong>创建一个build目录作为构建目录</strong></span></li></ol><ol type="1" id="2aa07675-511f-46dc-9b30-23572904694f" class="numbered-list" start="2"><li>使用cmake来<span style="border-bottom:0.05em solid"><strong>生成构建文件</strong></span>，并<mark class="highlight-purple"><strong>自动使用-G ninja</strong></mark>选项（使用ninja构建系统，而不是makefile）</li></ol><ol type="1" id="03e05057-bb81-4dae-b6d6-faf6d662acb3" class="numbered-list" start="3"><li>使用cmake --build来根据构建文件进行build：<mark class="highlight-red"><span style="border-bottom:0.05em solid"><strong>默认使用--config </strong></span></mark><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html"><mark class="highlight-red"><span style="border-bottom:0.05em solid"><strong>Debug</strong></span></mark></a><blockquote id="3373e642-b91f-48cf-8cfe-c09c51ac8a97" class="block-color-gray_background">由于使用的构建模式是debug，<span style="border-bottom:0.05em solid"><mark class="highlight-purple"><strong>所以使用VScode CMake提供的build时应当仅用于debug</strong></mark></span><br/><br/><br/><mark class="highlight-red"><strong>当确定代码没有问题后，自己手动用cmake ..，手动cmake --build，来将构建模式变为</strong></mark><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html"><mark class="highlight-red"><strong>release</strong></mark></a><mark class="highlight-red"><strong><br/>也可以在Configure栏中进行配置<br/></strong></mark><figure id="2d79604d-db4c-4bed-a609-0b176dcd68e6" class="image"><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E6%2588%25AA%25E5%25B1%258F2024-01-25_19.16.19.png"><img style="width:1900px" src="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E6%2588%25AA%25E5%25B1%258F2024-01-25_19.16.19.png"/></a></figure></blockquote></li></ol><p id="0b2097e2-d009-4642-bba5-158a6e7f5e06" class="">⚠️：当改了CMakeLists.txt时，<strong>记得把build目录删了</strong>（因为有可能会有旧的缓存在build里面，导致不会使用更新后的CMakeList.txt）</p></li></ul><ul id="1a94794a-3be2-4baf-8460-62a062da1377" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid"><strong>提供了debug的快捷键</strong></span>：command+shift+P后搜索<strong><code>cmake:debug</code></strong>，会自动执行以下几步：<ol type="1" id="3766df7c-6378-4f61-b1bb-9e3039945091" class="numbered-list" start="1"><li>执行cmake:build（生成构建目录，生成构建文件，构建可执行文件）</li></ol><ol type="1" id="68e159f1-0d17-4342-a318-4d210366f3c8" class="numbered-list" start="2"><li><span style="border-bottom:0.05em solid"><strong>开启debug</strong></span><blockquote id="d28c2af9-a6a1-475f-97b2-14d567c3d5a6" class="block-color-gray_background">在使用cmake debug时，如果修改了代码，要断掉调试，然后重新cmake:debug<br/><br/>不要直接按那个重新调试的按钮，这样的话不会重新构建代码，导致调试的仍然是以前的旧代码<br/></blockquote></li></ol></li></ul><h2 id="55111b45-184d-4613-9217-74f7dfe5e8f0" class="block-color-orange_background">CMake install</h2><ul id="273a0772-edb0-4714-8801-64227c46a928" class="bulleted-list"><li style="list-style-type:disc"><strong><code>install</code></strong>命令：CMake允许为makefile添加一个install的目标，可以用于将代码中的二进制文件、共享库、静态库、共享头文件、私有头文件分别分发到目标操作系统的某些目录中。因此这个功能<mark class="highlight-purple"><strong>常用于将代码部署到目标操作系统中</strong></mark>。</li></ul><ul id="b8353c14-965b-469d-a2ed-53800e4da099" class="bulleted-list"><li style="list-style-type:disc">case<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="8cf4fda2-e133-4359-b684-d13a05d3adab" class="code"><code class="language-C++">cmake_minimum_required(VERSION 3.10)
+project(MyProject)
+
+# 创建动态库
+add_library(mydynamic SHARED 
+    src/library.cpp
+)
+set_target_properties(mydynamic PROPERTIES
+    PUBLIC_HEADER include/public_header.h
+    PRIVATE_HEADER include/private_header.h
+)
+target_include_directories(mydynamic PUBLIC 
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+
+# 创建静态库
+add_library(mystatic STATIC 
+    src/static_library.cpp
+)
+set_target_properties(mystatic PROPERTIES
+    PUBLIC_HEADER include/public_header.h
+    PRIVATE_HEADER include/private_header.h
+)
+target_include_directories(mystatic PUBLIC 
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+
+# 创建可执行文件
+add_executable(myexecutable 
+    src/main.cpp
+)
+# 链接动态库和静态库
+target_link_libraries(myexecutable 
+    mydynamic mystatic
+)
+target_include_directories(myexecutable PRIVATE 
+${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+
+# 安装指令
+install(TARGETS mydynamic mystatic myexecutable
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib/static
+    RUNTIME DESTINATION bin
+    PUBLIC_HEADER DESTINATION include
+    PRIVATE_HEADER DESTINATION include/myproject
+)
+
+# 假如要直接把某个文(比如配置文件)，或者某个目录(比如头文件目录)分发到目标操作系统的某个目录中，
+#+可以把TARGET分别改为DIRECTORY或FILES
+
+# Header files
+install(DIRECTORY ./include/ 
+    DESTINATION include
+)
+
+# Config
+install (FILES ./cmake-examples.conf
+    DESTINATION etc
+)</code></pre><ul id="d222ae79-54e4-46a7-9438-0c0f8150c3f8" class="bulleted-list"><li style="list-style-type:circle">LIBRARY、ARCHIVE、RUNTIME、PUBLIC_HEADER、PRIVATE_HEADER分别指定目标类型：动态库、静态库、二进制文件、公共头文件、私有头文件</li></ul><ul id="36d12c00-ad6a-48df-ba2e-198751ad7f55" class="bulleted-list"><li style="list-style-type:circle">DESTINATION是存放的目的地的一个前缀（由<code><strong>CMAKE_INSTALL_PREFIX</strong></code>变量决定，在linux中通常是/usr/local）</li></ul><ul id="51e6296b-af6d-4d4f-9d23-a02b7f2db985" class="bulleted-list"><li style="list-style-type:circle">写好CMakeLists.txt后<ol type="1" id="ae7b0065-1b53-492c-a8d0-c83d4d32c73e" class="numbered-list" start="1"><li>cmake ..：生成makefile（makefile中会自动生成一个install 目标）</li></ol><ol type="1" id="c6c011c6-c223-4db2-a0c2-c7a43a12a27b" class="numbered-list" start="2"><li>make：build代码</li></ol><ol type="1" id="fddf3e5e-51ca-4dad-a799-d6034f312508" class="numbered-list" start="3"><li>make install：执行install目标，分发代码<blockquote id="5a10c95c-54d1-4b52-a40e-c9a3a60775e9" class="block-color-gray_background">在这个例子中，假如目标操作系统是Linux，则动态库会被放在/usr/local/lib；动态库放在/usr/local/lib/static；二进制被放在/usr/local/bin；公共头文件被放在/usr/local/include；私有头文件被放在/usr/local/include/myproject</blockquote></li></ol></li></ul></li></ul><h2 id="61391f95-5125-4bf4-adb6-eb195847d184" class="block-color-orange_background">Cases</h2><h3 id="d2742ad0-1295-4b29-9ec0-02f017cda7d9" class="block-color-blue_background">case1：无子项目</h3><ul id="1955afae-3a25-4874-90c3-f45361e3a7a6" class="bulleted-list"><li style="list-style-type:disc">项目结构如下<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5fe2a969-32a3-4d0b-a7c7-35b905d1b5f4" class="code"><code class="language-Plain Text">YourProject/
+│   CMakeLists.txt
+│
+├───include/
+│   │   mylib1.h
+│   │   mylib2.h
+│
+└───src/
+    │   mylib1.cpp  # mylib1.h的实现（还是源文件的形式）
+    │   mylib2.a    # mylib2.h的实现（已经被编译成了静态库）
+    │   main.cpp    # 假设这是主程序，include了mylib1.h和mylib2.h</code></pre></li></ul><ul id="25114b7c-d06b-44ec-b42f-3171d08ac89c" class="bulleted-list"><li style="list-style-type:disc">对应的CMakeLists.txt<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="7cbd92db-9ca8-4737-951c-f38074922070" class="code"><code class="language-C++">cmake_minimum_required(VERSION 3.10)
+project(YourProject)
+
+# 设置 C++ 标准
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# 添加 mylib1 作为静态库
+add_library(mylib1 STATIC ./src/mylib1.cpp)
+
+# 添加 mylib2，这是一个已经编译的静态库
+add_library(mylib2 STATIC IMPORTED)
+set_target_properties(mylib2 PROPERTIES
+    IMPORTED_LOCATION &quot;${CMAKE_CURRENT_SOURCE_DIR}/src/mylib2.a&quot;  
+    # IMPORTED_LOCATION最好设置成绝对路径
+)
+
+# 添加可执行文件
+add_executable(myapp ./src/main.cpp)
+
+# 包含的头文件目录
+target_include_directories(
+    myapp PRIVATE 
+    &quot;include&quot;
+)
+
+# 将静态库 mylib1 和 mylib2 链接到可执行文件 myapp
+target_link_libraries(
+    myapp PRIVATE
+    mylib1 
+    mylib2
+)</code></pre><ul id="34e1e9c3-2a3b-46f4-89be-1cfbb1c8a22f" class="bulleted-list"><li style="list-style-type:circle"><code><strong>IMPORTED</strong></code>：在 CMake 中，<code><strong>IMPORTED</strong></code> 是一个标记，用于指示一个目标（如库或可执行文件）是在项目外部生成的，而不是由当前 CMake 构建过程生成的。这种类型的目标称为“导入目标”（Imported Target）。使用 <code><strong>IMPORTED</strong></code> 标记可以让预编译的库或其他外部构建的目标包含到项目中。</li></ul></li></ul><h3 id="9e6fe44f-2e09-4fd4-a6c8-3ed1bb678400" class="block-color-blue_background">case2：有子项目，构建的主体代码放在主项目中</h3><blockquote id="e8abe740-5205-443c-8b41-7489e5ab8ea7" class="block-color-gray_background">更推荐使用<a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html">case3</a>的方式来组织多个项目，即把构建的主体代码也放在一个子项目里，主项目的CMakeLists.txt只负责add_subdirectory<br/><br/>但这个case提供了一个复杂的场景，具有参考意义<br/></blockquote><ul id="9d20628a-d52d-4286-8dc9-3f16cb16cd11" class="bulleted-list"><li style="list-style-type:disc">项目结构如下<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="dbe2c087-ec11-481b-8d6b-a4e04f25c0b0" class="code"><code class="language-C++">YourProject/
+│   CMakeLists.txt
+│
+├───include/
+│   │   mylib1.h
+│   │   mylib2.h
+│   │   mylib3.h
+│
+├───lib/
+│   │   mylib2.a       # mylib2.h的实现（已经被编译成了静态库）
+│   ├───lib_src/       # mylib3.h的实现（但需要通过目录中的CMakeLists.txt编译出静态库）
+│       │   CMakeLists.txt
+│       │   src1.cpp   # mylib3.h的实现，include了mylib3.h
+│       │   src2.cpp   # mylib3.h的实现，include了mylib3.h
+│       │   mylib3.a   # mylib3.h依赖的某个静态库
+│
+└───src/
+    │   mylib1.cpp  # mylib1.h的实现（还是源文件的形式），include了mylib1.h
+    │   mylib2.a    # mylib2.h的实现（已经被编译成了静态库）
+    │   main.cpp    # 假设这是主程序，include了mylib1.h，mylib2.h，mylib3.h</code></pre></li></ul><ul id="d7f364ad-de34-4020-b3ed-ab1f35b7a1d9" class="bulleted-list"><li style="list-style-type:disc">YourProject/lib/lib_src/CMakeLists.txt<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="0376d906-f00b-4e6c-9e52-f069eee7f3e0" class="code"><code class="language-C++">cmake_minimum_required(VERSION 3.10)
+project(MyLib3)
+
+# 添加 mylib3 作为静态库
+add_library(mylib3 STATIC ./src1.cpp ./src2.cpp)
+target_include_directories(mylib3 PUBLIC ../../include)
+
+# 添加 mylib3.a，这是一个已经编译的静态库
+add_library(lib3_dep STATIC IMPORTED)
+set_target_properties(lib3_dep PROPERTIES
+    IMPORTED_LOCATION &quot;${CMAKE_CURRENT_SOURCE_DIR}/mylib3.a&quot;
+    # IMPORTED_LOCATION最好设置成绝对路径
+)
+
+# 将静态库 lib3_dep（mylib3.a）链接到 mylib3
+target_link_libraries(mylib3 lib3_dep)</code></pre></li></ul><ul id="da6987fe-2101-42cb-925b-d45106ba2dbc" class="bulleted-list"><li style="list-style-type:disc">YourProject/CMakeLists.txt（主体构建代码）<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2d7b6f57-2ca8-4981-aa05-f9c803722baa" class="code"><code class="language-C++">cmake_minimum_required(VERSION 3.10)
+project(YourProject)
+
+# 设置 C++ 标准
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# 添加 mylib1 作为静态库
+add_library(mylib1 STATIC ./src/mylib1.cpp)
+target_include_directories(mylib1 PUBLIC ./include)
+
+# 添加 mylib2，这是一个已经编译的静态库
+add_library(mylib2 STATIC IMPORTED)
+set_target_properties(mylib2 PROPERTIES
+    IMPORTED_LOCATION &quot;${CMAKE_CURRENT_SOURCE_DIR}/lib/mylib2.a&quot;
+)
+target_include_directories(mylib2 INTERFACE ./include)
+
+# 添加 lib_src 目录
+add_subdirectory(./lib/lib_src)
+
+# 添加可执行文件
+add_executable(myapp ./src/main.cpp)
+target_include_directories(myapp PRIVATE ./include)
+
+# 将静态库 mylib1、mylib2 和 mylib3 链接到可执行文件 myapp
+target_link_libraries(myapp mylib1 mylib2 mylib3)
+
+# 这里由于通过add_subdirectory(./lib/lib_src)，把mylib3这个target及其对应的构建规则导入了
+#+所以可以直接通过target_link_libraries来链接到myapp上</code></pre></li></ul><ul id="faf414fa-0471-43ef-adba-52eb8d5a55ee" class="bulleted-list"><li style="list-style-type:disc">当在YourProject/创建一个build目录，然后在YourProject/build中cmake ..后，<mark class="highlight-purple"><span style="border-bottom:0.05em solid"><strong>各个子项目的构建文件会被放在YourProject/build/subproject_name/中</strong></span></mark></li></ul><h3 id="6b59c0b4-35ae-48ae-a399-43d3c76bd973" class="block-color-blue_background">case3：有子项目，构建的主体代码也放在一个子项目里</h3><figure id="4fcdfdc0-8275-4911-949b-770a6de75308"><a href="https://github.com/ttroy50/cmake-examples/tree/master/02-sub-projects/A-basic" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title"></div></div><div class="bookmark-href">https://github.com/ttroy50/cmake-examples/tree/master/02-sub-projects/A-basic</div></div></a></figure><ul id="e2333d8d-d63f-479a-9c59-6e4768e0fdbe" class="bulleted-list"><li style="list-style-type:disc">目录结构<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f9f16be7-489c-4a8d-946b-c49a441328fe" class="code"><code class="language-C++">$ tree
+.
+├── CMakeLists.txt
+├── subbinary
+│   ├── CMakeLists.txt
+│   └── main.cpp
+├── sublibrary1
+│   ├── CMakeLists.txt
+│   ├── include
+│   │   └── sublib1
+│   │       └── sublib1.h
+│   └── src
+│       └── sublib1.cpp
+└── sublibrary2
+    ├── CMakeLists.txt
+    └── include
+        └── sublib2
+            └── sublib2.h</code></pre></li></ul><ul id="2b338cd9-6a01-49d1-b737-4b0735c78549" class="bulleted-list"><li style="list-style-type:disc">./CMakeLists.txt<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="89fe6f57-30bd-47e3-b62f-5d153025b616" class="code"><code class="language-C++">cmake_minimum_required (VERSION 3.5)
+
+project(subprojects)
+
+# Add sub directories
+add_subdirectory(./sublibrary1)
+add_subdirectory(./sublibrary2)
+add_subdirectory(./subbinary)</code></pre></li></ul><ul id="51e57b1c-b301-4c18-be21-f845b71ead36" class="bulleted-list"><li style="list-style-type:disc">./sublibrary1/CMakeLists.txt<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="d956edad-d757-4790-9cc8-36e86188a140" class="code"><code class="language-C++"># Set the project name
+project (sublibrary1)
+
+# Add a library with the above sources
+add_library(${PROJECT_NAME} 
+    ./src/sublib1.cpp
+)
+add_library(${PROJECT_NAME}::lib ALIAS 
+    ${PROJECT_NAME}
+)
+
+target_include_directories( ${PROJECT_NAME} PUBLIC 
+    ./include
+)</code></pre></li></ul><ul id="129ee385-4322-4bc4-b841-957f0f075a83" class="bulleted-list"><li style="list-style-type:disc">./sublibrary2/CMakeLists.txt<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="daa87ca6-632e-435c-b253-974c634d461b" class="code"><code class="language-C++"># Set the project name
+project (sublibrary2)
+
+add_library(${PROJECT_NAME} INTERFACE)  # 注意：由于这个library只有头文件，
+                                        #+没有源文件，所以要指定INTERFACE关键字
+add_library(${PROJECT_NAME}::lib ALIAS 
+    ${PROJECT_NAME}
+)
+
+target_include_directories(${PROJECT_NAME} INTERFACE
+    ./include
+)</code></pre><ul id="a07bc361-9d3f-494a-af01-bd9db7fa06f7" class="bulleted-list"><li style="list-style-type:circle"><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html"><span style="border-bottom:0.05em solid"><strong>sublibrary2是一个只有头文件，没有源文件的library</strong></span></a>，所以在<code>add_library()</code>时需要指定关键字<strong><mark class="highlight-default">INTERFACE</mark></strong><ul id="0448a8b2-240a-41ad-847c-2c2d3f424b06" class="bulleted-list"><li style="list-style-type:square">sublibrary2<span style="border-bottom:0.05em solid"><strong>只负责传递它的头文件</strong></span>给上面的CMakeLists.txt，所以<code>target_include_directories()</code>使用<a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12.html">INTERFACE</a>即可</li></ul></li></ul></li></ul><ul id="21741b82-f26d-406d-9824-73676929cc3a" class="bulleted-list"><li style="list-style-type:disc">./subbinary/CMakeLists.txt<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="aad5d1de-23f6-49df-88ff-5e1d022487d8" class="code"><code class="language-C++">project(subbinary)
+
+# Create the executable
+add_executable(${PROJECT_NAME} 
+    ./main.cpp
+)
+
+# Link the static library from subproject1 using its alias sub::lib1
+# Link the header only library from subproject2 using its alias sub::lib2
+# This will cause the include directories for that target to be added to this project
+target_link_libraries(${PROJECT_NAME}
+    sublibrary1::lib
+    sublibrary2::lib
+)</code></pre><ul id="367cb45b-927e-46bc-864f-fc63e08f971d" class="bulleted-list"><li style="list-style-type:circle">⚠️：由于在主项目./CMakeLists.txt中<code>add_subdirectory</code>了sublibrary1和sublibrary2，<strong>所以在主项目中使用</strong><strong><code>cmake</code></strong><strong>时，在./subbinary/CMakeLists.txt中可以引用到</strong><strong><code>sublibrary1::lib</code></strong><strong>和</strong><strong><code>sublibrary2::lib</code></strong><strong>这两个target</strong><blockquote id="174a57ae-d588-4929-bab7-de060e1a0bcb" class="block-color-gray_background"><strong>如果直接在./subbinary中进行cmake，./subbinary/CMakeLists.txt会引用不到sub::lib1和sub::lib2这两个target</strong><figure id="e5720e0a-d335-4cd1-96ed-767c823fa59d" class="image" style="text-align:center"><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E6%2588%25AA%25E5%25B1%258F2024-01-22_16.28.10.png"><img style="width:480px" src="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E6%2588%25AA%25E5%25B1%258F2024-01-22_16.28.10.png"/></a></figure><p id="6b671940-5124-4500-aad0-a072cc45b37e" class="">
+</p><p id="14e7f31f-d23d-464d-8188-b4d024f43069" class=""><span style="border-bottom:0.05em solid"><strong>必须cmake顶层项目./CMakeLists.txt才可以让./subbinary/CMakeLists.txt引用到sub::lib1和sub::lib2</strong></span></p></blockquote></li></ul></li></ul><ul id="00aef928-2795-4c40-828e-0f2e866280df" class="bulleted-list"><li style="list-style-type:disc">当在项目根目录./创建一个build目录，然后在build目录中cmake ..后，<mark class="highlight-purple"><span style="border-bottom:0.05em solid"><strong>各个子项目的构建文件会被放在./build/subproject_name/中</strong></span></mark></li></ul><ul id="fc14d494-fd8c-4c94-8738-3b1b8984cdc3" class="bulleted-list"><li style="list-style-type:disc">在项目根目录./的build目录(./build/)中<code>cmake ..</code>后：<figure id="e9860642-a6db-4599-86d6-6f0f60218c88" class="image"><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E6%2588%25AA%25E5%25B1%258F2024-01-22_16.20.25.png"><img style="width:240px" src="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E6%2588%25AA%25E5%25B1%258F2024-01-22_16.20.25.png"/></a></figure><ul id="43abc713-0f45-4417-895c-374be9204168" class="bulleted-list"><li style="list-style-type:circle">build目录中出现了一个Makefile，多了三个子目录：subbinary、sublibrary1、sublibrary2（这三个子目录<span style="border-bottom:0.05em solid"><strong>分别用于存放对应子项目的构建文件</strong></span>）</li></ul></li></ul><ul id="6534716c-17cb-4f30-b773-3d525cc7f764" class="bulleted-list"><li style="list-style-type:disc">在./build/下执行<code>cmake --build .</code>后<figure id="7b050109-59a5-42b1-b5c2-31572605f33e" class="image"><a href="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E6%2588%25AA%25E5%25B1%258F2024-01-22_16.20.58.png"><img style="width:240px" src="CMake%20ae0cdbadb4cb4958b3b60e1534fe1d12/%25E6%2588%25AA%25E5%25B1%258F2024-01-22_16.20.58.png"/></a></figure><ul id="e682da05-0e01-4b77-b6bb-532d0ec19ade" class="bulleted-list"><li style="list-style-type:circle">A-basic/build/subbinary目录下多出了一个可执行文件</li></ul><ul id="5cae8fa7-6d29-476f-8556-1a3c7d7fe5cc" class="bulleted-list"><li style="list-style-type:circle">A-basic/build/sublibrary1目录下多出了一个静态库</li></ul></li></ul><h2 id="593f140a-56ba-47e8-b712-856baf2bfe7a" class="block-color-orange_background"><strong>CMAKE_TOOLCHAIN_FILE变量</strong></h2><p id="4f97d567-c882-406b-8d3c-ad7b5e501a0c" class=""> </p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

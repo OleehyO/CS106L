@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<!-- saved from url=(0077)https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1234/assignment2.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>CS 106L: Standard C++ Programming</title>
+        <!-- Bootstrap CSS file -->
+        <link rel="stylesheet" href="./CS 106L_ Standard C++ Programming_files/bootstrap.min.css">
+        <link rel="stylesheet" href="./CS 106L_ Standard C++ Programming_files/main.css">
+        <link rel="stylesheet" href="./CS 106L_ Standard C++ Programming_files/prism.css">
+        <script src="./CS 106L_ Standard C++ Programming_files/jquery-3.3.1.min.js"></script>
+        <script src="./CS 106L_ Standard C++ Programming_files/bootstrap.min.js"></script>
+        <script src="./CS 106L_ Standard C++ Programming_files/navbar.js" type="text/javascript" defer=""></script>
+        <script src="./CS 106L_ Standard C++ Programming_files/footer.js" type="text/javascript" defer=""></script>
+        <link rel="stylesheet" href="./CS 106L_ Standard C++ Programming_files/bootstrap.min.css">
+        <script src="./CS 106L_ Standard C++ Programming_files/jquery-3.5.1.min.js"></script>
+        <script src="./CS 106L_ Standard C++ Programming_files/bootstrap.bundle.min.js"></script>
+    </head>
+    <body>
+        <navbar-component currentpage="assignments">
+        <nav class="navbar navbar-expand-sm navbar-dark mb-3">
+            <a href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1234/index.html" class="navbar-brand " style="font-family:Jost; color:white; font-size:1rem; font-weight:700; ">CS 106L</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav">
+                    <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1234/assignment2.html#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: rgba(255, 255, 255, 1);font-weight: 550;">
+                              assignments
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <a class="dropdown-item" style="font-family:Jost;" href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1234/assignment-setup">Assignment Setup</a>
+                              <a class="dropdown-item" style="font-family:Jost;" href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1234/assignment2.html">Assignment 1: WikiRacer </a>
+                              <a class="dropdown-item" style="font-family:Jost;" href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1234/assignment3.html">Assignment 2: STL HashMap</a>
+                              </div>
+                          </li>
+
+                    <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1234/assignment2.html#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: rgba(255, 255, 255, 1);">
+                              resources
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="margin-left=-3px;">
+                              <a class="dropdown-item" style="font-family:Jost;" href="http://paperless.stanford.edu/">Paperless Link (Submit Code)</a>
+                              <a class="dropdown-item" style="font-family:Jost;" href="https://docs.google.com/document/d/1Y6r7U8Bz2sqAiV23kKpUS5uXQkga32X3ZFasHoKyq_8">Python to C++ Guide</a>
+                              <a class="dropdown-item" style="font-family:Jost;" href="https://en.cppreference.com/w/">C++ Documentation</a>
+                              <a class="dropdown-item" style="font-family:Jost;" href="https://edstem.org/us/courses/32292/discussion/">EdStem (for Enrolled Students)</a>
+                              <a class="dropdown-item" style="font-family:Jost;" href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1234/full_course_reader.pdf">Original 106L Course Reader</a>
+                            </div>
+                          </li>
+                    <a href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1234/index.html#calendar" class="nav-item nav-link" style="color: rgba(255, 255, 255, 1);">
+                        schedule
+                    </a>
+                    <a href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1234/policies.html" class="nav-item nav-link" style="color: rgba(255, 255, 255, 1);">
+                        policies
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </navbar-component>
+        <div style="height: 0px;">&nbsp;</div> <!-- margin bleeding issues -->
+        <div class="body-container">
+            <div class="body body-assignment">
+                <div class="subcontainer">
+                    <div class="content-bottom" style="width:100%;margin-bottom: 2em">
+                        <h1 style="font-weight:700; margin:0 0;">Assignment 1: WikiRacer </h1>
+                        <div class="description">
+                            <p><i>Assignment due on Paperless on Friday, February 17th  at 11:59 PM</i></p>
+                            
+                            <h3>Introduction and Assignment Goals</h3>
+                            <p>It's undeniable: human beings are obsessed with finding patterns.
+                            Whether it's in the mysteries of language, the beauties of art, or the depths of strategic games, <a href="http://web.stanford.edu/class/think3/">finding patterns</a> is built into our DNA.
+                            In fact, some biologists believe that finding patterns is what sets us apart as a species.</p>
+
+                            <p>One interesting place to find interesting patterns is Wikipedia.
+                            For example, we can play a game called <a href="https://www.thewikigame.com/group"><b>WikiRacer</b></a>, where we try to
+                            move from one article to another with the fewest number of clicks. Try a round online before you move on! </p>
+                            
+                            <div class="aside-container">
+                                <div class="aside">
+                                    Aside: did you know that if you click the first link on any Wikipedia page repeatedly, you'll eventually always end up at Philosophy 97% of the time?
+                                </div>
+                            </div>
+
+                            <p> For your first assignment, you will build a standard C++ program that plays WikiRacer!
+                                Specifically, it will find a path between two given Wikipedia articles in the fewest number of links. We'll refer to
+                                this path as a "ladder." </p>
+    
+                            <p>
+                            To simplify this assignment, we removed the user-facing part of Wikiracer. A simple version of the front-end is available as <a href="http://web.stanford.edu/class/cs106l/lecture4_practice.html"><b>totally optional extra practice</b></a>. 
+                            In this assignment, you will implement the core of this interesting search algorithm that finds the ladder.
+                            </p>
+
+                            <p>We already implemented what you might call the <i>front end</i> of our WikiRacer game. 
+                            The front end is the user-facing side of the game: the code necessary to take in a filename with WikiRacer inquiries 
+                            and print out the resulting WikiLadders is implemented. The function called by the front end, <code>findWikiLadders</code> is backend of this program: 
+                            the user doesn't need to know how it works or call it directly, they just want results! This assignment, you are stepping behind the 
+                            curtain and implementing parts of <code>findWikiLadder</code> in <code>main.cpp</code> and the function <code>findWikiLinks</code> 
+                            in <code>wikiscraper.cpp</code></p>
+
+                            <p>A broad pseudocode of the algorithm that <code>findWikiLadders</code> will use to find a ladder from <code>startPage</code> to <code>endPage</code> is as follows:</p>
+
+                            <pre class="language-shell"><code class="language-shell">To find a ladder from startPage to endPage:
+    Make startPage the currentPage being processed.
+        Get set of links on currentPage.
+    If endPage is one of the links on currentPage:
+        We are done! Return path of links followed to get here.
+    Otherwise:
+        Visit each link on currentPage in an intelligent way and
+  search each of those pages in a similar manner.</code></pre>
+
+                            <p>
+                            To simplify the implementation and allow for some testing, we will do this in two parts (A and B). For part A, you will be implementing parts of <code>findWikiLinks</code> in <code>wikiscraper.cpp</code>. This function will deal only with the part of our algorithm that gets the set of links on currentPage. In Part B, you will be implementing parts of <code>findWikiLadder</code> which will use the <code>findWikiLinks</code> function as described in the pseudocode.
+                            </p>
+                        </div>
+                    </div>  
+
+                    <div class="content-bottom" style="border-left-color: var(--palette-dark-cream);margin-bottom: 2em">
+                        <div class="description">
+                            <h3>Download And Set Up Assignment</h3>
+                            <p>If you haven't already, please follow the instructions on <a href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1234/assignment-setup">this page</a> before proceeding. 
+                            Please do both the one-time instructions and the instructions for editing each assignment. 
+                            If you have any questions at all, please don't hesitate to send us an email!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="content-bottom" style="border-left-color: var(--palette-dark-brown);margin-bottom: 2em">
+                        <h3>Part A</h3>
+                        <div class="description">
+                            For part A, you will be implementing parts of <code>findWikiLinks</code> in <code>wikiscraper.cpp</code>. To test your changes with a custom autograder that will run only for code in <code>wikiscraper.cpp</code>, run <code>./test-wikiscraper.sh</code> (instead of <code>./build_and_run.sh</code>). This function will deal only with the part of our algorithm that gets the set of links on currentPage:
+
+                            <pre class="language-shell"><code class="language-shell">To find a ladder from startPage to endPage:
+    Make startPage the currentPage being processed.
+        <code style="background: yellow">Get set of links on currentPage.</code>
+    If endPage is one of the links on currentPage:
+                    ...</code></pre>
+
+                            Part A of the assignment will be to implement a function
+
+                            <!-- Make code formatting work? -->
+                            <pre class="language-cpp"><code class="language-cpp">unordered_set&lt;string&gt; findWikiLinks(const string&amp; page_html);</code></pre>
+
+                            that takes a page’s HTML in the form of a string as a parameter, and returns an unordered_set&lt;string&gt; containing all the valid Wikipedia links in the page_html string.
+
+                            <div class="aside-container">
+                                <div class="aside">
+                                    For those who don’t remember, an unordered_set behaves exactly like a set but is faster when checking for membership (in the Stanford library it is called a HashSet).
+                                </div>
+                            </div>
+
+                            For our purposes, a link must satisfy the following:
+                            <ul>
+                                <li> It must be of the following form:
+                                    <pre class="language-html"><code>&lt;a href="/wiki/PAGE_NAME"&gt;LINK TEXT&lt;/a&gt;</code></pre>
+                                </li>
+                                <li>PAGE_NAME does not contain the characters <code>#</code> or <code>:</code></li>
+                            </ul>
+                            <div class="aside-container">
+
+                                <div class="aside purple">
+                                    <p><b>Webpages are written in a language known as HTML.</b></p>
+                                    <p>All you need to know about HTML is how links are formatted:</p>
+                                    <pre class="language-html"><code>The sea otter (Enhydra lutris) is a &lt;a href="/wiki/Marine_mammal"&gt;marine mammal&lt;/a&gt;
+native to the coasts of the northern and eastern North Pacific Ocean.</code></pre>
+                                    <p>which would display the following:</p>
+
+                                    <div class="box">
+                                        The sea otter (Enhydra lutris) is a <a href="https://web.stanford.edu/wiki/Marine_mammal">marine mammal</a>; native to the coasts of the northern and eastern North Pacific Ocean.
+                                    </div>
+                                </div>
+                            </div>
+                            <p>
+                            Go take a look at the code provided in the function <code>findWikiLinks</code> in <code>wikiscraper.cpp</code>. We have set you up with the HTML prefix to look for (variable <code>delim</code>), as well as your return set (<code>ret</code>) and iterators pointing at the beginning and end of your input, parameter <code>inp</code>, which is a string holding the HTML for one wikipedia page. We also provide you with a while loop, which will currently loop infinitely. You
+                            will fix this in this task!
+                            </p>
+                            <ul>
+                                <li> Your first task (labeled <b style="color:green">ASSIGNMENT 2 TASK 1</b> in the code) is to <b>find the beginning of the next link</b> (use <code>std::search</code> to make your life easier), and if none is found, <b>break out of the while loop</b>. This should take around 3 lines of code. <i>Hint</i>: use delim!</li>
+                                <li> Task <b style="color:green">ASSIGNMENT 2 TASK 2</b> is to find the end of the current link, and to put it in a variable called <code>url_end</code>. This should be about 1 line. Use <code>std::find</code> to make your life easier. <i>Hint</i>: All links end with the double quotes character, <code>"</code>. Check out the side margin note on the difference between <code>std::find</code> and <code>std::search</code>.</li>
+                                <li>Task <b style="color:green">ASSIGNMENT 2 TASK 3</b> is to construct and store the actual link found between the start and end found in the previous two parts. This should be about 1 line.</li>
+                                <li>Finally, task <b style="color:green">ASSIGNMENT 2 TASK 4</b> is to add this link to <code>ret</code> <i>only if it is valid</i>. That is, only if it does not contain thr characters <code>#</code> or <code>:</code>. We <i>highly recommend</i> implementing and using the decomposed function <code>valid_wikilink</code>. 
+                                    Notice, we have implemented the logic for actually adding to the set, all you have to do is implement the <code>isValidLink</code> function. This should be about 4 lines, across all functions.
+                                    You can either use <code>std::all_of</code> or a <code>for</code> loop to complete this task.</li>
+
+                            </ul>
+                            <p>
+                            </p><div class="aside-container">
+                                <div class="aside purple">
+                                    <p> You should use <code>std::search</code> when looking for an occurrence of multiple characters in a row in a string, and <code>std::find</code> when looking
+                                    for an occurrence of a single character in a string (this can be generalized too! use <code>std::search</code> when looking for several elements in a row in a container, and use <code>std::find</code> when looking for a single element in a container).
+                                </p></div>
+                            </div>
+                            Here's an example of what our function should do. Given the input:<p></p>
+                                    <pre class="language-html"><code>&lt;p&gt;
+  In &lt;a href="/wiki/Topology"&gt;topology&lt;/a&gt;, the &lt;b&gt;long line&lt;/b&gt; (or &lt;b&gt;Alexandroff line&lt;/b&gt;) is a
+  &lt;a href="/wiki/Topological_space"&gt;topological space&lt;/a&gt; somewhat similar to the &lt;a href="/wiki/Real_line"&gt;real line&lt;/a&gt;, but in a certain way "longer". It behaves locally just like the real line, but has different large-scale properties (e.g., it is neither
+  &lt;a href="/wiki/Lindel%C3%B6f_space"&gt;Lindelöf&lt;/a&gt; nor
+  &lt;a href="/wiki/Separable_space"&gt;separable&lt;/a&gt;). Therefore, it serves as one of the basic counterexamples of topology
+  &lt;a href="http://www.ams.org/mathscinet-getitem?mr=507446"&gt;[1]&lt;/a&gt;. Intuitively, the usual real-number line consists of a countable number of line segments [0,1) laid end-to-end, whereas the long line is constructed from an uncountable number of such segments. You can consult
+  &lt;a href="/wiki/Special:BookSources/978-1-55608-010-4"&gt;this&lt;/a&gt; book for more information.
+  &lt;/p&gt;
+                                    </code></pre>
+
+                                    <p>In this case, our function would return an unordered_set containing the following strings:</p>
+                                    <pre class="language-c++">code class="language-c++"&gt;{"Topology", "Topological_space", "Real_line", "Lindel%C3%B6f_space", "Separable_space"}</pre>
+                                    <p>Note two things of interest here:</p>
+                                    <ul>
+                                        <li>The function does not return links to AMS or Special:BookSources because they are not valid Wikipedia links.
+                                            (The first is not of the form <code>/wiki/PAGENAME</code> and the second contains the invalid character <code>:</code>)</li>
+                                        <li>The Lindelöf link seems to have weird percentage signs and letters in its hyperlink. This is how HTML handles non-standard characters like 'ö'; don't worry about this!</li>
+                                    </ul>
+                                    <p>Your solution <b>must</b> use the following algorithms to do the following things:</p>
+                                    <pre class="language-c++"><code class="language-c++">std::search    // to find the start of a link
+std::find      // to find the end of a link
+std::all_of    // Optionally use to check whether the link contains an invalid character. OPTIONAL TO USE!
+                                    </code></pre>
+
+                                    <p>We'll get practice using algorithms in lecture. Feel free to also take a look at <a href="https://en.cppreference.com/w/">cppreference.com</a> for documentation on the above algorithms.</p>
+
+                                    <h4>Testing</h4>
+                                    <p>
+                                    We've worked hard to add the ability to test your <code>wikiscraper.cpp</code> code before moving onto the rest of the project! We've built a testing framework
+                                    for you with 8 tests in it, 7 for <code>findWikiLinks</code> and 1 comprehensive test for <code>findWikiLinks</code> that tests your code on real Wikipedia pages.
+                                    We'd really recommend testing your code here and getting it working before trying to build the entire project and <code>main.cpp</code> with
+                                    <code>./build_and_run.sh</code>. 
+                                    <i>To test your <code>wikiscraper.cpp</code> code, run <code>./test-wikiscraper.sh</code>. This will run an autograder on your code and compare it
+                                        to the solution code, letting you know the results of each test case!
+                                    </i>
+                                    On the topic of debugging, we recommend adding print statements to print
+                                    the content of your variables (<code>link</code>, etc.) for debugging.
+                                    </p><p>Next, you'll finish out <code>main.cpp</code>, after which you can
+                                    test all of your code.</p>
+
+                        </div>
+                    </div>
+
+                    <div class="content-bottom" style="border-left-color: var(--lightestGreen);margin-bottom: 2em">
+                        <h3>Part B</h3>
+                        <div class="description">
+                            <p>Congratulations on finishing the first part of the assignment! 
+
+                            </p><p>In this next part, we are going to write the algorithm to actually find a Wikipedia ladder between two pages. To test your changes, you'll
+                            use the command: <code>./build_and_run.sh</code>
+                            We will be completing the function:
+
+                            </p><pre class="language-c++"><code class="language-cpp">vector&lt;string&gt; findWikiLadder(const string&amp; start_page,
+                              const string&amp; end_page);
+                            </code></pre>
+                            that takes a string representing the name of a start page and a string representing the name of the target page
+                            and returns a <code class="language-cpp">vector&lt;string&gt;</code> that will be the link ladder between the start page and the end page.
+                            <div class="aside-container">
+                                <div class="aside trans200">
+                                    <p>For example, a call to findWikiLadder("Mathematics", "American_literature")
+                                    might return the vector that looks like
+                                    <code class="language-cpp">{Mathematics, Alfred_North_Whitehead, Americans, Visual_art_of_the_United_States, American_literature}</code>
+                                    since from the Mathematics wikipedia page, you can follow a link to <span class="wikilink">Alfred_North_Whitehead</span>,
+                                    then follow a link to <span class="wikilink">American</span>,
+                                    then <span class="wikilink">Visual_art_of_the_United_States</span>,
+                                    and finally <span class="wikilink">American_Literature</span>.</p>
+                                </div>
+                            </div>
+
+                            We are going to break the project into steps. From our pseudocode in the first section of this handout, we stated that
+                            we'll have an intelligent way of visiting links on each page. As a result, first, we need to figure out what this 
+                            "intelligent way" to visit each link on a given page might be:
+                            <p></p>
+                            <h4>Designing the Algorithm</h4>
+                            <p><i>TLDR: As we explore each page, the next link we follow should be the link whose page has the most links in common with the target page.</i></p>
+                            <p>We want to search for a link ladder from the start page to the end page.
+                            The hard part in solving a problem like this is dealing with the fact that Wikipedia is enormous.
+                            We need to make sure our algorithm makes intelligent decisions when deciding which links to follow
+                            so that it can find a solution quickly.</p>
+
+                            <p>A good first strategy to consider when designing algorithms like these is to contemplate how
+                            you as a human would solve this problem.
+                            Let’s work with a small example using some simplified Wikipedia pages.
+                            Suppose our start page is <span class="wikilink">Lion</span> and our target page is <span class="wikilink">Barack_Obama</span>.
+                            Let’s say these are the links we could follow from <span class="wikilink">Lion</span>:</p>
+                            <div class="aside-container">
+                                <div class="aside blue">
+                                    Throughout this assignment, we will define the <b>name</b> of a Wikipedia page to be what gets displayed in the url when you visit that page on your browser.
+                                    For example, the name of the Stanford University page would be <span class="wikilink">Stanford_University</span>  (note the _ instead of spaces).<p></p>
+                                </div>
+                            </div>
+                            <ul>
+                                <li><span class="wikilink">Middle_Ages</span></li>
+                                <li><span class="wikilink">Federal_government_of_the_United_States</span></li>
+                                <li><span class="wikilink">Carnivore</span></li>
+                                <li><span class="wikilink">Cowardly_Lion</span></li>
+                                <li><span class="wikilink">Subspecies</span></li>
+                                <li><span class="wikilink">Taxonomy_(biology)</span></li>
+                            </ul>
+
+                            <p>Which link would you choose to explore first?
+                            It is fairly clear that some of these links look more promising than others.
+                            For example, the link to the page titled  <span class="wikilink">Federal_government_of_the_United_States</span> looks like a winner since it is probably really close to the <span class="wikilink">Barack_Obama</span> page.
+                            On the other hand, the <span class="wikilink">Subspecies</span> page is less directly related to a page about a former president of the United States and will probably not lead us anywhere helpful in terms of finding the target page.
+                            </p>
+                            <p>
+                            In our algorithm, we want to capture this idea of following links to pages “closer” in meaning to the target page before those that are more unrelated. How can we measure this similarity?
+                            One idea to determine “closeness” of a page to the target page is to count the number of links in common between that page and the target page. The intuition is that pages dealing with similar content will often have more links in common than unrelated pages. This intuition seems to pan out in terms of the links we just considered. For example, here are the number of links each of the pages above have in common with the target <span class="wikilink">Barack_Obama</span> page:
+                            </p>
+
+                            <table style="background-color:var(--ltGrey)">
+                                <tbody><tr>
+                                    <th>Page</th>
+                                    <th>Links in common with <span class="wikilink">Barack_Obama</span> page
+                                </th></tr>
+                                <tr>
+                                    <td><span class="wikilink">Middle_Ages</span></td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="wikilink">Federal_government_of_the_United_States</span></td>
+                                    <td>5</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="wikilink">Carnivore</span></td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="wikilink">Cowardly_Lion</span></td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="wikilink">Subspecies</span></td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="wikilink">Taxonomy_(biology)</span></td>
+                                    <td>0</td>
+                                </tr>
+                            </tbody></table>
+                            <br>
+                            <p>This makes sense!
+                            Of course the kind of links on the <span class="wikilink">Barack_Obama</span> page will be similar to those on the <span class="wikilink">Federal_government_of_the_United_States</span> page;
+                            they are related in their content.
+                            For example, these are the links that are on both the <span class="wikilink">Federal_government_of_the_United_States</span> page and the <span class="wikilink">Barack_Obama</span> page:
+                            </p>
+                            <ul>
+                                <li><span class="wikilink">Democratic_Party_(United_States)</span></li>
+                                <li><span class="wikilink">United_States_Senate</span></li>
+                                <li><span class="wikilink">President_of_the_United_States</span></li>
+                                <li><span class="wikilink">Donald_Trump</span></li>
+                                <li><span class="wikilink">Vice_President_of_the_United_States</span></li>
+                            </ul>
+                            <p>Thus, our idea of following <b>the page with more links in common with the target page</b> seems like a promising metric. Equipped with this, we can start writing our algorithm.</p>
+
+                            <h4>The Algorithm</h4>
+                            <i> TLDR: You will be setting up a priority queue to decide which links to follow as we go!</i>
+                            <p>In this assignment, we will use a <b>priority queue</b>: a data structure where elements can be enqueued (just like a regular queue),
+                            but the element with the highest priority (determined by a lambda function that you'll instantiate the queue with) is returned whenever you try to dequeue.
+                            This is useful for us because we can enqueue each possible page we could follow
+                            and define each page’s priority to be the number of links it has in common with the target page.
+                            Thus, when we dequeue from the queue, the page with the highest priority (i.e. the most number of links in common with the target page) will be dequeued first.</p>
+
+                            <p>In our code, we will use a <code>vector&lt;string&gt;</code> to represent a “link ladder” between pages, where pages are represented by their links.
+                            Our pseudocode is below. Don't worry! You only have to implement the highlighted sections--everything else is done for you.</p>
+
+                            <pre class="language-null"><code class="language-null">Finding a link ladder between pages start_page and end_page:
+<code style="background: yellow">
+Create an empty priority queue of ladders (a ladder is a vector&lt;string&gt;).</code>
+
+Create/add a ladder containing {start_page} to the queue.
+
+While the queue is not empty:
+
+    Dequeue the highest priority partial-ladder from the front of the queue.
+
+<code style="background: yellow">
+    Get the set of links of the current page i.e. the page at the end of the
+      just dequeued ladder. </code>
+
+    If the end_page is in this set:
+        We have found a ladder!
+        Add end_page to the ladder you just dequeued and return it.
+
+    For each neighbour page in the current page’s link set:
+
+        If this neighbour page hasn’t already been visited:
+
+            Create a copy of the current partial-ladder.
+
+            Put the neighbor page string at the end of the copied ladder.
+
+            Add the copied ladder to the queue.
+
+
+If while loop exits without returning from the function, no ladder was found so return an empty vector&lt;string&gt;
+                            </code></pre>
+
+                            <div class="aside-container">
+                                <div class="aside purple trans400">
+                                    We would strongly suggest you print the ladder as you dequeue it at the start of the while loop so that you can see what your algorithm is exploring.
+                                    Please remove this print statement before you turn in the assignment.
+                                </div>
+                            </div>
+                            <p> Go take a look at the code provided to you in the function <code>findWikiLadders</code> in <code>main.cpp</code>. We have provided you with an incomplete implementation of the algorithm detailed above. First off, you should see these lines of code:</p>
+                            <pre class="language-c++"><code class="language-c++">vector&lt;string&gt; findWikiLadder(const string&amp; start_page,
+const string&amp; end_page) {
+
+  // creates WikiScraper object
+  WikiScraper w;
+
+  /* Create alias for container backing priority_queue */
+  using container = vector&lt;vector&lt;string&gt;&gt;;
+
+  // gets the set of links on page specified by end_page
+  // variable and stores in target_set variable
+  auto target_set = w.getLinkSet(end_page);
+
+  // ... rest of implementation
+}</code></pre>
+                            <p> There are a few important things to note here: First, we have defined an alias for the container our priority queue will use behind the scenes (<code>container</code>). Our queue will be a queue of ladders, which are <code>vector&lt;string&gt;</code>, and the container that our queue will use behind the scenes (aka you don't need ot worry about this) to keep track of all the ladders in the queue will be a vector of ladders, or <code>vector&lt;vector&lt;string&gt;&gt;</code>. Second, and more importantly, we get the set of links on <code>end_page</code> by calling the <i>member function</i> <code>getLinkSet</code> on the <code>WikiScraper</code> object <code>w</code>. We have created this class to deal with the nitty gritty details of accessing Wikipedia for you: all you need ot know is how to collect links from a page, which we've demonstrated with <code>target_set</code>. Importantly, anywhere you want to call that <code>getLinkSet</code> function, you will need to have access to <code>w</code>. <b>You should never create another <code>WikiScraper</code> object, it will cause major slowdowns!</b>. If you take a look at the implementation of <code>getLinkSet</code>, you will see that we call <i>your</i> <code>findWikiLinks</code>from part A!</p>
+
+                            <p> You will also notice we have provided you with the vast majority of the algorithm implementation (in the while). Successful and efficient excecution of this program requires proper initialization of our priority queue, which you will complete in 3 steps.</p>
+                            <ul>
+                                <li> Task <b style="color:green">ASSIGNMENT 2 TASK 5</b> is to implement the decomposed function <code>numCommonLinks</code>, which returns the number of common links on the pages <code>cur_set</code> and <code>target_set</code>. </li>
+                                <li> Task <b style="color:green">ASSIGNMENT 2 TASK 6</b> is to write the comparison function for our priority queue. This function compares two ladders and should return whether ladder1 should have higher priority than ladder2 (in other words, it defines a "less than" function for our ladders). Remember, we want to order the elements by how many links the page at the very end of its respective ladder has in common with the target_page. To make the priority_queue we will need to write this comparator function:
+
+                                    <pre class="language-html"><code class="language-html">
+To compare ladder1 and ladder2:
+  page1 = word at the end of ladder1
+  page2 = word at the end of ladder2
+  int num1 = number of links in common between set of links on page1 and set of links on end_page
+  int num2 = number of links in common between set of links on page2 and set of links on end_page
+  return num1 &lt; num2</code></pre>
+                                </li>
+                                <div class="aside-container">
+                                    <div class="aside red trans100">
+                                        <b>Note:</b> This function will need to have access to the WikiScraper object "Wikiscraper w", so we've included it in the lambda's parameters to help you get started. To get the set of links on a page, use <code>w.getLinkSet(page_name)</code> (this function gets the wikipedia page for the page, and then calls the findWikiLinks() method that you wrote)!      
+                                        Think about how you can write this comparison function as a <b>lambda</b> that can access
+                                        the WikiScraper object in the function where the lambda is declared.
+                                    </div>
+                                </div>
+                                <li> Finally, task <b style="color:green">ASSIGNMENT 2 TASK 7</b> is to declare the priority queue, <code>queue</code>. Take a look at the <a href="https://en.cppreference.com/w/cpp/container/priority_queue">documentation for <code>std::priority_queue</code></a> (in the "Example" section at the bottom of the page, there's an example of exactly what we're looking for. Can you find it? hint: we're looking to use a lambda to compare elements in our priority queue.) The format of a <code>std::priority_queue</code> looks like this:<p></p>
+
+                            <pre class="language-cpp"><code class="language-cpp">template&lt;class T,
+    class Container = std::vector&lt;T&gt;,
+    class Compare   = std::less&lt;typename Container::value_type&gt;
+&gt; class priority_queue; </code></pre>
+
+                            This is telling us the <code>std::priority_queue</code> needs three template types specified to be constructed, specifically:
+                            <ul>
+                                <li><code>T</code> is the type of thing the priority queue will store;</li>
+                                <li><code>Container</code> is the container the priority queue will use behind the scene to hold items (the priority queue is a container adaptor, just like the stack and queue we studied in lecture!);</li>
+                                <li><code>Compare</code> is the type of our comparison function that will be used to determine which element has the highest priority.
+                            </li></ul>
+                            We recommend using the constructor that takes in a comparison function as its single parameter. We also recommend using the <code>decltype()</code> STL function to find the type of any parameters whose types you might be missing ;)
+                                </li>
+                            </ul>
+                            <p> After part B, you are done! Please submit <i>only</i> <code>main.cpp</code> and <code>wikiscraper.cpp</code> to paperless <a href="http://paperless.stanford.edu/">by clicking here</a>.
+
+                            </p><h4>Testing</h4>
+
+                            Don’t forget to test your code using the test files in the res folder! You can compare your output with the sample runs in the sample-outputs.txt file. See the File Reading section in the Preliminary Task section for more information on the test files.
+                            For convenience, the following lists the expected output of the pairs in the input-big.txt file in the res folder:
+
+                            <div class="example">
+                                <h5>Fruit → Strawberry</h5>
+                                <p class="return"><code class="language-cpp">{"Fruit", "Strawberry"}</code></p>
+                                <p class="note">This should return almost instantly since it is a one link jump.</p>
+                            </div>
+
+                            <div class="example">
+                                <h5>Malted_milk → Gene</h5>
+                                <p class="return"><code class="language-cpp">{"Malted_milk", "Barley", "Gene"}</code></p>
+                                <p class="note">This ran in less than 120 seconds on our computers.
+                                </p>
+                            </div>
+                            <div class="aside-container">
+
+                                <div class="aside trans100 blue">
+                                    <p>Running in less than four minutes is acceptable as well, due to some variation we’ve seen across Mac vs. Windows computers. (The variation most likely results from differences in the order of the <code>unordered_set</code>.)</p>
+                                </div>
+                            </div>
+
+                            <div class="example">
+                                <h5>Emu → Stanford_University</h5>
+                                <p class="return">
+                                <code class="language-cpp">{"Emu", "Food_and_Drug_Administration", "Duke_University", "Stanford_University"}</code><br>
+                                </p>
+                                <p class="return">
+                                Most recent solution: <code class="language-cpp">{"Emu", "Germany", "United_States", "University_of_Notre_Dame", "Stanford_University"}</code><br>  
+                                </p><p class="note">There may be other valid solutions due to differences in the order of valid links
+                                in the unordered set from Part A. If you generate ladders that are longer than the solution ladder,
+                                but the number of common links matches the first step of the solution given here, you should be fine!
+                                Feel free to post to Piazza if you have any questions or want to double-check. This should run in around two minutes or less.</p>
+                            </div>
+
+
+
+                            <p>Hint: consult the lecture on lambdas to see how you can make the comparator function on the fly.
+                            In particular, you are <b>required</b> to leverage a special mechanism of lambdas to capture the WikiScraper object
+                            so that it can be used in the lambda.</p>
+
+                            <p>If you want to discuss your plan of attack, please make a private post on Piazza or come to office hours!
+                            The code for this assignment is not long at all, but it can be hard to wrap your head around.
+                            Ask questions early if things don’t make sense; we will be more than happy to talk through ideas with you.</p>
+                            <br>
+                            <div class="aside-container">
+                                <div class="aside trans200 red">
+                                    <p>In general, you don’t need to match these ladders exactly (as long as your ladder is the same length as the sample)
+                                    but your code should run in less than the times specified.</p>
+
+                                    <p>If not, double-check:
+                                    </p><ul>
+                                        <li>are you using references where needed?</li>
+                                        <li>Can you remove any redundant variables?</li>
+                                        <li>Are you missing any steps in the ladder algorithm?</li>
+                                    </ul>
+                                    Most often, slowness tends to come from either a small algorithm error
+                                    or inefficient design choices in the lambda.<p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    
+    <footer></footer>
+
+</body></html>

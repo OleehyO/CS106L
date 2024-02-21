@@ -1,0 +1,432 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@200;400;700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  --dkGreen: #456343;
+  --midGreen: #577d54;
+  --ltGreen: #93cf7e;
+  --lightestGreen: #d3ebcb;
+  --paleYellow: #e6ca77;
+  --midGrey: #e0e0e0;
+  --ltGrey: #f5f5f5;
+  --lav: #e7d1ff;
+  --dkGrey: #707070;
+  --light-theme: #8e7cc3;
+  --theme: #624da1;
+  --theme-link: #4d5aa1;
+  --vivid-theme: #9746d7;
+  --dark-theme: #351c75;
+  --blk: #111;
+  --palette-dark-brown: #6d5438;
+  --palette-dark-cream: #ccb27b;
+  --palette-tan: #967f53;
+  --calBorder: #f4eee0;
+  --palette-golden-brown: #996514;
+}
+
+* {
+  font-family: PT Sans, Source Sans Pro;
+  box-sizing: border-box;
+}
+
+pre code span {
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+code span {
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+code {
+  background-color: #eee;
+  font-family: monospace;
+  font-style: normal;
+  color: #a3134f;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Jost;
+}
+
+h2, h3, h4, h5, h6 {
+  font-weight: 600;
+}
+
+h3, h4, h5, h6 {
+  margin: 1em 0 0 0;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  color: black; 
+  /* font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; */
+  font-family: Nunito Sans;
+  background-color: #f5f5f5; 
+}
+
+body {
+  margin-bottom: 3em;
+}
+
+h1{
+  size: 4em;
+  font-weight: 700;
+  color: var(--dkGreen);
+}
+
+h2{
+  color: var(--dkGreen);
+  size: 2em;
+  margin-top: 0em;
+  margin-bottom: 0.5em;
+}
+
+h3{
+  color: var(--dkGreen);
+  font-size: 2em;
+}
+
+a {
+  color: var(--dkGreen);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.description{
+  color: var(--blk);
+  font-size: 14px;
+  margin-bottom: .9em;
+}
+
+.lead {
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; 
+  font-style: bold;
+  font-weight: 1200;
+  font-size: 1.5em;
+  margin: 0 0;
+  color: var(--dkGreen);
+}
+
+.caption {
+  /*font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; */
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.5em;
+  margin: 0 0;
+  color: var(--dkGreen);
+}
+
+/*template stuff*/
+.row > div{
+    margin-bottom: 15px;
+}
+.header{
+    min-height: 90px;
+}
+.footer{
+    min-height: 60px;
+}
+.header, .footer{
+    background: #f5f5f5;
+}
+.sidebar{
+    min-height: 300px;
+}
+.content-bottom.bg-alt{
+    border-left-color: var(--lav);
+    border-left-width: 4px;
+}
+
+.navbar {
+  width: 100%;
+  background: linear-gradient(90deg, var(--dkGreen) 0%, var(--ltGreen) 100%);;
+}
+
+.dropdown-toggle{
+  font-family: Jost;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 1);
+}
+
+.Jost {
+    font-family:Jost;
+}
+
+
+
+.nav-link{
+  font-family: Jost;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 1);
+  font-family: Jost;
+}
+
+/* Styles for proper margin when layout become horizontal */
+
+@media (max-width: 977px){
+    .sidebar {
+        display: none;
+    }
+    .row > div {
+        margin-right: 15px;
+        margin-bottom: 0;
+    }
+    .content-bottom{
+        margin: 1em 1em 1em 1em;
+        padding-right: 15px;
+        margin-bottom: .25em;
+    }
+    .content-top{
+        margin: 1em 1em 1em 1em;
+    }
+    .cal{
+        margin: 1em -1em 1em 1em;
+    }
+    .navbar{
+      min-height: 4em;
+    }
+
+}
+
+
+ /*content */
+
+.content-top {
+  /*min-height: 160px;*/
+  /*background: #f5f5f5;*/
+  width: 100%;
+  padding: 1em;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-left-width: 4px;
+  border-right-width: 4px;
+  border-right-color: var(--midGreen);
+  border-left-color: var(--midGreen);
+  margin-top: .75em;
+  margin-bottom: .75em;
+}
+
+.content-top .caption {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.25em;
+  margin: 0 0;
+}
+
+.content-top .subcaption {
+  margin: 0 0;
+  margin-top: .25em;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1em;
+}
+
+.content-bottom {
+  /*template*/
+  color: #f5f5f5;
+  margin-bottom: .75em;
+
+  /*margin: 0 0 1em 0;*/
+  width: 100%;
+  padding: 1em;
+  border-radius: 5px;
+  text-align: left;
+  border: 1px solid #ccc;
+  border-left-width: 4px;
+  /*border-right-width: 4px;*/
+  border-left-color: var(--ltGreen);
+}
+
+/*calendar*/
+.cal {
+  margin-bottom: 2em;
+}
+.subtleHeading {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--dkGrey);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: absolute; 
+    top: 0; 
+    margin-bottom: .5em;
+}
+
+/*calendar*/
+
+.calendarCell {
+    width: 50%;
+    border: 1px solid var(--calBorder);
+    vertical-align:top;
+    padding:10px;
+    background-color: #fffcfc;
+}
+
+.calendarCell > div {
+    /*background-color: #d0d0d0;*/
+}
+
+.calendarWeekCell {
+    max-width:50px;
+    vertical-align:top;
+    background-color: #fffcfc;
+}
+
+table.table-curved > thead > tr > th {
+    border: 1px solid var(--calBorder);
+    background-color: var(--midGrey);
+    color: var(--dkGreen);
+}
+table.table-curved > tbody > tr > td{
+    border:1px solid var(--calBorder);
+}
+
+.table-curved {
+    border-color: var(--calBorder);
+    border-collapse: separate;
+    border-spacing: 0px;
+    border-radius: 5px;
+    background: #f5f5f5;
+
+}
+
+.table-curved th:first-child {
+    border-radius: 5px 0 0 0;
+    border-width: 2px 1px 1px 2px;
+}
+.table-curved th:last-child {
+    border-radius: 0 5px 0 0;
+    border-width: 2px 2px 1px 1px;
+}
+.table-curved th:nth-child(2) {
+    border-width: 2px 1px 1px 1px;
+}
+
+.table-curved tr:last-child td:first-child {
+    border-radius: 0 0 0 5px;
+    border-width: 1px 1px 2px 2px;
+}
+
+.table-curved tr:nth-child(1n + 1):not(:last-child) td:first-child {
+    border-width: 1px 1px 1px 2px;
+}
+.table-curved tr:nth-child(1n + 1):not(:last-child) td:last-child {
+    border-width: 1px 2px 1px 1px;
+}
+
+.table-curved tr:last-child td:last-child {
+    border-radius: 0 0 5px 0;
+    border-width: 1px 2px 2px 1px;
+}
+.table-curved tr:last-child td:nth-child(2) {
+    border-width: 1px 1px 2px 1px;
+}
+.classLinks href {
+  color: var(--lav);
+}
+
+.inOut {
+  font-size: 20px;
+}
+
+
+.aside {
+  margin: 1em 1em 1em 2em;
+  padding: 1em; 
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  border-left-width: 4px;
+  border-left-color: var(--lav);
+  /* border-left: 5px solid var(--vivid-theme); */
+  color: #333;
+  width: 400px;
+  position: absolute;
+  left: 700px;
+  top: -200px;
+}
+/*borrowed from ethan for A1*/
+.aside-container {
+  position: relative;
+  width: 0;
+  height: 0
+}
+
+@media only screen and (max-width: 1300px) {
+  .aside-container {
+    position: inherit;
+    width: auto;
+    height: auto;
+  }
+
+  .aside {
+    position: inherit;
+    left: auto;
+    top: auto;
+    width: auto;
+  }
+}
+
+.aside::before {
+  /* content: "Aside:"; */
+  font-style: italic;
+  font-weight: bold;
+}
+
+.box {
+  border: 1px solid var(--dark-theme);
+  border-left: 5px solid #cd225a;
+  padding: 1em;
+  margin: 1em;
+}
+.lav {
+  border-left-color: var(--lav);
+}
+.body-container {
+  margin-right: 2em;
+  margin-left: 2em;
+}
+.body-assignment {
+  max-width: 700px;
+  margin: 1em auto 0 1em;
+}
+.subcontainer {
+  flex-grow: 0;
+  /* flex-shrink: 0; */
+}
+.terminal {
+  background: var(--midGrey);
+  margin-left: 1em;
+  padding-left: .5em;
+  border-radius: 2px;
+}
+
+.terminal-text {
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+@media only screen and (min-width: 1300px) {
+  .trans400 {
+   transform: translateY(-400px);
+  }
+  .trans300 {
+   transform: translateY(-300px);
+  }
+  .trans200 {
+  transform: translateY(-200px);
+  }
+  .trans150 {
+  transform: translateY(-150px);
+  }
+  .trans100 {
+  transform: translateY(-100px);
+  }
+}
+
+
+

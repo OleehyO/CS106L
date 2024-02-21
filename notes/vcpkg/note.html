@@ -1,0 +1,728 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>vcpkg</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="f9868127-ea09-4e86-9ba4-0ca9561a9b98" class="page sans"><header><img class="page-cover-image" src="vcpkg%20f9868127ea094e869ba40ca9561a9b98/conan-vcpkg.png" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="vcpkg%20f9868127ea094e869ba40ca9561a9b98/%25E4%25B8%258B%25E8%25BD%25BD.jpeg"/></div><h1 class="page-title">vcpkg</h1><p class="page-description"></p></header><div class="page-body"><figure id="18b073a3-358b-4dc5-a6d8-398567a3ce46"><a href="https://github.com/microsoft/vcpkg?tab=readme-ov-file" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">GitHub - microsoft/vcpkg: C++ Library Manager for Windows, Linux, and MacOS</div><div class="bookmark-description">C++ Library Manager for Windows, Linux, and MacOS. Contribute to microsoft/vcpkg development by creating an account on GitHub.</div></div><div class="bookmark-href"><img src="https://github.com/fluidicon.png" class="icon bookmark-icon"/>https://github.com/microsoft/vcpkg?tab=readme-ov-file</div></div><img src="https://opengraph.githubassets.com/06366818e09e04c0520851bb7ebc65cb974c7e9bf4804f0c99af0487dfa93015/microsoft/vcpkg" class="bookmark-image"/></a></figure><figure id="4108e516-3a32-4d9b-919b-7c5f2a6b1673"><a href="https://learn.microsoft.com/zh-cn/vcpkg/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">vcpkg 文档</div><div class="bookmark-description">vcpkg 是跨平台的 C/C++ 包管理器。 快速获取对数千个高质量开放源代码库的访问权限，从而为应用程序提供支持，并在内部共享专用组件的集合。</div></div><div class="bookmark-href"><img src="https://learn.microsoft.com/favicon.ico" class="icon bookmark-icon"/>https://learn.microsoft.com/zh-cn/vcpkg/</div></div><img src="https://learn.microsoft.com/en-us/media/open-graph-image.png" class="bookmark-image"/></a></figure><ul id="dfe5f9df-0cd5-474b-a43f-ef857b790439" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red"><span style="border-bottom:0.05em solid"><strong>C++版的python pip</strong></span></mark>，用于管理和下载项目中的第三方依赖包，<mark class="highlight-red"><span style="border-bottom:0.05em solid"><strong>可以与CMake结合使用</strong></span></mark></li></ul><h2 id="7a7f8ad1-5804-406b-abca-a8799d2cbb9c" class="block-color-orange_background">Quick Start</h2><ol type="1" id="c95b44d0-e11b-4e5b-a5f9-066883fda1d7" class="numbered-list" start="1"><li>在当前项目中git clone <a href="https://github.com/microsoft/vcpkg.git">https://github.com/microsoft/vcpkg.git</a>，并执行<strong><em><code>.\vcpkg\bootstrap-vcpkg.bat</code></em></strong><blockquote id="bc6f4420-384d-41c5-99fd-fd860dbf53ff" class="block-color-gray_background">clone下来后并执行命令后，在vcpkg的目录下会产生一个<strong>可执行文件vcpkg</strong><figure id="f77c6143-ec38-4e8e-a1b1-9027af082a50" class="image"><a href="vcpkg%20f9868127ea094e869ba40ca9561a9b98/%25E6%2588%25AA%25E5%25B1%258F2024-02-13_19.58.08.png"><img style="width:84px" src="vcpkg%20f9868127ea094e869ba40ca9561a9b98/%25E6%2588%25AA%25E5%25B1%258F2024-02-13_19.58.08.png"/></a></figure></blockquote></li></ol><ol type="1" id="fdf273c2-03b6-46fe-89e1-c78ced94d4cc" class="numbered-list" start="2"><li>在<mark class="highlight-purple"><strong>与CMakeLists.txt同目录</strong></mark>下，执行<strong><em><code>./vcpkg/vcpkg new --application</code></em></strong>，这会创建一个清单文件<code><em><strong>vcpkg.json</strong></em></code>（并开启vcpkg的<strong><a href="https://learn.microsoft.com/zh-cn/vcpkg/concepts/manifest-mode">清单模式</a></strong>），此时vcpkg会根据<code><strong><em>vcpkg.json</em></strong></code>中的依赖项自动去下载对应的第三方包，以下是一个示例<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="fe4058af-d4db-4d58-9b35-97bea499bc27" class="code"><code class="language-JSON">{
+  &quot;name&quot;: &quot;my-project&quot;,
+  &quot;version-string&quot;: &quot;1.0.0&quot;,
+  &quot;dependencies&quot;: [
+    {
+      &quot;name&quot;: &quot;fmt&quot;,
+      &quot;version&gt;=&quot;: &quot;7.1.3&quot;
+    },
+    {
+      &quot;name&quot;: &quot;boost&quot;,
+      &quot;version&gt;=&quot;: &quot;1.75.0&quot;
+    }
+  ]
+  // 指定版本可能会导致下载失败，因此大多数时候可以直接 
+  // &quot;dependencies&quot;: [
+  //     &quot;fmt&quot;, 
+  //     &quot;boost&quot;
+  // ]
+}</code></pre></li></ol><ol type="1" id="6f423260-7e3f-4909-ac91-5d732330ecb3" class="numbered-list" start="3"><li>在vcpkg.json所在的目录下执行<strong><em><code>./vcpkg/vcpkg install</code></em></strong><blockquote id="2b63cce8-72d0-4b11-97e7-447f1368f49f" class="block-color-gray_background"><mark class="highlight-purple"><strong>或者在写好CMakeLists.txt后，先build一次，把第三方包提前下过来</strong></mark></blockquote><ul id="d897f89a-91f0-4554-b2e8-a79e311ec262" class="bulleted-list"><li style="list-style-type:disc">执行完后，会在当前目录下多出一个<em><strong>vcpkg_installed目录</strong></em>，同时在vcpkg目录中也会多出一个<em><strong>package目录和downloads目录</strong></em>，里面有下载过来的第三方包，其中：<ul id="35223519-d344-41e4-950e-75fc91942f68" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-purple"><em><strong>vcpkg_installed</strong></em></mark><mark class="highlight-purple"><strong>目录</strong></mark>：存放通过 <code><strong>vcpkg</strong></code> 成功安装的库的最终使用文件（头文件、库文件等）当你在项目中引用 <code><strong>vcpkg</strong></code> 安装的库时，编译器和链接器会在这个目录下查找相应的头文件和库文件。<figure id="c1425468-f5b5-468b-91b5-0aa3186539af" class="image"><a href="vcpkg%20f9868127ea094e869ba40ca9561a9b98/%25E6%2588%25AA%25E5%25B1%258F2024-02-13_21.26.19.png"><img style="width:384px" src="vcpkg%20f9868127ea094e869ba40ca9561a9b98/%25E6%2588%25AA%25E5%25B1%258F2024-02-13_21.26.19.png"/></a></figure><blockquote id="6458e570-3c1b-4a4b-acb4-4b12fbf90e77" class="block-color-gray_background">当把vcpkg集成到CMake里后，在cmake ..生成makefile后，在build目录里面就会多出vcpkg_installed目录</blockquote></li></ul><ul id="5d16ed39-1971-43c2-b212-d3aa0784f88c" class="bulleted-list"><li style="list-style-type:circle"><em><mark class="highlight-purple"><strong>vcpkg/packages</strong></mark></em><mark class="highlight-purple"><strong>目录</strong></mark>：存放每个库的安装过程中生成的中间文件和数据。<blockquote id="6f61ebff-6ece-4d09-b574-5a38da3496c4" class="block-color-gray_background">通常，不应该直接引用<strong><em>packages</em></strong>目录中的文件来在你的项目中使用通过 <code><strong>vcpkg</strong></code> 安装的库。<br/><br/>这个目录主要用于存放每个库安装过程中生成的中间文件和数据，而不是最终用于链接和编译的库文件。<br/></blockquote></li></ul><ul id="79a6299a-ecb5-40ea-98be-6897caa1f328" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-purple"><em><strong>vcpkg/downloads</strong></em></mark><mark class="highlight-purple"><strong>目录</strong></mark>：缓存下载的所有文件，包括库的源代码等，用于加速后续安装过程。<figure id="49f9132c-6646-4de3-a585-1c1b1775503f" class="image"><a href="vcpkg%20f9868127ea094e869ba40ca9561a9b98/%25E6%2588%25AA%25E5%25B1%258F2024-02-13_21.32.49.png"><img style="width:384px" src="vcpkg%20f9868127ea094e869ba40ca9561a9b98/%25E6%2588%25AA%25E5%25B1%258F2024-02-13_21.32.49.png"/></a></figure><p id="4854e20c-a18a-4176-818b-4433f2453ac3" class="">所以也可以手动<strong>把依赖包下载到vcpkg/downloads里</strong>，这样在vcpkg install的时候就不需要网络连接，可以直接进行<span style="border-bottom:0.05em solid"><strong>离线安装</strong></span></p><p id="d8a411a1-a75c-4e11-8f90-47b7fe149e1f" class="">因此当vspkg<strong>下载某个包或者文件超时</strong>，可以<strong>手动下载</strong>，然后放到downloads目录里，例如：</p><figure id="03414f3a-643d-4411-8699-62e5ebe5f652" class="image"><a href="vcpkg%20f9868127ea094e869ba40ca9561a9b98/%25E6%2588%25AA%25E5%25B1%258F2024-02-13_21.40.09.png"><img style="width:2218px" src="vcpkg%20f9868127ea094e869ba40ca9561a9b98/%25E6%2588%25AA%25E5%25B1%258F2024-02-13_21.40.09.png"/></a></figure><p id="c407e73a-cbd9-46ee-84c9-f769b8d7d479" class="">发现超时下载不下来时，可以直接去对应的这个网址下载gettext-0.22.4.tar.gz，然后放到downloads目录里，并命名为gettext-0.22.4.tar.gz</p></li></ul></li></ul></li></ol><ol type="1" id="db0bf027-ac5a-4d69-8f4a-5004cb383da6" class="numbered-list" start="4"><li>编写当前项目的CMakeLists.txt，通过find_package引入第三方包。<blockquote id="66eb2a0c-29c5-4640-9486-be459f3ff4d5" class="block-color-gray_background">如果<span style="border-bottom:0.05em solid"><strong>VsCode无法识别第三方头文件对应的库在哪里，从而导致IDE导致爆红</strong></span>：可以<mark class="highlight-purple"><strong>把</strong></mark><mark class="highlight-purple"><em><strong>vcpkg_installed/arm64-osx</strong></em></mark><mark class="highlight-purple"><strong>目录显示地添加到</strong></mark><mark class="highlight-purple"><code><strong><em><a href="https://www.notion.so/CMake-ae0cdbadb4cb4958b3b60e1534fe1d12?pvs=21">find_package</a></em></strong></code></mark><mark class="highlight-purple"><strong>的PATH属性里</strong></mark>（假设是在macOS下）<br/>但在<br/><span style="border-bottom:0.05em solid">实际部署的时候不需要添加PATH属性，因为CMake会在构建Makefile时自动把第三库对应的位置加到构建文件里</span><strong><br/><br/></strong>因此在写好代码并完成测试进行部署时，不添加PATH属性直接cmake .. &amp;&amp; cmake --build .是没问题的，<strong>添加PATH属性只是为了更好写代码以及调试</strong></blockquote><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="a21740b6-78ea-4d90-a4c0-4a60fac2eec5" class="code"><code class="language-Bash">
+# 设置CMAKE_CURRENT_SOURCE_DIR变量，指向vcpkg.cmake
+set(CMAKE_TOOLCHAIN_FILE &quot;${CMAKE_CURRENT_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake&quot;
+  CACHE STRING &quot;Vcpkg toolchain file&quot;)
+
+project(...)
+
+find_package(
+    fmt 
+    CONFIG 
+    REQUIRED 
+    # PATHS &quot;/Users/Leehy/Code/foobar/helloworld/vcpkg_installed/arm64-osx&quot; 
+    # 假如IDE爆红，可以考虑显示指定第三包的PATHS，
+    #+但是在写完代码，调试完毕，准备部署时，并不需要显示地指定PATHS，
+    #+因为CMake会在生成Makefile时自动在Makefile中设置vcpkg_installed/arm64-osx（假设macOS下）路径
+    #+因此在部署时，直接cmake .. &amp;&amp; cmake --build .是没问题的
+)
+
+# vcpkg会自动为每个包引入一个同名的target 别名。
+#+例如，对于fmt包引入一个叫fmt的target别名
+#+所以在find_package后，可以直接使用fmt::fmt来添加依赖(其它包也是同理)
+add_executable(HelloWorld 
+    helloworld.cpp
+)
+
+target_link_libraries(HelloWorld 
+    PRIVATE 
+    fmt::fmt  # find_package后引入的别名target
+)</code></pre><blockquote id="8dbfa45a-2783-48da-8584-29409df93e65" class="block-color-gray_background">设置了<strong><em><code>CMAKE_TOOLCHAIN_FILE</code></em></strong>为vcpkg.cmake后，CMake会在构建makefile前提前检查第三方的依赖包是否存在，如果没有，就会<strong>自动调用vcpkg install进行下载</strong><br/><br/>CMake会<br/><mark class="highlight-purple"><strong>通过检查CMakeLists.txt同目录下的vcpkg.json来确定项目的第三方依赖</strong></mark></blockquote><p id="9a0a5084-7343-4f36-9d2b-56253c58e3dc" class="">⚠️：set一定要在project的前面</p></li></ol><h2 id="8e72e990-982b-41be-9201-25ab39041442" class="block-color-orange_background"><strong>CMAKE中的CMAKE_TOOLCHAIN_FILE变量</strong></h2><p id="a5ad3c28-c6db-4d83-96e3-c60150d26ce1" class=""><code><strong>CMAKE_TOOLCHAIN_FILE</strong></code> 在 CMake 中是用来指定一个工具链文件的。当你在<strong>交叉编译</strong>项目时，这个变量特别有用，因为它允许你为特定目标平台配置编译器和其他工具。工具链文件包含了用于编译项目的一系列配置，如编译器的路径、目标系统的架构、编译选项和其他相关设置。<div class="indented"><blockquote id="1a77d6b2-d5cd-4735-9794-3b20d0067f0c" class="block-color-gray_background">交叉编译是编译过程中的一个特殊情况，它涉及到在一个平台（宿主平台）上生成为另一个不同平台（目标平台）运行的代码。这是在开发嵌入式系统、操作系统内核、或为不同于开发机的硬件平台开发软件时常用的技术。交叉编译的关键在于使用交叉编译器，这是一种特殊的编译器，能够生成与它自身运行环境不同的目标环境代码。</blockquote></div></p><p id="e48c556d-408d-45b6-8eff-0b91a9139dc2" class="">通过使用 <code><strong>CMAKE_TOOLCHAIN_FILE</strong></code>，你可以轻松地将项目从一个环境切换到另一个环境，比如从开发环境切换到生产环境，或者在不同的操作系统或硬件平台之间迁移项目。这也使得在不同环境中重复使用相同的构建设置变得简单，提高了项目的可移植性和灵活性。</p><p id="81a21cc9-14f8-4db1-90e8-3616c2134bf1" class="">假设你正在为一个ARM架构的嵌入式设备进行交叉编译，你有一个专门为这个目标平台配置的工具链文件，名为<code><strong>arm-toolchain.cmake</strong></code>。这个文件可能包含了编译器的路径、编译选项以及目标设备的相关设置。你可以使用<code><strong>CMAKE_TOOLCHAIN_FILE</strong></code>来指定这个文件，以便CMake在配置项目时使用这些设置。</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="45f56e67-41de-4bc6-b203-760ee7d7cce2" class="code"><code class="language-Bash">cmake -DCMAKE_TOOLCHAIN_FILE=/path/to/your/arm-toolchain.cmake ..</code></pre><p id="969a1b6d-96ef-45d6-a426-4ec9a7f4d9a0" class="">这条命令告诉CMake使用<code><strong>/path/to/your/arm-toolchain.cmake</strong></code>文件中指定的工具链来配置项目。这允许CMake生成适合于目标设备的构建文件，无论是Makefile还是其他构建系统文件。</p><p id="fc0db02b-07f7-4d49-8a2a-792c5c1ac155" class="">在<code><strong>arm-toolchain.cmake</strong></code>文件中，你可能会设置诸如以下内容：</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="b052e183-5a67-42cc-8f0d-e8ad73b59846" class="code"><code class="language-Bash">set(CMAKE_SYSTEM_NAME Linux)
+set(CMAKE_SYSTEM_PROCESSOR arm)
+
+set(CMAKE_C_COMPILER arm-linux-gnueabihf-gcc)
+set(CMAKE_CXX_COMPILER arm-linux-gnueabihf-g++)
+
+set(CMAKE_FIND_ROOT_PATH /path/to/your/toolchain/sysroot)</code></pre><p id="e9bf1e4d-e10d-41e5-bb43-f5f819e24f80" class="">这些设置定义了系统名称、处理器类型、C和C++编译器的路径，以及CMake查找库时应该使用的根路径。通过这种方式，CMake能够正确地为目标平台配置项目，确保编译输出的可执行文件和库能够在目标设备上运行。</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

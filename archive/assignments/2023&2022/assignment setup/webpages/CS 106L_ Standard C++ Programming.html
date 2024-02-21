@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<!-- saved from url=(0077)https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1234/assignment-setup -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>CS 106L: Standard C++ Programming</title>
+        <!-- Bootstrap CSS file -->
+        <link rel="stylesheet" href="./CS 106L_ Standard C++ Programming_files/bootstrap.min.css">
+        <link rel="stylesheet" href="./CS 106L_ Standard C++ Programming_files/main.css">
+        <script src="./CS 106L_ Standard C++ Programming_files/navbar.js" type="text/javascript" defer=""></script>
+        <script src="./CS 106L_ Standard C++ Programming_files/footer.js" type="text/javascript" defer=""></script>
+        <link rel="stylesheet" href="./CS 106L_ Standard C++ Programming_files/bootstrap.min.css">
+        <script src="./CS 106L_ Standard C++ Programming_files/jquery-3.5.1.min.js"></script>
+        <script src="./CS 106L_ Standard C++ Programming_files/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="./CS 106L_ Standard C++ Programming_files/prism.css">
+    </head>
+    <body>
+        <script src="./CS 106L_ Standard C++ Programming_files/prism.js"></script>
+        <navbar-component currentpage="assignments">
+        <nav class="navbar navbar-expand-sm navbar-dark mb-3">
+            <a href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1234/index.html" class="navbar-brand " style="font-family:Jost; color:white; font-size:1rem; font-weight:700; ">CS 106L</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav">
+                    <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1234/assignment-setup#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: rgba(255, 255, 255, 1);font-weight: 550;">
+                              assignments
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <a class="dropdown-item" style="font-family:Jost;" href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1234/assignment-setup">Assignment Setup</a>
+                              <a class="dropdown-item" style="font-family:Jost;" href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1234/assignment2.html">Assignment 1: WikiRacer </a>
+                              <a class="dropdown-item" style="font-family:Jost;" href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1234/assignment3.html">Assignment 2: STL HashMap</a>
+                              </div>
+                          </li>
+
+                    <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1234/assignment-setup#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: rgba(255, 255, 255, 1);">
+                              resources
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="margin-left=-3px;">
+                              <a class="dropdown-item" style="font-family:Jost;" href="http://paperless.stanford.edu/">Paperless Link (Submit Code)</a>
+                              <a class="dropdown-item" style="font-family:Jost;" href="https://docs.google.com/document/d/1Y6r7U8Bz2sqAiV23kKpUS5uXQkga32X3ZFasHoKyq_8">Python to C++ Guide</a>
+                              <a class="dropdown-item" style="font-family:Jost;" href="https://en.cppreference.com/w/">C++ Documentation</a>
+                              <a class="dropdown-item" style="font-family:Jost;" href="https://edstem.org/us/courses/32292/discussion/">EdStem (for Enrolled Students)</a>
+                              <a class="dropdown-item" style="font-family:Jost;" href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1234/full_course_reader.pdf">Original 106L Course Reader</a>
+                            </div>
+                          </li>
+                    <a href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1234/index.html#calendar" class="nav-item nav-link" style="color: rgba(255, 255, 255, 1);">
+                        schedule
+                    </a>
+                    <a href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1234/policies.html" class="nav-item nav-link" style="color: rgba(255, 255, 255, 1);">
+                        policies
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </navbar-component>
+        <div style="height: 0px;">&nbsp;</div> <!-- margin bleeding issues -->
+        <div class="body-container">
+            <div class="body body-assignment">
+                <div class="subcontainer">
+                    <div class="content-bottom" style="margin-bottom: 2em">
+                        <h1 style="font-weight:700; margin:0 0;">Assignment Setup</h1>
+                        <div class="description">
+                            <p><i>An overview of how to set up remote code development environment, useful even after 106L!</i></p>
+
+                            <p>When developing C++, developers rarely start by copying a pasting a blank Qt Creator project. Although Qt is an excellent integrated development environment (IDE) for learning C++,
+                            it's important for you to learn how to build and run your C++ files yourself.  To give you the experience of working on C++ projects from scratch, outside of environments like Qt Creator, 
+                            we’ll be running our code remotely on the myth machines, a set of computers in the Gates building's basement. Don’t fear! You’ll be able to use a code editor on your laptop just like Qt Creator called VSCode 
+                            while editing files on a completely different myth machine computer.</p>
+
+                            <div class="aside-container">
+                                <div class="aside" style="border-left-color: var(--palette-golden-brown);">
+                                    The technologies that you'll be exposed to in this class (CLIs, remote development, compiling code yourself) will help you far beyond 106L, and even beyond C++!
+                                </div>
+                            </div>
+                            <p>If that sounds like a lot, don't worry! We'll take you through it step by step. If you follow the instructions shown below,
+                            you will <i>rarely</i> (if ever) have issues with your setup. There are two parts to this page: <a href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1234/assignment-setup#firstTime"> instructions that you need
+                                to only run once</a> to first set up for the class, and <a href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1234/assignment-setup#eachAssignment">instructions to follow each time you're starting an assignment</a>.</p>
+
+
+                            <p><b>If you ever have any trouble at all with any part of this page, please feel free to email us at cs106l-win2223-staff (at) lists (dot) stanford (dot) edu. We'll be happy to help with any issue you find!</b></p>
+                            
+                        </div>
+                    </div>
+
+                    <div class="content-bottom" style="border-left-color: var(--palette-dark-cream);margin-bottom: 2em" id="firstTime">
+                        <h3>Getting Started: Initial Setup Instructions</h3>
+                        <div class="description">
+
+                            <p>This entire section will have instructions you only need to run once. The next section will detail what you need to do for each assignment. This quarter, you'll usually have two windows open--one to edit your code, and another to run it. Let's download and set up the first, a code editor called VSCode!
+                            </p>
+
+                            <ol>
+                                <li>
+                                    First, <a href="https://code.visualstudio.com/download"><b>Install VSCode</b></a> and open the app.
+                                </li>
+                                <li>
+                                    Next, go to the extension manager (click the tetris icon on the left of your screen). If you can't find the button, <a href="https://code.visualstudio.com/download">check out this link</a>. 
+                                    <ol>
+                                    <li> 
+                                        Search for “sftp”, and install the <b><i>second</i></b> result, <b><i>not the first result</i></b>!
+                                        It should be by Natizyskunk, and have around 49,000 downloads and 5 stars.
+                                    </li>
+                                    <li>
+                                        Lastly, search for “GitLens”, and hit install on the first one (GitLens — Git supercharged, by Eric Amodio, over 10 million downloads). 
+                                    </li>
+                                    </ol>
+                                </li>
+                            </ol>
+                            
+
+                            <p>That's it for VSCode for now! Next, we'll show you how to log into the myth machines (to eventually run your code) and create a folder that you'll keep your assignments in.</p>
+                            <ol>
+                                <li>First, open your command line app, or hit <code>Ctrl + `</code> to use VSCode's command line. If that doesn't work for you, for Macs, open the "Terminal" app (<a href="https://www.howtogeek.com/682770/how-to-open-the-terminal-on-a-mac/">click here for help</a>).
+                                    For Windows, open your start menu, type "command prompt", and open the Command Prompt app.</li>
+                                <li>
+                                    Type the following into your terminal to connect to the myth machines (ssh is a command standing for Secure SHell). Type yes if prompted about continuing to connect (a message along the lines of "The authenticity of host 'myth.stanford.edu (171.64.15.19)' can't be established"), and enter your password when prompted: 
+                                    <pre class="line-numbers language-c"><code class="++ language-c">ssh yourSUIDHere@myth<span class="token punctuation">.</span>stanford<span class="token punctuation">.</span>edu</code></pre>
+                                </li>
+                                <li>
+                                    You're in! You should see a welcome message. Just like the Documents, Downloads, etc. folders on your computer, there are folders (called directories) on the myth machines. When you log in, you're placed in a home directory. Instead of a mouse and nice-looking windows, though, you can navigate the myth computers using the shell that you've logged into. From now on, when we say "enter/run a command", it means to type the command we give to you in and hit enter. For example, 
+                                    <div class="aside-container">
+                                        <div class="aside" style="border-left-color: var(--palette-golden-brown);">
+                                            Ever wanted to learn shell but not know where to start? This will expose you to learning linux commands and navigating the shell!
+                                        </div>
+                                    </div>                                                       
+                                    <ul>
+                                        <li>at any given time, you can see what folder you’re in by typing "<span class="terminal-text">pwd</span>" (no quotes) and hitting enter (print working directory)</li>
+                                        <li>To see what folders there are, run "<span class="terminal-text">ls -la</span>". You’ll see a list of all the folders in your home directory.</li>
+                                    </ul>
+                                    </li><li>
+                                        Decide where you want to store your assignments. We recommend creating a folder called "<span class="terminal-text">cs106L</span>", and putting all your files in there. To do so, type “mkdir cs106L”, which makes a directory called cs106L. 
+                                    </li>
+                            </ol>
+                            That's the end of our one-time setup. Take a break, or feel free to look up linux shell tutorials to see what else you can do.
+                            If you'd like to see how to start working on each assignment, see below!
+                            <!--div class = "terminal">
+                                <p class="terminal-text">ssh your_suid@myth.stanford.edu</p>
+                                </div-->
+                    </div>
+                </div>
+
+                <div class="content-bottom" style="border-left-color: var(--palette-tan);margin-bottom: 2em" id="eachAssignment">
+                    <h3>Start Learning: Instructions for Each Assignment</h3>
+                    <div class="description">
+
+                        <p>Here are instructions to follow when you start work on each of our assignments (you'll need to repeat these for each assignment).</p>
+
+                        <p> First, we'll need to download the assignment into the folder we created in the previous section (we called ours "cs106L"). Let's connect to the myth machines first!</p>
+                        <ol>
+                            <li>First, open your command line app and enter the following, just as you did in the previous section:
+                                <pre class="line-numbers language-c"><code class="++ language-c">ssh yourSUIDHere@myth<span class="token punctuation">.</span>stanford<span class="token punctuation">.</span>edu</code></pre>
+                            </li>
+                            <li>Next, enter "<span class="terminal-text">ls -la</span>". You should see the folder for 106L assignments you made in the previous section. To navigate into that directory, type "<span class="terminal-text">cd nameOfYourFolderHere</span>". For instance, since we named our folder cs106L, we'd run the following command:
+                                <pre class="line-numbers language-shell"><code class=" language-shell">cd cs106L</code></pre>
+                            </li>
+                            <li>
+                                Next, we'll download our assignment. We'll use assignment1 as an example, but in the future, you can follow these same instructions, replacing wherever you see assignment1 
+                                with assignment2 (for the second assignment, and so on). To do so, type the following command in to download a folder named "assignment1" with starter code:
+                                <b>NOTE: Yes, the link says cs106L-assignment2 even for assignment 1. This quarter we renumbered the assignments but didn't move where the code lives.</b>
+                                <pre class="line-numbers language-shell"><code class=" language-shell">git clone https://github.com/snme/cs106L-assignment2.git</code></pre>
+                            </li>
+                            <div class="aside-container" style="">
+                                <div class="aside" style="margin-top:5em; border-left-color: var(--palette-golden-brown);">
+                                    We're using <span class="terminal-text">git</span> for storing and developing our assignments. You don't need to use git to version control your work, but if you'd like to, send us an email!
+                                </div>
+                            </div>    
+                            <li>
+                                Now we're going to rename our folder to deal with the renumbering quirk.
+                                <pre class="line-numbers language-shell"> <code class=" language-shell">mv cs106L-assignment2 cs106L-assignment1 </code></pre>
+                            </li>                                                   
+                            <li>
+                                Next, navigate into this directory, named cs106L-assignment1. Which command would you use to change directories into the folder? (Spoiler: 
+                                <span class="terminal-text">cd cs106L-assignment1</span>)
+                            </li>
+                            <li>
+                                Now, run this command to download dependency packages, install them, link, and build your files is to run this simple command. It might take 5-10 minutes, so sit back and watch!
+                                <pre class="line-numbers language-shell"><code class=" language-shell">./setup.sh</code></pre>
+                                <div class="aside-container" style="">
+                                    <div class="aside" style="margin-top:7em; border-left-color: var(--palette-golden-brown);">
+                                        ahh, the power of abstraction. If you're interested to see what went on behind the scenes in setup.sh, send us an email or open the file by following the steps below!
+                                    </div>
+                                </div>                                                       
+                            </li>
+                            <li>
+                                Lastly, get the full path to the folder that you're in by printing your working (current) directory. (Run <span class="terminal-text">pwd</span>.).
+                                Save this output!
+                            </li>
+                        </ol>
+                        <p> Leave this window open, but that's it! To recap, we've connected to the myth machines, downloaded our assignment, set up the project, and got the full path to our working directory. Now, you may be wondering--how do I edit files? 
+                        There are ways to edit files through your shell, but we'll spare you of learning that now (if you'd like to, send us an email). 
+                        </p>
+                        <p><b>If the below steps havent been working for you (or if you want to learn a different way to edit files stored in the myth machines), jump to <a href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1234/assignment-setup#sshSetup">here!</a> If you have not yet set up your VSCode, please jump to that link.</b></p>
+                        <p>
+                        Let's get you editing code with VSCode! By the end, you'll be able to edit code files locally, with your changes automatically syncing to the myth machines whenever you hit save!</p>
+                        <ol>
+                            <li>
+                                <p>
+                                First, we need to create a folder that we'll download our code files from the myth machines into. Create a folder wherever you want on your computer (with Finder or Windows Explorer). Next, open VSCode, click File&gt;Open... and select your folder.
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                Now, we'll set up our automatic file syncing to sync our changes from your computer to the myth machines. Click View&gt;Command Palette..., type "SFTP: Config", and hit enter.
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                Delete everything in the file that pops up and paste the text below. Add your username where indicated (in quotes, after "username":), and replace the text in the quotes after "remotePath:" with the output from step 6 above.
+                                </p><pre class=" language-shell"><code class=" language-shell">{
+    "name": "Myth",
+    "host": "myth.stanford.edu",
+    "protocol": "sftp",
+    "port": 22,
+    "username": "YOURUSERNAMEHERE",
+    "interactiveAuth" : true,
+    "remotePath": "replace this with the path to your assignment1 directory on the myth machine (output from the pwd command, step 6, above)",
+    "uploadOnSave": true, 
+    "ignore" : [
+        "build/",
+        "vcpkg/",
+        "build_and_run.sh"
+    ]
+ }</code></pre>
+                            </li>
+                            <li>
+                                Hit save on VSCode! Make sure these changes are saved.
+                            </li>
+                            <li>
+                                In the top left, hit the icon that looks like two pages (the file explorer). Now, in the large empty space below the file you just edited, right click, and click "Download Folder". If that doesn't work, try to click "Sync Remote - Local"
+                            </li>
+                        </ol>
+                        That's it! <b>Now, your workflow will be as follows. You can make changes in VSCode to files and save. Then, switch to your terminal window, and type "./build_and_run.sh" to test your code!</b>
+                        <p>
+                        Congratulations! You've just been exposed to several technologies that developers of all code will use throughout their careers, from bash (shell) to git to C++ project files. You're all set!
+                        </p>
+                        <p> <span style="font-size: 1.5em;">Good luck! :)</span></p>
+
+                    </div>
+                </div>
+                <div class="content-bottom" style="border-left-color: var(--paleYellow);margin-bottom: 2em" id="sshSetup">
+                    <h3>Alternate VS Code Setup</h3>
+                    <div class="description">
+                        <p>This verison gets you set up with <b>VS Code SSH</b> instead of <b>VS Code SFTP</b>. In the version above, you were setting up a protocol which allowed you to download files from myth, edit them locally, and then reupload your local files to myth every time you saved. Basically, you are working on a <i>local copy</i> of your assignment files and constantly uploading that copy to myth as you work. With this method, you will have no local copy of your work, you will simply use VS Code to ssh into myth, and then the VS Code editor will be like a window into the myth machines, and all edits you make in the editor will be on the actual files in myth, not on local files!</p>
+                        <p>
+
+                        </p><ol>
+                            <li>In VS Code, go to the marketplace (click the tetris icon on the left) and search for "ssh". Install the first result (Remote - ssh from Microsoft). </li>
+                            <li>Now, press command + shift + P on a Mac or Ctrl + shift + P on a PC, and start typing “ssh”</li>
+                            <li>The dropdown menu should have the option “Remote-SSH: Add a New SSH Host”. Click that.</li>
+                            <li>Enter “ssh &lt;yourSUnetid&gt;@myth.stanford.edu”, press enter</li>
+                            <li>Select the default configuration file (just pressing enter again should work, otherwise hit the first option in the dropdown menu)</li>
+                            <li>Now, you VS Code will remember that you like to ssh into the myth machines, so in the future, you will only have to do steps 7-11 to code!</li>
+                            <li>Press command + shift + P on a Mac or Ctrl + shift + P on a PC, and start typing “ssh”</li>
+                            <div class="aside-container">
+                                <div class="aside" style="border-left-color: red;">
+                                    <b>COMMON ISSUE:</b> Sometimes, when you quit VS Code and reopen, the ssh password prompt gets stuck on a loop and wont let you log in. If this is happening to you, press command + shift + P on Mac or ctrl + shift + P on windows and type "kill". Select the option from the dropdown that says "Remote-SSH: Kill VS Code Server on Host". You will have to enter your password (it shouldnt loop).Now restart from step 7 again!
+                                </div>
+                            </div>
+                            <li>This time, select “Remote-SSH: Connect to SSH Host”.</li>
+                            <li>Select myth.stanford.edu</li>
+                            <li> You will be prompted for your password, enter your Sunet password!</li>
+                            <li>Remember, you are ssh’d into myth from VS Code! If you drag up from the bottom, you should see a terminal. This terminal is exactly the same as your computer’s terminal when you are ssh’d into myth there. To open your code, <code>cd</code> into the path you saved while dowloading the code and type <code>code .</code> into the terminal. It should open up a new window with all the files in the direcotry you chose! Voila!
+
+                        </li></ol>
+                        <p></p>
+                        <h3>Turning In Assignments</h3>
+                        <p>If you are editing code this way, when its time for you to turn in the assignment, you will need to make a local copy of the files you've been editing in myth. You can do this with a single command line command!
+                        </p>    
+                        <ol>
+                            <li>Make sure you know the path to your local 106L folder! Its probably something like <code>~/Desktop/CS106L</code>! We will refer to this as LOCAL_PATH. You also need the path to your assignment folder in myth, which is what you copied in the step before VS Code setup, this will be MYTH_PATH. </li>
+                            <li>In a terminal window on your computer (not one ssh'd into myth), enter <br> <code>scp -r &lt;yoursunetid&gt;@myth.stanford.edu:MYTH_PATH LOCAL_PATH</code> <br></li>
+                            <li>Go check LOCAL_PATH to see if it worked! Submit on Paperless per usual :)</li>
+                            <div class="aside-container">
+                                <div class="aside" style="border-left-color: var(--lav);">
+                                    You can change the direction of the scp command as well to upload things on your computer to myth! Run <code>scp [-r] [HOST:]SOURCE [HOST:]DESTINATATION</code> (where <code>[]</code> denotes including this is optional, you would want to include <code>sunet@myth.stanford.edu:</code> in the relevant <code>[HOST:]</code>). If you are moving a <i>directory</i> instead of just one file, you will need to use the <code>-r</code> flag after <code>scp</code>
+                                </div>
+                            </div>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+    
+
+    <footer></footer>
+    <!--div style="width: 100%; text-align: center;margin-bottom:3em;background-color: rgba(255, 255, 255, 1);">
+        <footer>
+        <small>© 2021. Created by Frankie Cerkvenik and Sathya Edamadaka.</small>
+        </footer>
+        </div-->
+
+</div></body></html>

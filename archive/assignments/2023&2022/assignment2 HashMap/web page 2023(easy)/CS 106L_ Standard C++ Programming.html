@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<!-- saved from url=(0077)https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1224/assignment3.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>CS 106L: Standard C++ Programming</title>
+        <!-- Bootstrap CSS file -->
+        <link rel="stylesheet" href="./CS 106L_ Standard C++ Programming_files/bootstrap.min.css">
+        <link rel="stylesheet" href="./CS 106L_ Standard C++ Programming_files/main.css">
+        <script src="./CS 106L_ Standard C++ Programming_files/jquery-3.3.1.min.js"></script>
+        <script src="./CS 106L_ Standard C++ Programming_files/bootstrap.min.js"></script>
+        <script src="./CS 106L_ Standard C++ Programming_files/navbar.js" type="text/javascript" defer=""></script>
+        <script src="./CS 106L_ Standard C++ Programming_files/footer.js" type="text/javascript" defer=""></script>
+        <link rel="stylesheet" href="./CS 106L_ Standard C++ Programming_files/bootstrap.min.css">
+        <script src="./CS 106L_ Standard C++ Programming_files/jquery-3.5.1.min.js"></script>
+        <script src="./CS 106L_ Standard C++ Programming_files/bootstrap.bundle.min.js"></script>
+    </head>
+    <body>
+        <navbar-component currentpage="assignments">
+        <nav class="navbar navbar-expand-sm navbar-dark mb-3">
+            <a href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1224/index.html" class="navbar-brand " style="font-family:Jost; color:white; font-size:1rem; font-weight:700; ">CS 106L</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav">
+                    <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1224/assignment3.html#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: rgba(255, 255, 255, 1);font-weight: 550;">
+                              assignments
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <a class="dropdown-item" style="font-family:Jost;" href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1224/assignment-setup">Assignment Setup</a>
+                              <a class="dropdown-item" style="font-family:Jost;" href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1224/assignment1.html">Assignment 1: WikiRacer Part 1</a>
+                              <a class="dropdown-item" style="font-family:Jost;" href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1224/assignment2.html">Assignment 2: WikiRacer Part 2</a>
+                              <a class="dropdown-item" style="font-family:Jost;" href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1224/assignment3.html">Assignment 3: STL HashMap</a>
+                              </div>
+                          </li>
+
+                    <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1224/assignment3.html#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: rgba(255, 255, 255, 1);">
+                              resources
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="margin-left=-3px;">
+                              <a class="dropdown-item" style="font-family:Jost;" href="http://paperless.stanford.edu/">Paperless Link (Submit Code)</a>
+                              <a class="dropdown-item" style="font-family:Jost;" href="https://docs.google.com/document/d/1Y6r7U8Bz2sqAiV23kKpUS5uXQkga32X3ZFasHoKyq_8">Python to C++ Guide</a>
+                              <a class="dropdown-item" style="font-family:Jost;" href="https://en.cppreference.com/w/">C++ Documentation</a>
+                              <a class="dropdown-item" style="font-family:Jost;" href="https://edstem.org/us/courses/16784/discussion/">EdStem (for Enrolled Students)</a>
+                              <a class="dropdown-item" style="font-family:Jost;" href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1224/full_course_reader.pdf">Original 106L Course Reader</a>
+                            </div>
+                          </li>
+                    <a href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1224/index.html#calendar" class="nav-item nav-link" style="color: rgba(255, 255, 255, 1);">
+                        schedule
+                    </a>
+                    <a href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1224/policies.html" class="nav-item nav-link" style="color: rgba(255, 255, 255, 1);">
+                        policies
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </navbar-component>
+        <div style="height: 0px;">&nbsp;</div> <!-- margin bleeding issues -->
+        <div class="body-container">
+            <div class="body body-assignment">
+                <div class="subcontainer">
+                    <div class="content-bottom" style="width:100%;margin-bottom: 2em">
+                        <h1 style="font-weight:700; margin:0 0;">Assignment 3: STL HashMap</h1>
+                        <div class="description">
+                            <p><i>Assignment due on Paperless on Thursday, March 17 at 11:59 PM</i></p>
+
+                            <h3>Introduction and Assignment Goals</h3>
+                            <p>According to veteran C++ programmers, there are two projects which bring together all the knowledge that a proficient C++ programmer should have:
+                                </p><ol>
+                                  <li>Implementing a STL-compliant template class; and</li>
+                                  <li>Implementing a macro to hash string literals at compile-time.</li>
+                                </ol>
+                            <p></p>
+
+                            <p>
+                                In this assignment, we will be putting <b>#1</b> on your resume by completing a STL-compliant <b>HashMap</b>.</p>
+                              <p>Recall that the <code>Map</code> abstract data type stores key → value pairs, and provides efficient lookup of the value of any key.
+                              There are two versions of this in the STL: <code>std::map</code>, traditionally implemented using a <a href="https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree">balanced binary search tree</a>, and <code>std::unordered_map</code> (introduced in C++11), which uses a clever technique called hashing and supports the most map operations in constant time (!).</p>
+                            In this assignment, you will be given a nearly complete implementation of a HashMap (the name of this data structure in the Stanford C++ library).
+                          The starter code is nearly complete, but is not "STL-compliant"; for example, copy and move semantics are not supported yet. Your goal is to extend it so it becomes an STL-compliant, industrial strength, robust, and blazingly fast data structure.
+                            <p></p>
+                            <p>A hashmap is a bit of a complicated data structure, but we've given you nearly all of the implementation of it. In brief, this is how it works:
+                              </p><ul>
+                                <li>
+                                  A hashmap stores an array (represented by the private vector <code>_buckets_array</code> in our HashMap) of "buckets".
+                                </li>
+                                <li>
+                                  Each "bucket" is a linked list: linked lists are made up of <code>node</code>s, which are defined in <code>hashmap.h</code>.
+                                </li>
+                                <li>
+                                  Each <code>node</code> in these linked lists contains one key-value pair that is contained in our map. In the <code>node</code> struct, this is the field 
+                                  <code>value</code>, of type <code>value_type</code>. <code>value_type</code> is a <b>type-alias</b> for a <code>std::pair&lt;K, M&gt;</code>. Check out its definition
+                                  near the top of the .h file!
+                                </li>
+                                <li>
+                                  When a user of the hashmap class tries to look up or insert a key, the HashMap class first converts the key, no matter what type it is, to an integer.
+                                  It does this using the hash function, stored in the private member varibale <code>_hash_function</code>. For our purposes, this will always be the default 
+                                  hash function in the STL. Then, the HashMap class mods that integer by the number of buckets in <code>_buckets_array</code>. This is the index
+                                  at which HashMap will insert or look for the key. From here, its just a matter of traversing the linked list stored at that index to find the key  in question
+                                  (it is possible that multiple keys are stored in the same index because their hashes, or the mod of their hashes, are the same!)
+                                </li>
+                                <li>
+                                  The HashMap will occasionally increase the number of buckets and re-hash and store everything to make sure each index doesn't have too many
+                                  keys stored there. This keeps all operations very fast, because it is very quick to look up an index in an array, and we are guaranteed
+                                  to have very short linked lists there!
+                                </li>
+                              </ul>
+                              Dont worry if you don't feel super comfortable with HashMaps! We have implemented all of this logic for you, and we highly encourage you to read through
+                              the code to understand what is happening. However, this assignment does not ask you to implement anything except some SMFs, which only deal with initializing
+                              the private member variables.
+                            <p></p>
+
+                            <p>
+                                <b>You will not necessarily write a lot of code on this assignment</b> (~20 lines), but some of your time will be spent on understanding the starter code given to you, and reasoning about design choices and common C++ idioms.
+                    
+                                <b>You may optionally work with a partner. We recommend having a partner to discuss the design questions.</b> If you choose to work with a partner, we ask that you and your partner submit a single version of the assignment among both of you. This means that you will ideally be working with your partner on a shared version of the code and short answer questions. Feel free to start a shared Google Doc, a private GitHub repository, or anything else that you'd need to keep track of a shared version of the code. You may also choose to schedule video chat sessions with each other to work on the assignment.
+                              </p>
+                              </div>
+                              </div>
+
+                    <div class="content-bottom" style="border-left-color: var(--palette-dark-cream);margin-bottom: 2em">
+                        <div class="description">
+                            <h3>Download And Set Up Assignment</h3>
+                            <p>
+                                </p><ol>
+                                    <li>
+                                        We suggest running the code on the Myth machines to prevent any issues with your computer's setup. 
+                                        If you haven't already, set yourself up in VS Code. 
+                                        The instructions for this are on the assignment setup page. We recommend the alternate SSH setup.
+                                    </li>
+                                    <li>
+                                        Download the starter code here: <a href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1224/assignments/HashMap_Starter.zip">Starter Code</a>
+                                    </li>
+                                    <li>
+                                        In terminal, <code>scp</code> your Assignment 3 starter code to your 106L folder in myth.
+                                        <code>scp LOCAL_PATH &lt;yoursunetid&gt;@myth.stanford.edu:MYTH_PATH</code><br>
+                                        LOCAL_PATH is the place on your laptop where you just downloaded the starter code. It will
+                                        probably be something like <code>Downloads/HashMap_Starter.zip</code>.<br> MYTH_PATH is the path on myth where you keep
+                                        your CS106L folder. <br> You can find this by 1) <code>ssh</code>ing into Myth using <code>ssh &lt;yoursunetid&gt;@myth.stanford.edu</code>, 2) entering
+                                        your password and then 3) <code>cd</code>ing to your CS106L directory and finally 4) printing out the path to this folder using <code>pwd</code>.
+                                    </li>
+                                    <li>
+                                      Unzip the folder in myth by running <code>unzip HashMap_Starter.zip</code>. 
+                                    </li>
+                                    <li>
+                                        Now, you should be able to open your Assignment 3 code using whichever VS Code setup instructions you have been using all quarter!
+                                    </li>
+                                </ol>
+                                
+                            <p></p>
+                            <p>
+                                Feel free to email the lecturers if you are having trouble with setup!
+                            </p>
+                        </div>
+                    </div>
+
+        <div class="content-bottom" style="border-left-color: var(--palette-dark-brown);margin-bottom: 2em">
+          <div class="description">
+            <h3>Starter Code</h3>
+            <p><a href="https://web.stanford.edu/class/archive/cs/cs106l/cs106l.1224/assignments/HashMap_Starter.zip">Please download the starter code here</a>. The starter code contains the following files:
+
+          </p><ul>
+            <li><code>hashmap.h</code>:
+              This file contains the (incomplete) class function prototypes for the  HashMap, and also contains thorough comments about each function.
+              <b>You will need to modify many of these function prototypes for milestone 1, and add a few for milestone 2</b>
+              Like in CS 106B, you may add any private helper functions (though it is unlikely you will need to), but do not add or change the prototypes of any public functions.
+              Imagine what a disaster it would be for the world if the vector’s size function was renamed to length or if the erase function had a few extra parameters...a good chunk of the world’s C++ code would stop compiling!
+            </li>
+            <li><code>hashmap.cpp</code>:
+              This file contains the implementation of the HashMap, and also contains thorough comments about implementation details.
+              <b>Besides changing function signatures for milestone 1, you will have to add the implementations for milestone 2 to this file.</b>
+            </li>
+            <li><code>hashmap_iterator.h</code>
+              This file contains the complete class declaration and implementation for a HashMapIterator, and also contains thorough comments about each function.
+              You will be reading the code here for milestone 1, but you will not need to modify this file at all.
+              <b>We have never used a class as our iterator type before, make sure you read through these files and try to understand what is going on!</b>
+              <b>Importantly, check out the difference between the <code>iterator</code> and <code>const_iterator</code> aliases in <code>hashmap.h</code> </b>
+            </li>
+            <li><code>short_answer.txt</code>: You will write your solutions to the short answer questions in this file.</li>
+            <li>
+              <code>build.sh</code>: This file contains the compilation instructions for the project. To check if your Hashmap compiles, run <code>./build.sh</code> from your assignment 4 directory.
+             </li>
+             <li>
+                <code>main.sh</code>: This file contains example code using your The hashmap. To run this code, first build it and then run <code>./main</code>
+               </li>
+               <li>
+                <code>tests.cpp</code> and <code>test_settings.cpp</code>: These files contain crazy amounts of code meant to test your hashmap! You shouldn't need to edit them!
+               </li>
+          </ul>
+        </div>
+        </div>
+
+        <div class="content-bottom" style="border-left-color: var(--paleYellow);margin-bottom: 2em">
+            <div class="description">
+              <div class="aside-container">
+                <div class="aside trans200">
+                  <h4>Tips</h4>
+                  <p>You compile and run this code the same way you would lecture code! In the terminal from your <code>HashMap_Starter</code> directory, run <code>./build.sh</code> to compile and <code>./main</code> to run your code!</p>
+                  <p>Make sure the lines marked "UNCOMMENT FOR MILESTONE 2" are commented out for now. You will get tons of compiler errors!</p>
+                  <p>Before changing any functions, your code should compile. After chaning the functions in main, don't freak out about the loads of compile errors! Just keep looking for functions in HashMap to mark const until you get to a reasonable point in the compile mesagqes, and then try to use those to find more functions that need a const or an overload!</p>
+                  <p>Make sure you change your function signatures in two places: the .h <b>and </b> the .cpp</p>
+                  <p>The functions in main are declared before theyre implemented, so any signatures you change there should also change where they are first defined as well!</p>
+                  <p>Its easy to make a lot of copy-paste errors here. Remember when you are overloading, you are also changing the return type. </p>
+                  <p>Notice how <code>begin()</code> is overloaded with a const version! Even though only the return type is changed, this type of overloading is ok because the function is marked <code>const</code>, which means the compiler can figure out which version of <code>begin()</code> to use based on whether the HashMap its been called on is const or not!</p>
+                </div>
+              </div>
+              <h3>Milestone 1: Const-Correctness</h3>  
+            <p> Your first task will be to make a <b>const-interface</b> for the HashMap class. Recall that we often mark variables, 
+            especially function parameters <code>const</code> to avoid a specific kind of bug: modifying a piece of data when we weren't supposed to. 
+            <b>We highly recommend checking out the end of the Template Classes and Const-Correctness lecture before starting!</b>
+            We have already marked a couple member functions const for you (check out the const overload of <code>begin()</code>, it is up to you to find the rest!
+            Here is what you need to do to complete this milestone:</p>
+            <p>
+                </p><ol>
+                    <li>
+                    Head to <code>main.cpp</code> and pay special attention to all the helper functions called by <code>student_main()</code>. None of them have bugs, 
+                    but some of them don't properly mark their parameters <code>const</code> when necessary. Mark the appropriate parameters <code>const</code>.
+                    Now, if you try to build, you will notice your code doesn't compile! Thats because most of your HashMap functions are not marked <code>const</code>.
+                    </li>
+                    <li>
+                        Head to your <code>hashmap.cpp</code> and <code>hashmap.h</code> files. Go ahead and mark any existing functions <code>const</code>, as long as 
+                        this is appropriate. This is step 1 for creating your const-interface! Remember, any signatures you change <code>hashmap.h</code>, you also need to
+                        change in <code>hashmap.cpp</code>.
+                    </li>
+                    <li>
+                        Finally, you will need to add a few functions (really, you will need to overload existing ones to have a <code>const</code> version) to make your const-interface robust. Recall that iterators by default allow us to dereference and change
+                        their underlying value, but sometimes we just want to use an iterator to, well, <b>iterate</b>, without changing any values. Make use of the <code>const_iterator</code>
+                        alias we provided you in <code>hashmap.h</code> to create const versions of the appropriate functions. 
+                        <ul>
+                          <li><b>HINT:</b> The main challenge here is identifying which functions to add. You will have to do little else than call the non-const version of the function in your new functions.
+                        As an example, we have given you a const version of <code>begin()</code>. Use the <code>static_cast/const_cast</code> trick demonstrated there in the rest of your functions!
+                    </li>
+                      <li><b>HINT:</b> Look at all the functions which return an iterator. Which of these should be overloaded to return a <code>const_iterator</code> when necessary? 
+                      </li>
+                      <li><b>HINT:</b> If you have marked the appropriate parameters <code>const</code> in <code>main.cpp</code>, any call to a non-const function will error, 
+                        you can use this as a guide for which functions you might want to overload! There is one function that does not return an iterator that still must be overloaded, can you find it?
+                      </li>
+                      </ul>
+                    </li>
+                    <li>
+                      Finally, uncomment lines 5, 6, and 28 (the ones with the comment "UNCOMMENT FOR MILESTONE 2"), and try to compile again. If you missed any 
+                      functions that needed to be marked const or overloaded, you will see that calls to those functions error in the compiler error messages!
+                    </li>
+                </ol>
+            <p></p>
+            <h4>Writeup</h4>
+            <p>
+              Please answer these questions in <code>short_answer.txt</code>
+            </p>
+            <p>
+              </p><ol>
+                <li>
+                  <h6>at() vs []</h6>
+                  Explain the difference between <code>at()</code> and the implementation of the operator <code>[]</code>. Wy did you have to overload one and not the other?
+                  <br><i>Hint: You will likely only need to read the header comments to do this</i>
+                  <p></p>
+                </li>
+                <li>
+                  <h6>Find vs. 𝓕𝓲𝓷𝓭</h6>
+                  In addition to the <code>HashMap::find</code> member function, there is also a <code>std::find</code> function in the STL algorithms library. If you were searching for key k in HashMap m, is it preferable to call <code>m.find(k)</code> or <code>std::find(m.begin(), m.end(), k)</code>?
+                  <br><i>Hint: on average, there are a constant number of elements per bucket. Also, one of these functions has a faster Big-O complexity because one of them uses a loop while another does something smarter.</i>
+                <p></p>
+                </li>
+                <li>
+                  <h6>RAII?</h6>
+                  This HashMap class is RAII-compliant. Explain why.
+                  <p></p>
+                </li>
+                <li>
+                  <h6>Increments</h6>
+                  Briefly explain the implementation of HashMapIterator's operator++, which we provide for you. How does it work and what checks does it have?
+                  <p></p>
+                </li>
+              </ol>
+            <p></p>
+          </div>
+          </div>
+          <div class="content-bottom" style="border-left-color: var(--palette-golden-brown);margin-bottom: 2em">
+            <div class="description">
+              <h3>Milestone 2: Special Member Functions and Move Semantics</h3>  
+              <p>Any good STL-compliant class must have correct <b>special member functions.</b>.
+              Recall that there are six major special member functions:</p>
+              <ul>
+                <li>Default constructor <i>(implemented for you)</i></li>
+                <li>Destructor <i>(implemented for you)</i></li>
+                <li>Copy constructor</li>
+                <li>Copy assignment operator</li>
+                <li>Move constructor</li>
+                <li>Move assignment operator</li>
+              </ul>
+  
+              <p>The first two are implemented for you; your job is to implement the last four.
+                Specifically, the <b>copy</b> operations should create an identical copy of the provided HashMap, while the <b>move</b> operations should move the contents of the provided HashMap to <code>this</code> (the instance of the HashMap upon which the move operation is called). Avoid memory leaks and perform your copy/move as efficiently and safely as possible.
+              </p>
+              <div class="aside-container">
+                <div class="aside trans200">
+                  <h4>Tips</h4>
+                  <p>Check out the Special Member Functions lecture and the Move Semantics lecture!</p>
+                  <p>Try to use the <b>member initializer list</b> (colon after constructor) whenever possible for efficiency!</p>
+                  <p>We do not provide the headers, so you will have to add them to the .h file yourself.</p>
+                  <p>Read over the .h file again and make sure you understand each private member variable! You will need to fill these in your SMFs!</p>
+                  <p>We have given you helpers which cover the vast majority of the actual nitty gritty of filling a copied/moved hashmap. Pay special attention to <code>insert()</code> and <code>clear()</code>!</p>
+                </div>
+              </div>
+  
+              <p>Hints</p>
+              <ul>
+                <li>You will need to move/copy the _buckets_array. Here is the one place you may have to work with pointers. One step of the first steps of copy should be to create a vector&lt;node*&gt; that is initialized to nullptrs. Then, you have a valid empty HashMap that you can start copying elements over using the public member functions.</li>
+                <li><code>clear()</code> and <code>insert()</code> change the <code>_size</code> member variable, so keep that in mind when changing _size yourself.
+                  If you see that size is twice what you expect it to be, then you are probably incrementing _size twice - once in insert(), and once in your code.</li>
+                <li>Be careful about self-assignment! <b>HINT:</b> Use <code>clear()</code> and <code>insert()</code> :) </li>
+                  <li>In the edge case tests you may see chained assignments (e.g. map = map = map).
+                  The assignment operator is right-associative, and also returns a reference to the HashMap itself, so this gets interpreted as (map = (map = map)).
+                  You don't need to worry about this - as long as the headers of your special member functions are correct and you avoid self-assignment, this case will be automatically handled.</li>
+                <li>Remember, you have iterators and the insert member function at your disposal!</li>
+              </ul>
+              <h4>
+                Testing
+              </h4>
+              <p><b>
+                You can run the Milestone 2 tests by uncommenting the lines marked "UNCOMMENT FOR MILESTONE 2" and then selecting option 2 when you run your code. Remember to <code>./build.sh</code> first!
+              </b></p>
+              <p><span class="test">You don't need to look at them, and the testing file actually contains more tests than we run, but Test 4A, 4B, and 4C</span> create copies of your HashMap using the copy constructor and copy assignment operator, and verifies their correctness. In addition, there are tests for edge cases such as self-assignment. <span class="test">Tests 4D, 4E, and 4F</span> try to move HashMaps from one to another using the move constructor and move assignment, and verifies correctness just like test 4A.
+              </p>
+              
+              <p>Note that the move operations and time tests may pass even if you haven't implemented the move operations (recall that if no copy/move operations are declared, the compiler generates default ones, which will pass the move but not copy tests). See the test_settings.cpp for more information. The tests use some compiler directives (#pragma) to silence compiler warnings about self-assignment. You can safely ignore those.</p>
+              <p><span class="test">Test 4G</span> and <span class="test">Test 4H</span> time your move operations to verify that you are actually moving the contents of the HashMaps rather than copying the contents. The tests try the move operations on HashMaps of different sizes, and verify that the runtime of the move operations is O(1), not O(n). You can see the results of the time test printed in the test harness.</p>
+  
+              <br>
+              <h4>Writeup</h4>
+              <p>
+                Please answer these questions in <code>short_answer.txt</code>
+              </p>
+              <p>
+                </p><ol>
+                  <li>
+                    <h6>Attachment Issues</h6>
+                    Why is it that we need to implement the special member functions in the HashMap class, but we can default all the special member functions in the HashMapIterator class?
+              <br>
+              <i>	Hint: your answer should reference the Rule of Five (the Rule of 3 including move operations) vs. the Rule of Zero, and also talk about std::vector's copy constructor/assignment operator. </i>
+                  </li>
+                  <br>
+                  <li>
+                    <h6>Move Semantics</h6>
+                    In your move constructor or move assignment operator, why did you have to std::move each member, even though the parameter (named rhs) is already an r-value reference?
+<br>
+                  </li>
+                </ol>
+                  
+              <p></p>
+              
+              
+          </div>
+          </div>   
+          
+          <div class="content-bottom" style="border-left-color: var(--lav);margin-bottom: 2em">
+            <div class="description">
+                <h3>Submitting</h3>
+                <p>
+                    Please submit <code>hashmap.h</code>, <code>hashmap.cpp</code> and <code>short_answer.txt</code> to Paperless!
+                </p>
+                
+            </div>
+        </div>
+
+
+                        </div>
+                </div>
+                <br>
+            </div>
+    
+<footer></footer>
+
+</body></html>
