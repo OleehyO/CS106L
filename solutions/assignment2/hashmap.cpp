@@ -64,11 +64,7 @@ bool HashMap<K, M, H>::contains(const K& key) const{
 template <typename K, typename M, typename H>
 void HashMap<K, M, H>::clear() {
     for (auto& curr : _buckets_array) {
-        while (curr != nullptr) {
-            // auto trash = curr;
-            curr = curr->next;
-            // delete trash;
-        }
+        curr = nullptr;
     }
     _size = 0;
 }
