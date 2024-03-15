@@ -3,7 +3,6 @@
 **/build
 
 # For assignment1
-**/res
 **/test-resources
 solutions/assignment1/vcpkg
 solutions/assignment1/build_and_run.sh
