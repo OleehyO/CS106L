@@ -83,7 +83,6 @@ std::pair<typename HashMap<K, M, H>::iterator, bool> HashMap<K, M, H>::insert(co
 <img src="../../assets/wo_memleak.png" height="400">
 </div>
 
-可以说instructor通过亲身实践告诉了我们RAII实践的重要性.
 
 > 事实上在2023的starter code中, clear函数的循环中只有`curr = curr->next;`这行代码, 但令人困惑的是node struct的定义仍然没有使用智能指针, 这是明显违背常理的. 个人感觉这个点很奇怪.
 
