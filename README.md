@@ -79,8 +79,8 @@ vcpkg是微软推出的一个C++第三方包的管理工具(C++版pip), 在官�
 * [Modern C++ Tutorials](https://changkun.de/modern-cpp/en-us/01-intro/):
 可以作为CS106L的补充资料.
 
-* [C++ FAQ](https://isocpp.org/faq): 学[CS149](https://gfxcourses.stanford.edu/cs149/fall23)时instructor推荐的阅读资料,
-里面罗列了各种常见问题，给出了详细但是易于理解的解释.
+* [C++ FAQ](https://isocpp.org/faq): 
+罗列了各种常见问题，给出了详细但是易于理解的解释.
 
 * [c-style](https://github.com/mcinglis/c-style), [google C++ style](https://google.github.io/styleguide/cppguide.html):
 关于编码风格.
