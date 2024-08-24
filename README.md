@@ -44,8 +44,8 @@ bad practice. 学完之后确实能感受到C++发展至今已经变成了一门
 * [CMake Tutorial](https://cmake.org/cmake/help/latest/guide/tutorial/index.html):
 CMake的官方教程, 建议看看前面两个step.
 
-* [cmake-examples](https://github.com/ttroy50/cmake-examples): 一个非常优秀的开源项目,
-提供了多种场景下使用cmake的案例, 对于速入门cmake相当够用(强烈推荐).
+* [cmake-examples](https://github.com/ttroy50/cmake-examples): 一个很好的开源项目,
+提供了多种场景下使用cmake的案例.
 
 * [cmake菜谱](https://www.bookstack.cn/read/CMake-Cookbook/README.md):
 一本对cmake作了比较详尽阐述的书, 如果想要对cmake作更深入的了解可以看看.
@@ -62,8 +62,7 @@ vcpkg是微软推出的一个C++第三方包的管理工具(C++版pip), 在官�
 
     > vcpkg也可以和CMake进行集成, 从而进一步简化在引入第三方依赖时的工作流.
 
-* [vcpkg文档](https://learn.microsoft.com/zh-cn/vcpkg/):
-这个官方文档内容并不多, 建议看看.
+* [vcpkg文档](https://learn.microsoft.com/zh-cn/vcpkg/)
 
 ### C++相关
 
